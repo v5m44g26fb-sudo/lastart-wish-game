@@ -79,6 +79,17 @@ img{user-select:none;-webkit-user-drag:none}
 .ic-music{background:linear-gradient(180deg,#fc5c7d,#ee2d55)!important;color:#fff}
 .ic-roster{background:linear-gradient(180deg,#3a7bd5,#274b8f)!important;color:#fff}
 .ic-photo{background:#fff!important}
+/* v31: home edit mode (iOS 16 long-press jiggle + drag reorder) */
+@keyframes jig{from{transform:rotate(-1.6deg)}to{transform:rotate(1.6deg)}}
+#v-home.editing .app{animation:jig .26s ease-in-out infinite alternate;touch-action:none}
+#v-home.editing .apps .app:nth-child(2n){animation-delay:.13s}
+#v-home.editing .dock .app:nth-child(2n+1){animation-delay:.09s}
+.app .minus{position:absolute;top:-7px;left:4px;width:21px;height:21px;border-radius:50%;background:#e9e9ee;color:#555;font-size:15px;font-weight:600;display:none;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.35);z-index:3;line-height:1}
+#v-home.editing .app .minus{display:flex}
+.app.drag{animation:none!important;z-index:60}
+.app.drag .ic{box-shadow:0 10px 24px rgba(0,0,0,.45)}
+#edit-done{position:absolute;top:56px;right:16px;z-index:40;background:rgba(40,40,46,.72);color:#fff;font-size:13.5px;font-weight:600;padding:7px 16px;border-radius:999px;backdrop-filter:blur(10px);display:none}
+#v-home.editing #edit-done{display:block}
 .dock{position:absolute;left:11px;right:11px;bottom:9px;height:88px;background:rgba(235,235,240,.32);backdrop-filter:blur(18px);border-radius:27px;display:flex;align-items:center;justify-content:space-around;padding:0 12px;z-index:3}
 .dock .app{text-shadow:none}
 .dock .app .ic{width:60px;height:60px}
@@ -925,7 +936,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="t-btn sub" id="t-cont">つづきから</button>
 <button class="t-btn sub" id="t-ends">エンディングコレクション <span id="t-ends-n"></span></button>
 <div class="t-note">実在の人物・番組を題材にした創作フィクション（ファンメイド作品）です。会話やナオ・大翔の結果は創作であり、史実の選抜結果とは異なる分岐を含みます。</div>
-<div class="t-ver">LASTART編 v30</div>
+<div class="t-ver">LASTART編 v31</div>
 </div>
 </div>
 <!-- LOCK -->
@@ -942,6 +953,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <!-- HOME -->
 <div class="view" id="v-home">
 <div class="wall"></div>
+<button id="edit-done">完了</button>
 <div class="home-scroll">
 <div class="wid-row">
 <div class="wid-cal"><div class="wd" id="hw-wd">水曜日</div><div class="d" id="hw-d">26</div><div class="ev" id="hw-ev">LASTART 最初のミッションまで<br>あと1日</div></div>
@@ -1040,7 +1052,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="set-prof" data-deco><img src="assets/av-nao.jpg" alt=""><span><span class="sn">ナオ</span><div class="ss" id="set-prof-sub">練習生としてLASTARTに参加中</div></span></button>
 <div class="set-grp">
 <button class="set-row" id="set-ends"><span class="lft"><span class="set-ic" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M18.5 3h-3V2.5A1.5 1.5 0 0 0 14 1H10a1.5 1.5 0 0 0-1.5 1.5V3H5.5A1.5 1.5 0 0 0 4 4.5c0 3 1.9 5.4 4.6 6.3A6 6 0 0 0 11 14.9v1.6H7.5a1.5 1.5 0 0 0-1.5 1.5v2h12v-2a1.5 1.5 0 0 0-1.5-1.5H13v-1.6a6 6 0 0 0 2.4-4.6C18.1 9.9 20 7.5 20 4.5A1.5 1.5 0 0 0 18.5 3zM6.2 7.2A4.4 4.4 0 0 1 6 5h1v3.4c-.3-.4-.6-.8-.8-1.2zM18 5h1a4.4 4.4 0 0 1-.2 2.2c-.2.4-.5.8-.8 1.2z" transform="scale(.92) translate(1,1)"/></svg></span>エンディングコレクション</span><span><span id="set-ends-n"></span><span class="chev">›</span></span></button>
-<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v30</span></button>
+<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v31</span></button>
 <button class="set-row" data-deco><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"><path d="M6.2 10.2a5.8 5.8 0 0 1 11.6 0c0 3.9 1.4 5.3 1.4 5.3H4.8s1.4-1.4 1.4-5.3z"/><path d="M10.1 19a2 2 0 0 0 3.8 0" stroke-linecap="round"/></svg></span>通知</span><span>オン<span class="chev">›</span></span></button>
 <button class="set-row" id="set-a11y"><span class="lft"><span class="set-ic" style="background:#0a84ff"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="4.4" r="2.2"/><path d="M19.6 8.1c-2.5.6-5 0.9-7.6 0.9s-5.1-.3-7.6-.9l.5-2c2.3.5 4.7.8 7.1.8s4.8-.3 7.1-.8l.5 2z"/><path d="M13.1 10.2v3.3l2.8 5.2-1.9 1-2.4-4.5-2.5 4.5-1.9-1 2.8-5.2v-3.3h3.1z" transform="translate(-1.05 0)"/></svg></span>アクセシビリティ</span><span><span id="set-a11y-st">標準</span> <span class="chev">›</span></span></button>
 <button class="set-row" id="set-sfx"><span class="lft"><span class="set-ic" style="background:#34c759"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 9.5v5A1.5 1.5 0 0 0 5.5 16H9l5.2 4.4c.7.6 1.8.1 1.8-.8V4.4c0-.9-1.1-1.4-1.8-.8L9 8H5.5A1.5 1.5 0 0 0 4 9.5zm14.9-3.2-.9 1.2a5.6 5.6 0 0 1 0 9l.9 1.2a7.6 7.6 0 0 0 0-11.4z"/></svg></span>サウンドと触覚</span><span><span id="set-sfx-st"></span> <span class="chev">›</span></span></button>
@@ -1048,7 +1060,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div class="set-grp">
 <button class="set-row danger" id="set-reset"><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24"><path d="M9 3.5A1.5 1.5 0 0 1 10.5 2h3A1.5 1.5 0 0 1 15 3.5V4h4.5v2H4.5V4H9zm-3.2 3h12.4l-.8 12.2A2.5 2.5 0 0 1 14.9 21H9.1a2.5 2.5 0 0 1-2.5-2.3L5.8 6.5zM9.5 9v8.5h1.8V9zm4.7 0v8.5H16V9z" transform="scale(.94) translate(.7,.5)"/></svg></span>最初からやり直す</span><span>セーブを消去</span></button>
 </div>
-<div class="locknote">『デビュー前の彼らに出会う件』v30<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v31<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
 </div>
 </div>
 <div id="ovl"></div>
@@ -1356,7 +1368,7 @@ const $=s=>document.querySelector(s);
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
 const SKEY="lastart-wish-v1", EKEY="lastart-wish-ends";
 let S;
-function fresh(){return {scene:0,step:0,shown:0,g:{eval:52,crisis:20,bond:42},memos:[],nseen:0,ig:1,tt:0,photos:0,pfav:[],react:{},igl:[],igb:[],igc:{},igf:true,vlk:[],vfl:[],ttl:[],ttb:[],ttc:{},ttf:false,callDone:false,rosterRevealed:false,ended:false,endId:null,freeCount:0,sfx:true,sfxVol:0.8,vib:true,a11y:{fs:0,bold:false,rm:false}};}
+function fresh(){return {scene:0,step:0,shown:0,g:{eval:52,crisis:20,bond:42},memos:[],nseen:0,ig:1,tt:0,photos:0,pfav:[],react:{},igl:[],igb:[],igc:{},igf:true,vlk:[],vfl:[],ttl:[],ttb:[],ttc:{},ttf:false,callDone:false,rosterRevealed:false,ended:false,endId:null,freeCount:0,sfx:true,sfxVol:0.8,vib:true,homeOrd:null,a11y:{fs:0,bold:false,rm:false}};}
 function save(){if(!S)return;try{localStorage.setItem(SKEY,JSON.stringify(S));}catch(e){}}
 /* v15: save hardening — every field is type-checked, coerced and clamped on load, so a partial or type-broken save is repaired instead of crashing the engine. Whitelist rebuild keeps the on-disk format identical. */
 function _num(v,d,min,max){if(typeof v==="string"&&v.trim()!=="")v=+v;if(typeof v!=="number"||!isFinite(v))return d;return Math.max(min,Math.min(max,v));}
@@ -1391,6 +1403,8 @@ function sanSave(j){const f=fresh();if(!j||typeof j!=="object"||Array.isArray(j)
  const tj=(j.ttc&&typeof j.ttc==="object"&&!Array.isArray(j.ttc))?j.ttc:{};o.ttc={};
  for(const k of Object.keys(tj)){const pi=+k;if(!(Number.isInteger(pi)&&pi>=0&&pi<TT_POSTS.length)||!Array.isArray(tj[k]))continue;o.ttc[pi]=tj[k].filter(x=>typeof x==="string"&&x.length>0&&x.length<=200).slice(0,50);}
  o.ttf=j.ttf===true;
+ o.homeOrd=Array.isArray(j.homeOrd)?[...new Set(j.homeOrd.filter(x=>typeof x==="string"&&APPS.some(a=>a.id===x)))]:null;
+ if(o.homeOrd&&!o.homeOrd.length)o.homeOrd=null;
  return o;}
 function load(){try{S=sanSave(JSON.parse(localStorage.getItem(SKEY)));}catch(e){S=fresh();}}
 function endingsGot(){try{const j=JSON.parse(localStorage.getItem(EKEY));if(!j||typeof j!=="object"||Array.isArray(j))return{};const o={};for(const k of Object.keys(ENDINGS)){const r=j[k];if(r===true){o[k]=true;continue;}if(r&&typeof r==="object"&&!Array.isArray(r)){const e={};if(typeof r.d==="string")e.d=r.d;if(r.g&&typeof r.g==="object"&&!Array.isArray(r.g))e.g={eval:_int(r.g.eval,0,0,100),crisis:_int(r.g.crisis,0,0,100),bond:_int(r.g.bond,0,0,100)};o[k]=e;}}return o;}catch(e){return{};}}
@@ -1421,7 +1435,7 @@ function ringStart(){ringStop();if(sfxEnabled()){const ring=()=>{if(!acx())retur
 function ringStop(){if(ringInt){clearInterval(ringInt);ringInt=null;}if(ringVibInt){clearInterval(ringVibInt);ringVibInt=null;}if("vibrate" in navigator){try{navigator.vibrate(0);}catch(e){}}}
 const VIEWS=["title","lock","home","list","chat","roster","ig","tt","notes","cal","photos","music","call","ending","set"];
 let CUR="title";
-function show(v){const _pv=CUR;CUR=v;if(_pv==="call"&&v!=="call")endCallState();if(v!=="chat")cancelFreePending();if(v!=="tt")ttPauseAll();VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));{const sb=document.querySelector(".statusbar");if(sb){sb.classList.toggle("sb-w",["title","lock","home","tt","call","ending"].includes(v));sb.classList.toggle("sb-lock",v==="lock");}}if(v!=="call")setTimeout(bnrDrain,60);if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();if(v==="set")renderSet();window.scrollTo(0,0);}
+function show(v){const _pv=CUR;CUR=v;if(v!=="home")exitEdit();if(_pv==="call"&&v!=="call")endCallState();if(v!=="chat")cancelFreePending();if(v!=="tt")ttPauseAll();VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));{const sb=document.querySelector(".statusbar");if(sb){sb.classList.toggle("sb-w",["title","lock","home","tt","call","ending"].includes(v));sb.classList.toggle("sb-lock",v==="lock");}}if(v!=="call")setTimeout(bnrDrain,60);if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();if(v==="set")renderSet();window.scrollTo(0,0);}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-back]");if(b){show(b.dataset.back==="list"?"list":"home");if(b.dataset.back==="list")renderList(curApp);}});
 $("#v-lock").addEventListener("click",()=>show("home"));
 function renderLock(){const n1=$("#lock-n1-t");if(n1)n1.textContent=S.ended?"LASTART 練習生ルーム：あの夏は終わった。でも、連絡は続いている":S.scene>=8?"LASTART 練習生ルーム：今日、デビューメンバーが発表される":S.scene>=1?"LASTART 練習生ルーム：新しいトークが届いている":"LASTART 練習生ルーム：明日、最初のミッションが始まる";
@@ -1506,18 +1520,47 @@ const APPS=[
  {id:"set",n:"設定",cls:"",ic:SVG_SET}
 ];
 function storyToday(){if(S&&S.ended)return{w:"水",d:"21"};const sc=(typeof S!=="undefined"&&S)?SCENES[S.scene]:null;const m=sc?String(sc.date).match(/(\d+)月(\d+)日\((.)\)/):null;return m?{w:m[3],d:m[2]}:{w:"水",d:"26"};}
-function appHTML(a,badge){const st=a.cal?storyToday():null;return `<button class="app" data-app="${a.id}"><span class="ic ${a.cls}">${a.cal?`<span class="cwd">${st.w}</span><span class="cd2">${st.d}</span>`:a.note?`<span class="nb"></span><span class="nl"></span><span class="nl"></span>`:a.ic}</span>${a.n}${badge?`<span class="bdg">${badge}</span>`:""}</button>`;}
-function renderHome(){const sc=!S.ended?SCENES[S.scene]:null;
+function appHTML(a,badge){const st=a.cal?storyToday():null;return `<button class="app" data-app="${a.id}"><span class="ic ${a.cls}">${a.cal?`<span class="cwd">${st.w}</span><span class="cd2">${st.d}</span>`:a.note?`<span class="nb"></span><span class="nl"></span><span class="nl"></span>`:a.ic}</span><span class="minus">−</span>${a.n}${badge?`<span class="bdg">${badge}</span>`:""}</button>`;}
+function renderHome(){homeEdit=false;{const _hv=$("#v-home");if(_hv)_hv.classList.remove("editing");}const sc=!S.ended?SCENES[S.scene]:null;
  $("#gm-eval").style.width=S.g.eval+"%";$("#gm-crisis").style.width=S.g.crisis+"%";$("#gm-bond").style.width=S.g.bond+"%";
  if(sc){const dt=sc.date.replace(/\(.*\)/,"");$("#hw-ev").innerHTML=sc.title+"<br>"+dt;const dm=dt.match(/(\d+)月(\d+)日/);$("#hw-d").textContent=dm?dm[2]:"26";$("#hw-wd").textContent=sc.date;$("#hw-next").textContent="つぎのトーク：「"+sc.title+"」が届いているよ";}
  else{$("#hw-ev").innerHTML="物語は完結<br>フリーチャット解放中";$("#hw-d").textContent="21";$("#hw-wd").textContent="2月21日（水）";$("#hw-next").textContent="エンディング到達。大翔とのフリーチャットが解放されているよ";}
  $("#hw-photo-cap").textContent=S.ended?"NCT NEW TEAM ― Hands Up (2023)":"LASTART ― 最後のNCTをかけた夏 (2023)";
  const curAppName=sc?THREADS[sc.thread].app:null;
- $("#home-apps").innerHTML=APPS.map(a=>{let b="";if(sc&&((a.id==="kakao"&&curAppName==="kakao")||(a.id==="line"&&curAppName==="line")))b="1";if(a.id==="notes"){const _nb=S.memos.length-(S.nseen||0);if(_nb>0)b=_nb;}return appHTML(a,b);}).join("");
+ const _byId={};APPS.forEach(a=>_byId[a.id]=a);
+ $("#home-apps").innerHTML=appOrder().map(id=>{const a=_byId[id];let b="";if(sc&&((a.id==="kakao"&&curAppName==="kakao")||(a.id==="line"&&curAppName==="line")))b="1";if(a.id==="notes"){const _nb=S.memos.length-(S.nseen||0);if(_nb>0)b=_nb;}return appHTML(a,b);}).join("");
  $("#home-dock").innerHTML=[APPS[9],APPS[0],APPS[1],APPS[7]].map(a=>appHTML(a,"")).join("");
- document.querySelectorAll("[data-app]").forEach(b=>b.addEventListener("click",()=>openApp(b.dataset.app)));}
+ document.querySelectorAll("[data-app]").forEach(b=>b.addEventListener("click",()=>appTap(b.dataset.app)));}
 function openApp(id){if(id==="kakao"){curApp="kakao";renderList("kakao");show("list");}else if(id==="line"){curApp="line";renderList("line");show("list");}
  else if(id==="tel"){toast("電話は物語の中でかかってくるよ");}else{show(id);}}
+/* ===== v31: home edit mode (iOS 16 long-press jiggle + drag reorder, persisted as S.homeOrd) ===== */
+let homeEdit=false,_lpT=null,_lpX=0,_lpY=0,_drag=null;
+function appOrder(){const ids=APPS.map(a=>a.id);if(S&&Array.isArray(S.homeOrd)){const o=S.homeOrd.filter(id=>ids.indexOf(id)>=0);ids.forEach(id=>{if(o.indexOf(id)<0)o.push(id);});return o;}return ids;}
+function appTap(id){if(homeEdit)return;openApp(id);}
+function enterEdit(){if(homeEdit)return;homeEdit=true;const hv=$("#v-home");if(hv)hv.classList.add("editing");}
+function exitEdit(){if(!homeEdit)return;homeEdit=false;const hv=$("#v-home");if(hv)hv.classList.remove("editing");}
+function homePtrDown(e){const t=e.target;if(!t||!t.closest)return;
+ if(t.closest(".minus")){e.preventDefault();e.stopPropagation();toast("このアプリは物語に必要だから消せないよ");return;}
+ const btn=t.closest("#v-home .app");if(!btn)return;
+ if(homeEdit){if(btn.parentElement&&btn.parentElement.id==="home-apps")_drag={el:btn,sx:e.clientX,sy:e.clientY,ox:btn.offsetLeft,oy:btn.offsetTop,on:false};return;}
+ _lpX=e.clientX;_lpY=e.clientY;clearTimeout(_lpT);_lpT=setTimeout(enterEdit,500);}
+function homePtrMove(e){if(_lpT&&!homeEdit&&(Math.abs(e.clientX-_lpX)>12||Math.abs(e.clientY-_lpY)>12)){clearTimeout(_lpT);_lpT=null;}
+ if(!_drag)return;
+ let dx=e.clientX-_drag.sx,dy=e.clientY-_drag.sy;
+ if(!_drag.on){if(Math.abs(dx)<6&&Math.abs(dy)<6)return;_drag.on=true;_drag.el.classList.add("drag");}
+ if(e.cancelable)e.preventDefault();
+ const grid=$("#home-apps");if(!grid){_drag=null;return;}
+ const sibs=[...grid.children].filter(c=>c!==_drag.el);
+ const rowH=sibs.length?sibs[0].offsetHeight+14:100;
+ let cnt=0;for(const c of sibs){const r=c.getBoundingClientRect();const cx=r.left+r.width/2,cy=r.top+r.height/2;
+  if(cy<e.clientY-rowH*0.5||(Math.abs(cy-e.clientY)<=rowH*0.5&&cx<e.clientX))cnt++;}
+ const cur=[...grid.children].indexOf(_drag.el);
+ if(cnt!==cur){const ref=sibs[cnt];if(ref)grid.insertBefore(_drag.el,ref);else grid.appendChild(_drag.el);
+  _drag.sx+=_drag.el.offsetLeft-_drag.ox;_drag.sy+=_drag.el.offsetTop-_drag.oy;_drag.ox=_drag.el.offsetLeft;_drag.oy=_drag.el.offsetTop;
+  dx=e.clientX-_drag.sx;dy=e.clientY-_drag.sy;}
+ _drag.el.style.transform="translate("+dx+"px,"+dy+"px) scale(1.07)";}
+function homePtrUp(){if(_lpT){clearTimeout(_lpT);_lpT=null;}
+ if(_drag){if(_drag.on){_drag.el.classList.remove("drag");_drag.el.style.transform="";const grid=$("#home-apps");if(grid&&S){S.homeOrd=[...grid.children].map(c=>c.dataset.app);save();}}_drag=null;}}
 /* ===== TALK LIST ===== */
 let curApp="kakao";
 let listTabs={kakao:"chat",line:"talk"};
@@ -2155,7 +2198,8 @@ function renderTitle(){const hp=hasProgress();const c=$("#t-cont");c.disabled=!h
 $("#t-start").addEventListener("click",()=>{if(hasProgress()&&!confirm("今のセーブを消して、最初から始める？"))return;if(hasProgress()){localStorage.removeItem(SKEY);load();renderHome();}show("lock");});
 $("#t-cont").addEventListener("click",()=>{if(hasProgress())show("home");});
 $("#t-ends").addEventListener("click",()=>openEndCol());
-$("#homebar").addEventListener("click",()=>{if(CUR!=="title"&&CUR!=="lock"&&CUR!=="call")show("home");});
+$("#homebar").addEventListener("click",()=>{if(CUR==="home"&&homeEdit){exitEdit();return;}if(CUR!=="title"&&CUR!=="lock"&&CUR!=="call")show("home");});
+{const _hv2=$("#v-home");_hv2.addEventListener("pointerdown",homePtrDown);_hv2.addEventListener("contextmenu",e=>{if(e.target.closest&&e.target.closest(".app"))e.preventDefault();});$("#edit-done").addEventListener("click",()=>exitEdit());document.addEventListener("pointermove",homePtrMove,{passive:false});document.addEventListener("pointerup",homePtrUp);document.addEventListener("pointercancel",homePtrUp);}
 /* ===== INIT ===== */
 load();applyA11y();renderHome();renderTitle();fit();
 /* v15: when the tab is hidden or the page is left, flush the save and pause feed/reel videos, so returning or reloading always restores a clean state (the TT IntersectionObserver resumes the in-view video on return). */
