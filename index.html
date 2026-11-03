@@ -285,10 +285,10 @@ img{user-select:none;-webkit-user-drag:none}
 .set-row span{color:var(--sub);font-size:12.5px}
 .music-card{margin:16px;border-radius:18px;overflow:hidden;position:relative;color:#fff}
 .music-card img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}
-.music-card .mo{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.78));display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+.music-card .mo{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.78));display:flex;flex-direction:column;justify-content:flex-end;padding:14px;pointer-events:none}
 .music-card .mo b{font-size:17px}
 .music-card .mo span{font-size:12px;color:#ddd}
-.music-card .play{position:absolute;top:12px;right:12px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);color:#111;font-size:19px;display:flex;align-items:center;justify-content:center}
+.music-card .play{position:absolute;top:12px;right:12px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);color:#111;font-size:19px;display:flex;align-items:center;justify-content:center;z-index:2}
 audio{display:none}
 /* ===== v2: frame fit (visualViewport) ===== */
 :root{--app-h:100dvh}
@@ -413,7 +413,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 <div class="home-scroll">
 <div class="wid-row">
 <div class="wid-cal"><div class="wd" id="hw-wd">水曜日</div><div class="d" id="hw-d">26</div><div class="ev" id="hw-ev">LASTART 最初のミッションまで<br>あと1日</div></div>
-<div class="wid-photo"><img src="assets/group2023.jpg" alt=""><span>NCT NEW TEAM ― Hands Up (2023)</span></div>
+<div class="wid-photo"><img src="assets/group2023.jpg" alt=""><span id="hw-photo-cap">LASTART ― 最後のNCTをかけた夏 (2023)</span></div>
 </div>
 <div class="wid-wide"><b>🌱 LASTART 進行状況</b>
 <div style="margin-top:6px">評価（審査・実力）<div class="meterbar"><i id="gm-eval" style="background:#34c759;width:45%"></i></div>
@@ -438,7 +438,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 </div>
 <!-- ROSTER -->
 <div class="view" id="v-roster">
-<div class="ahead"><button class="back" data-back="home">‹</button><h2>練習生名簿 <span class="sub">LASTART 全14名</span></h2></div>
+<div class="ahead"><button class="back" data-back="home">‹</button><h2>練習生名簿 <span class="sub">LASTART 全15名</span></h2></div>
 <div class="abody" id="roster-body"></div>
 </div>
 <!-- IG -->
@@ -495,7 +495,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 <div class="abody">
 <button class="set-row" id="set-reset">最初からやり直す<span>セーブを消去</span></button>
 <button class="set-row" id="set-ends">エンディングコレクション<span id="set-ends-n"></span></button>
-<div class="locknote">『デビュー前の彼らに出会う件』v6<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v7<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
 </div>
 </div>
 <div class="homebar" id="homebar"></div>
@@ -514,6 +514,7 @@ const CAST={
  ryo:{n:"リョウ",av:"assets/av-ryo.jpg",c:"#e08a3c",ini:"リ"},
  jungmin:{n:"ジョンミン",av:"assets/av-jungmin.jpg",c:"#7b61c9",ini:"ジ"},
  anderson:{n:"アンダーソン",av:"assets/av-anderson.jpg",c:"#4a90a4",ini:"ア"},
+ ryu:{n:"リュウ",av:"assets/av-ryu.jpg",c:"#c97b2d",ini:"リ"},
  kassho:{n:"カッショー",av:"assets/av-kassho.jpg",c:"#a44a6e",ini:"カ"},
  haruta:{n:"ハルタ",av:"assets/av-haruta.jpg",c:"#6e8a4a",ini:"ハ"},
  minjae:{n:"ミンジェ",av:"assets/av-minjae.jpg",c:"#546e7a",ini:"ミ"},
@@ -532,6 +533,7 @@ const ROSTER=[
  {k:"ryo",role:"練習生",prof:"廣瀬遼。2007年8月4日生まれ（当時15歳）・日本出身。サクヤと同い年の、最年少ラインの1人。",res:1,resT:"最終5位 ― デビューメンバー（増員枠）"},
  {k:"jungmin",role:"練習生",prof:"2004年7月24日生まれ（当時19歳）・韓国出身。練習期間3年。ミッションでは1位を取るほどの実力者。",res:2,resT:"最終4位で選抜 → 体調上の理由で離脱（史実）"},
  {k:"anderson",role:"練習生",prof:"2005年8月17日生まれ（当時17歳）・カナダ（トロント）出身。練習期間は約半年の短期ながら、ミッションで強い印象を残す存在。",res:3,resT:"最終6位 ― 選出ならず"},
+ {k:"ryu",role:"練習生",prof:"2003年10月20日生まれ（当時19歳）・愛媛県松山市出身。父が日本人、母がフィリピン人。兄はGENERATIONS from EXILE TRIBEの白濱亜嵐、姉はモデルのラブリ。練習期間はわずか2週間という異色の経歴ながら、最終ミッションまで勝ち進んだ。",res:3,resT:"最終7位 ― 選出ならず"},
  {k:"minjae",role:"練習生",prof:"2002年6月15日生まれ（当時21歳）・韓国出身。練習期間2年。年上組で、周りからは「パパ」と呼ばれることも。",res:3,resT:"最終8位 ― 選出ならず"},
  {k:"haruta",role:"練習生",prof:"2006年3月5日生まれ（当時17歳）・日本出身。LINEオーディションを経て練習生になり、期間は約半年。",res:3,resT:"最終9位 ― 選出ならず"},
  {k:"kassho",role:"練習生",prof:"2006年1月20日生まれ（当時17歳）・日本出身（福岡）。練習期間は約半年。",res:3,resT:"最終10位 ― 選出ならず"},
@@ -757,8 +759,8 @@ const CAL=[
  {m:"8月",d:"17",w:"木",t:"デヨン途中合流（放送回）",p:"ボーカル強化のための追加練習生（史実）"},
  {m:"9月",d:"7",w:"木",t:"最終ミッション・デビューメンバー発表",p:"史実：リク1位、サクヤ2位、デヨン3位、ジョンミン4位、リョウ5位で選抜"},
  {m:"10月",d:"2",w:"月",t:"ジョンミン離脱の発表（史実）",p:"体調上の理由により、プレデビュー活動前に離脱"},
- {m:"10月",d:"8",w:"日",t:"プレデビューツアー開始（史実）",p:"NCT NEW TEAMとして日本のツアーへ"},
- {m:"10月",d:"19",w:"木",t:"プレデビューシングル『Hands Up』（史実）",p:"ミュージックアプリで公式プレビューが聞ける"},
+ {m:"10月",d:"8",w:"日",t:"プレデビューツアー開始（史実）",p:"同日、プレデビューシングル『Hands Up』も配信リリース"},
+ {m:"10月",d:"19",w:"木",t:"『Hands Up』MV公開（史実）",p:"デジタルシングルは10月8日に配信済み。ミュージックアプリで公式プレビューが聞ける"},
  {m:"1月",d:"18",w:"木",t:"グループ名『NCT WISH』正式発表（史実）",p:"デヨンの活動名が「ジェヒ」に変更"},
  {m:"2月",d:"21",w:"水",t:"東京ドームでデビュー（史実）",p:"SMTOWN LIVEのステージでデビューショーケース"}
 ];
@@ -809,6 +811,7 @@ function renderHome(){const sc=!S.ended?SCENES[S.scene]:null;
  $("#gm-eval").style.width=S.g.eval+"%";$("#gm-crisis").style.width=S.g.crisis+"%";$("#gm-bond").style.width=S.g.bond+"%";
  if(sc){const dt=sc.date.replace(/\(.*\)/,"");$("#hw-ev").innerHTML=sc.title+"<br>"+dt;const dm=dt.match(/(\d+)月(\d+)日/);$("#hw-d").textContent=dm?dm[2]:"26";$("#hw-wd").textContent=sc.date;$("#hw-next").textContent="つぎのトーク：「"+sc.title+"」が届いているよ";}
  else{$("#hw-ev").innerHTML="物語は完結<br>フリーチャット解放中";$("#hw-next").textContent="エンディング到達。大翔とのフリーチャットが解放されているよ";}
+ $("#hw-photo-cap").textContent=S.ended?"NCT NEW TEAM ― Hands Up (2023)":"LASTART ― 最後のNCTをかけた夏 (2023)";
  const curAppName=sc?THREADS[sc.thread].app:null;
  $("#home-apps").innerHTML=APPS.map(a=>{let b="";if(sc&&((a.id==="kakao"&&curAppName==="kakao")||(a.id==="line"&&curAppName==="line")))b="1";if(a.id==="notes"&&S.memos.length)b=S.memos.length;return appHTML(a,b);}).join("");
  $("#home-dock").innerHTML=[APPS[9],APPS[0],APPS[1],APPS[7]].map(a=>appHTML(a,"")).join("");
@@ -946,8 +949,15 @@ const PHOTOS=[{src:"assets/lastart1.jpg",n:1,cap:"LASTART ― シオン（固定
 function renderPhotos(){const got=PHOTOS.filter(p=>S.photos>=p.n);$("#photos-sub").textContent=got.length+" / "+PHOTOS.length+" 枚";
  $("#photos-grid").innerHTML=got.map(p=>`<button><img src="${p.src}"></button>`).join("");
  $("#photos-note").innerHTML=got.length?got.map(p=>p.cap).join(" ／ "):"🔒 物語を進めると写真が解放されるよ";}
-function renderMusic(){const au=$("#au-handsup");$("#music-body").innerHTML=`<div class="music-card"><img src="assets/group2023.jpg"><button class="play" id="mu-play">${au.paused?"▶":"⏸"}</button><div class="mo"><b>Hands Up</b><span>NCT NEW TEAM ― プレデビューシングル（2023年10月19日）／ Apple Music公式プレビュー（30秒）</span></div></div>
- <div class="locknote">プレデビュー曲『Hands Up』の公式プレビュー音源を収録。<br>プレデビューツアーで披露された、デビュー前の彼らの始まりの曲。</div>`;
+function handsUpOpen(){return !!S.ended;}
+function renderMusic(){const au=$("#au-handsup");const open=handsUpOpen();
+ if(!open){if(!au.paused)au.pause();
+  $("#music-body").innerHTML=`<div class="music-card"><img src="assets/group2023.jpg"><button class="play" id="mu-play" style="background:rgba(20,20,20,.55);color:#fff;font-size:17px">🔒</button><div class="mo"><b>Hands Up</b><span>NCT NEW TEAM ― プレデビューシングル（2023年10月8日配信／MVは10月19日公開）</span></div></div>
+  <div class="locknote">🔒 この曲はプレデビュー曲です（2023年10月公開）。<br>2023年9月9日・10日の『NCT NATION : To The World』（大阪）で初披露され、10月8日に配信リリース、プレデビューツアーでも披露されました。<br>作中の時期がプレデビュー期（最終発表のあと）に到達すると、ここで聴けるようになります。</div>`;
+  $("#mu-play").addEventListener("click",()=>toast("プレデビュー曲はまだ公開前だよ（2023年10月公開）"));
+  return;}
+ $("#music-body").innerHTML=`<div class="music-card"><img src="assets/group2023.jpg"><button class="play" id="mu-play">${au.paused?"▶":"⏸"}</button><div class="mo"><b>Hands Up</b><span>NCT NEW TEAM ― プレデビューシングル（2023年10月8日配信）／ Apple Music公式プレビュー（30秒）</span></div></div>
+ <div class="locknote">プレデビュー曲『Hands Up』の公式プレビュー音源を収録。<br>2023年9月のNCT NATIONで初披露され、プレデビューツアーでも歌われた、デビュー前の彼らの始まりの曲。</div>`;
  $("#mu-play").addEventListener("click",()=>{if(au.paused)au.play();else au.pause();setTimeout(renderMusic,60);});}
 /* ===== FREE CHAT ===== */
 function openFree(){freeMode=true;cur=null;$("#v-chat").className="view on line";$("#chat-title").textContent="井汲大翔（フリーチャット）";VIEWS.forEach(x=>{if(x!=="chat")$("#v-"+x).classList.remove("on");});
