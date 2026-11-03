@@ -495,7 +495,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 <div class="abody">
 <button class="set-row" id="set-reset">最初からやり直す<span>セーブを消去</span></button>
 <button class="set-row" id="set-ends">エンディングコレクション<span id="set-ends-n"></span></button>
-<div class="locknote">『デビュー前の彼らに出会う件』v3<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v4<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
 </div>
 </div>
 <div class="homebar" id="homebar"></div>
@@ -526,8 +526,8 @@ const CAST={
 const ROSTER=[
  {k:"sion",fix:1,role:"SMROOKIES／固定メンバー",prof:"2002年5月11日生まれ（当時21歳）・韓国出身。練習期間は約4年。最初からデビューが決まっている2人のうちの1人で、後のリーダー。考えすぎるほど真面目で、周りをよく見ている。",res:1,resT:"デビュー確定（固定メンバー）"},
  {k:"yushi",fix:1,role:"SMROOKIES／固定メンバー",prof:"2004年4月5日生まれ（当時19歳）・日本出身。SMROOKIESとしてシオンと共に先行公開された固定メンバー。口数は少ないが、言うべき時ははっきり言う。",res:1,resT:"デビュー確定（固定メンバー）"},
- {k:"riku",role:"練習生",prof:"前田陸。2003年6月28日生まれ（当時20歳）・日本出身。安定した実力で、ミッションを通して上位を守り続ける存在。",res:1,resT:"最終1位 ― デビューメンバー"},
- {k:"sakuya",role:"練習生",prof:"藤永咲哉。2007年11月18日生まれ（当時15歳）・日本出身。参加者最年少。言葉選びが丁寧で、不思議な感性を持っている。ナオの「推し」だが、本人には絶対に言えない。",res:1,resT:"最終2位 ― デビューメンバー"},
+ {k:"riku",role:"練習生",prof:"前田陸。2003年6月28日生まれ（当時20歳）・日本出身。従姉はモーニング娘。OGの高橋愛で、放送前から話題になっていた。安定した実力で、ミッションを通して上位を守り続ける存在。",res:1,resT:"最終1位 ― デビューメンバー"},
+ {k:"sakuya",role:"練習生",prof:"藤永咲哉。2007年11月18日生まれ（当時15歳）・日本出身。参加者最年少。言葉選びが丁寧で、不思議な感性を持っている。パンが大好き。ナオの「推し」だが、本人には絶対に言えない。",res:1,resT:"最終2位 ― デビューメンバー"},
  {k:"daeyoung",role:"練習生（第4話から合流）",prof:"2005年6月21日生まれ（当時18歳）・韓国出身。ボーカル強化のために途中合流した唯一の追加練習生。練習生期間は約3か月。",res:1,resT:"最終3位 ― デビューメンバー（後のジェヒ）"},
  {k:"ryo",role:"練習生",prof:"廣瀬遼。2007年8月4日生まれ（当時15歳）・日本出身。サクヤと同い年の、最年少ラインの1人。",res:1,resT:"最終5位 ― デビューメンバー（増員枠）"},
  {k:"jungmin",role:"練習生",prof:"2004年7月24日生まれ（当時19歳）・韓国出身。練習期間3年、歌う動画がきっかけでスカウトされた。ミッションでは1位を取るほどの実力者。",res:2,resT:"最終4位で選抜 → 体調上の理由で離脱（史実）"},
@@ -742,13 +742,13 @@ const FREE=[
 ];
 const FREE_DEFAULT=["そっか。……うん、聞いてる","お前と話してると、時間経つの早いな","……悪くない話だと思う。それで？","うん。……続き、聞かせて"];
 const IG_POSTS=[
- {id:1,img:"assets/lastart1.jpg",user:"nct_universe_lastart",who:"sion",loc:"Seoul, South Korea",likes:"38万",cap:"『NCT Universe : LASTART』まもなく始動。最後のNCTを手にするのは誰だ。",cm:[["wish_stan","シオンのビジュアル強すぎる"],["lastart_jp","放送が楽しみすぎる"]],time:"2023年7月"},
- {id:2,img:"assets/group2023.jpg",user:"nct_newteam",who:"sion",loc:"Seoul, South Korea",likes:"92万",cap:"NCT NEW TEAM プレデビューシングル『Hands Up』🙌 応援してくれる皆さまへ、最初のあいさつです。",cm:[["newteam_fan","Hands Upの中毒性すごい"],["sakuya_pen","最年少コンビかわいい"]],time:"2023年10月"},
- {id:3,img:"assets/stage.jpg",user:"nctwish_official",who:"sion",loc:"Tokyo Dome, Tokyo",likes:"156万",cap:"2024.02.21 東京ドームでデビューしました。NCT WISH、ここから始まります💫",cm:[["wish_jp","デビューおめでとう😭"],["ctzennie","東京ドームから始まる物語、最高"]],time:"2024年2月"}
+ {id:1,img:"assets/lastart1.jpg",user:"sm_nctuniverse",who:"sion",loc:"Seoul, South Korea",likes:"38万",cap:"『NCT Universe : LASTART』まもなく始動。最後のNCTを手にするのは誰だ。",cm:[["wish_stan","シオンのビジュアル強すぎる"],["lastart_jp","放送が楽しみすぎる"],["nctzen_kr","最年少15歳ってほんと？ サクヤ気になる"],["teaser_loop","リクとリョウの個人ティザー無限ループしてる"]],time:"2023年7月"},
+ {id:2,img:"assets/group2023.jpg",user:"nct_newteam",who:"sion",loc:"Seoul, South Korea",likes:"92万",cap:"NCT NEW TEAM プレデビューシングル『Hands Up』🙌 応援してくれる皆さまへ、最初のあいさつです。",cm:[["newteam_fan","Hands Upの中毒性すごい"],["tour_ikita","プレデビューツアーで生で見たけど全員仕上がってた"],["jungmin_voice","ジョンミンの声がもう聞けないの、まだ信じられない"]],time:"2023年10月"},
+ {id:3,img:"assets/stage.jpg",user:"nctwish_official",who:"sion",loc:"Tokyo Dome, Tokyo",likes:"156万",cap:"2024.02.21 東京ドームでデビューしました。NCT WISH、ここから始まります💫",cm:[["wish_jp","デビューおめでとう😭"],["ctzennie","東京ドームから始まる物語、最高"],["maknae_z","最年少コンビがここまで来たの感慨深い"]],time:"2024年2月"}
 ];
 const TT_POSTS=[
- {img:"assets/group2023.jpg",user:"@nctwish_official",who:"sion",cap:"『Hands Up』🙌 プレデビューツアーで会いましょう！ #NCTNEWTEAM #HandsUp",song:"♪ Hands Up ― NCT NEW TEAM",likes:1204832,cm:[["fan_a","振り付け覚えた！"],["fan_b","全員ビジュアルが強い"]]},
- {img:"assets/lastart1.jpg",user:"@nct_universe",who:"sion",cap:"LASTART、舞台裏の素顔。固定メンバー・シオンの真剣な横顔 #LASTART #SION",song:"♪ オリジナル音源",likes:438291,cm:[["fan_c","この横顔は反則"],["fan_d","デビュー確定組の風格"]]},
+ {img:"assets/group2023.jpg",user:"@nctwish_official",who:"sion",cap:"『Hands Up』🙌 プレデビューツアーで会いましょう！ #NCTNEWTEAM #HandsUp",song:"♪ Hands Up ― NCT NEW TEAM",likes:1204832,cm:[["fan_a","振り付け覚えた！"],["fan_b","全員ビジュアルが強い"],["handsup_loop","サビの手の振り、永遠に見れる"]]},
+ {img:"assets/lastart1.jpg",user:"@sm_nctuniverse",who:"sion",cap:"LASTART、舞台裏の素顔。固定メンバー・シオンの真剣な横顔 #LASTART #SION",song:"♪ オリジナル音源",likes:438291,cm:[["fan_c","この横顔は反則"],["fan_d","デビュー確定組の風格"],["u_team_wait","次のミッションのUチームも楽しみすぎる"]]},
  {img:"assets/stage.jpg",user:"@nctwish_official",who:"sion",cap:"東京ドーム、デビューステージの景色。この景色を一生忘れない #NCTWISH #東京ドーム",song:"♪ WISH ― NCT WISH",likes:2041883,cm:[["fan_e","デビューおめでとう！"],["fan_f","ここから伝説が始まる"]]}
 ];
 const CAL=[
