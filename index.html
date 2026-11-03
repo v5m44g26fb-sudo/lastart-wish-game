@@ -495,7 +495,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 <div class="abody">
 <button class="set-row" id="set-reset">最初からやり直す<span>セーブを消去</span></button>
 <button class="set-row" id="set-ends">エンディングコレクション<span id="set-ends-n"></span></button>
-<div class="locknote">『デビュー前の彼らに出会う件』v5<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v6<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
 </div>
 </div>
 <div class="homebar" id="homebar"></div>
@@ -512,12 +512,12 @@ const CAST={
  sakuya:{n:"サクヤ",av:"assets/av-sakuya.jpg",c:"#c94f7c",ini:"サ"},
  daeyoung:{n:"デヨン",av:"assets/av-daeyoung.jpg",c:"#3aa655",ini:"デ"},
  ryo:{n:"リョウ",av:"assets/av-ryo.jpg",c:"#e08a3c",ini:"リ"},
- jungmin:{n:"ジョンミン",c:"#7b61c9",ini:"ジ"},
- anderson:{n:"アンダーソン",c:"#4a90a4",ini:"ア"},
- kassho:{n:"カッショー",c:"#a44a6e",ini:"カ"},
- haruta:{n:"ハルタ",c:"#6e8a4a",ini:"ハ"},
- minjae:{n:"ミンジェ",c:"#546e7a",ini:"ミ"},
- heitetsu:{n:"ヘイテツ",c:"#795548",ini:"ヘ"},
+ jungmin:{n:"ジョンミン",av:"assets/av-jungmin.jpg",c:"#7b61c9",ini:"ジ"},
+ anderson:{n:"アンダーソン",av:"assets/av-anderson.jpg",c:"#4a90a4",ini:"ア"},
+ kassho:{n:"カッショー",av:"assets/av-kassho.jpg",c:"#a44a6e",ini:"カ"},
+ haruta:{n:"ハルタ",av:"assets/av-haruta.jpg",c:"#6e8a4a",ini:"ハ"},
+ minjae:{n:"ミンジェ",av:"assets/av-minjae.jpg",c:"#546e7a",ini:"ミ"},
+ heitetsu:{n:"ヘイテツ",av:"assets/av-heitetsu.jpg",c:"#795548",ini:"ヘ"},
  hiroto:{n:"大翔",av:"assets/av-hiroto.jpg",c:"#274b8f",ini:"大"},
  nao:{n:"ナオ",av:"assets/av-nao.jpg",c:"#8e8e93",ini:"ナ"},
  mom:{n:"母",c:"#b06a8a",ini:"母"}
@@ -530,12 +530,12 @@ const ROSTER=[
  {k:"sakuya",role:"練習生",prof:"藤永咲哉。2007年11月18日生まれ（当時15歳）・日本出身。参加者最年少。言葉選びが丁寧で、不思議な感性を持っている。パンが大好き。ナオの「推し」だが、本人には絶対に言えない。",res:1,resT:"最終2位 ― デビューメンバー"},
  {k:"daeyoung",role:"練習生（第4話から合流）",prof:"2005年6月21日生まれ（当時18歳）・韓国出身。ボーカル強化のために途中合流した唯一の追加練習生。練習生期間は約3か月。",res:1,resT:"最終3位 ― デビューメンバー（後のジェヒ）"},
  {k:"ryo",role:"練習生",prof:"廣瀬遼。2007年8月4日生まれ（当時15歳）・日本出身。サクヤと同い年の、最年少ラインの1人。",res:1,resT:"最終5位 ― デビューメンバー（増員枠）"},
- {k:"jungmin",role:"練習生",prof:"2004年7月24日生まれ（当時19歳）・韓国出身。練習期間3年、歌う動画がきっかけでスカウトされた。ミッションでは1位を取るほどの実力者。",res:2,resT:"最終4位で選抜 → 体調上の理由で離脱（史実）"},
+ {k:"jungmin",role:"練習生",prof:"2004年7月24日生まれ（当時19歳）・韓国出身。練習期間3年。ミッションでは1位を取るほどの実力者。",res:2,resT:"最終4位で選抜 → 体調上の理由で離脱（史実）"},
  {k:"anderson",role:"練習生",prof:"2005年8月17日生まれ（当時17歳）・カナダ（トロント）出身。練習期間は約半年の短期ながら、ミッションで強い印象を残す存在。",res:3,resT:"最終6位 ― 選出ならず"},
  {k:"minjae",role:"練習生",prof:"2002年6月15日生まれ（当時21歳）・韓国出身。練習期間2年。年上組で、周りからは「パパ」と呼ばれることも。",res:3,resT:"最終8位 ― 選出ならず"},
- {k:"haruta",role:"練習生",prof:"2006年3月5日生まれ（当時17歳）・日本出身。",res:3,resT:"最終9位 ― 選出ならず"},
+ {k:"haruta",role:"練習生",prof:"2006年3月5日生まれ（当時17歳）・日本出身。LINEオーディションを経て練習生になり、期間は約半年。",res:3,resT:"最終9位 ― 選出ならず"},
  {k:"kassho",role:"練習生",prof:"2006年1月20日生まれ（当時17歳）・日本出身（福岡）。練習期間は約半年。",res:3,resT:"最終10位 ― 選出ならず"},
- {k:"heitetsu",role:"練習生",prof:"2002年5月7日生まれ（当時21歳）・日本出身（仙台）。参加者最年長。LINEオーディション合格から練習生になり、期間は約10か月。",res:3,resT:"最終11位 ― 選出ならず"},
+ {k:"heitetsu",role:"練習生",prof:"2002年5月7日生まれ（当時21歳）・日本出身（仙台）。参加者最年長。練習生期間は約10か月。",res:3,resT:"最終11位 ― 選出ならず"},
  {k:"nao",if:1,role:"練習生（作中の人物）",prof:"本作の主人公。女であることを隠して男子練習生として参加している。ビジュアルと実力で初回から注目を集めた。秘密を知る者は、開始時点では誰もいない。サクヤペンであることも秘密。",res:0,resT:"結果はまだ分からない（IF）"},
  {k:"hiroto",if:1,role:"練習生（作中の人物）",prof:"井汲大翔。2002年8月23日生まれ。日プSeason1や海外のサバイバルを経てSM練習生になった苦労人。LASTARTは事実上ラストチャンス。ナオとは番組共演程度の面識から始まる。",res:0,resT:"結果はまだ分からない（IF）"}
 ];
