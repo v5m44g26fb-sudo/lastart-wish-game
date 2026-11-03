@@ -684,6 +684,101 @@ svg{display:block}
 .sys-star svg{width:12px;height:12px}
 .tt-music .tn-ic{display:inline-flex;flex:none}
 .tt-music .tn-ic svg{width:12px;height:12px}
+/* ===== v11: openchat / more / news / voom / reels / feel ===== */
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#ovl{transition:opacity .18s ease}
+#ovl.out{opacity:0;pointer-events:none}
+#ovl.out .sheet{transform:translateY(52px)}
+#ovl .sheet{transition:transform .18s ease}
+#v-chat.on{animation:vSlide .24s cubic-bezier(.25,.9,.3,1)}
+@keyframes vSlide{from{opacity:.35;transform:translateX(28px)}to{opacity:1;transform:none}}
+.swap{animation:vIn .18s ease}
+.thread:active,.svc-grid button:active{background:#f0f0f3}
+.tabbar button:active,.ig-nav button:active{opacity:.4}
+.ig-grid button:active img{opacity:.72}
+@keyframes flashB{0%,55%{background:#ffe98a}100%{background:transparent}}
+.msg.flash{animation:flashB 1.7s ease;border-radius:14px}
+/* kakao open chat */
+.oc-cats{display:flex;gap:7px;padding:10px 14px 2px;overflow-x:auto;scrollbar-width:none;background:#fff}
+.oc-cats::-webkit-scrollbar{display:none}
+.oc-cats span{flex:none;font-size:12.5px;padding:6px 12px;border-radius:16px;background:#f2f2f4;color:#555}
+.oc-cats span.on{background:#fee500;color:#3b1e1e;font-weight:700}
+.oc-room{display:flex;gap:11px;width:100%;text-align:left;padding:11px 14px;background:#fff;align-items:center;border-bottom:1px solid #f6f6f8}
+.oc-room img{width:52px;height:52px;border-radius:15px;object-fit:cover;flex:none}
+.oc-room .tt{flex:1;min-width:0}
+.oc-room .tn{font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oc-room .tp{font-size:12px;color:#8e8e93;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.oc-cnt{font-size:11.5px;color:#c29100;flex:none;text-align:right;line-height:1.35}
+.oc-live{display:inline-block;width:6px;height:6px;border-radius:50%;background:#ff5a5a;margin-right:4px;vertical-align:1px}
+.oc-msg{display:flex;gap:8px;padding:7px 14px;align-items:flex-start}
+.oc-msg .col{display:flex;flex-direction:column;gap:3px;min-width:0}
+.oc-msg .who{font-size:11.5px;color:#666}
+.oc-msg .bub{background:#fff;border-radius:13px;border-top-left-radius:3px;padding:8px 11px;font-size:13.5px;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.oc-msg .tm{font-size:10.5px;color:#7d8fa3;align-self:flex-end;flex:none}
+.oc-msg .cav{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px}
+.thread .cav{width:50px;height:50px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:17px}
+/* kakao more */
+.more-pay{margin:12px 14px 2px;background:#fee500;border-radius:14px;padding:14px 16px 12px;color:#3b1e1e}
+.more-pay .mp-t{font-size:12px;font-weight:700;letter-spacing:.02em}
+.more-pay .mp-b{font-size:21px;font-weight:800;margin:3px 0 10px}
+.more-pay .mp-btns{display:flex;gap:8px}
+.more-pay .mp-btns button{flex:1;background:rgba(255,255,255,.75);border-radius:9px;padding:8px 0;font-size:13px;font-weight:700;color:#3b1e1e}
+.more-row{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:14px 16px;background:#fff;font-size:14.5px;border-bottom:1px solid #f6f6f8}
+.more-row span:last-child{color:#b3b3ba;font-size:13px}
+/* list search */
+.srch-in{display:flex;align-items:center;gap:8px;margin:10px 14px 4px;background:#f2f2f4;border-radius:10px;padding:9px 12px}
+.srch-in svg{width:16px;height:16px;flex:none;color:#8e8e93}
+.srch-in input{flex:1;border:none;background:none;font-size:15px;font-family:inherit;outline:none;color:#111}
+.srch-hit{display:block;width:100%;text-align:left;padding:11px 16px;font-size:13.5px;border-bottom:1px solid #f6f6f8;line-height:1.5}
+.srch-hit b{display:block;font-size:14px}
+.srch-hit span{color:#8e8e93;font-size:12px}
+/* LINE news */
+.nw-chips{display:flex;gap:7px;padding:10px 14px 8px;overflow-x:auto;scrollbar-width:none}
+.nw-chips::-webkit-scrollbar{display:none}
+.nw-chips span{flex:none;font-size:12.5px;padding:6px 12px;border-radius:16px;background:#fff;color:#555;border:1px solid #e8e8ec}
+.nw-chips span.on{background:#06c755;color:#fff;border-color:#06c755;font-weight:700}
+.nw-top{display:block;width:100%;text-align:left;background:#fff;margin:0 0 8px;padding:0}
+.nw-top img{width:100%;height:190px;object-fit:cover;display:block}
+.nw-top .nw-tt{padding:11px 14px 13px;font-size:16px;font-weight:700;line-height:1.5}
+.nw-row{display:flex;gap:11px;width:100%;text-align:left;background:#fff;padding:11px 14px;border-bottom:1px solid #f0f0f3;align-items:center}
+.nw-row .tt{flex:1;min-width:0;font-size:14px;line-height:1.5;font-weight:600}
+.nw-row .tm2{font-size:11.5px;color:#9a9aa0;margin-top:4px;font-weight:400}
+.nw-row img{width:76px;height:58px;border-radius:8px;object-fit:cover;flex:none}
+.nw-body{padding:14px 18px;font-size:14.5px;line-height:1.85;color:#222}
+.nw-meta{padding:10px 18px 0;font-size:12px;color:#9a9aa0}
+/* LINE voom */
+.vm-card{background:#fff;margin:0 0 9px;padding:12px 0 8px}
+.vm-hd{display:flex;align-items:center;gap:9px;padding:0 14px 10px}
+.vm-hd img{width:38px;height:38px;border-radius:50%;object-fit:cover}
+.vm-hd .tt{flex:1;min-width:0}
+.vm-hd .tn{font-size:13.5px;font-weight:700}
+.vm-hd .tp{font-size:11.5px;color:#9a9aa0}
+.vm-fol{flex:none;font-size:12px;font-weight:700;color:#06c755;border:1px solid #06c755;border-radius:6px;padding:5px 11px}
+.vm-fol.on{color:#9a9aa0;border-color:#ddd}
+.vm-img{width:100%;max-height:300px;object-fit:cover;display:block}
+.vm-cap{padding:9px 14px 2px;font-size:13.5px;line-height:1.55}
+.vm-acts{display:flex;gap:20px;padding:7px 14px 3px;font-size:12px;color:#777;align-items:center}
+.vm-acts button{display:flex;gap:5px;align-items:center;color:#777;font-size:12px}
+.vm-acts button svg{width:19px;height:19px}
+.vm-acts button.liked{color:#ff3040}
+/* IG dm notes + reel viewer */
+.dm-notes{display:flex;gap:15px;padding:12px 14px 0;overflow-x:auto;scrollbar-width:none}
+.dm-notes::-webkit-scrollbar{display:none}
+.dm-note{display:flex;flex-direction:column;align-items:center;gap:3px;flex:none;width:64px;font-size:11px;color:#555}
+.dm-note .nb2{background:#f0f0f3;border-radius:13px;padding:5px 7px;font-size:10px;color:#333;text-align:center;line-height:1.35;min-height:16px}
+.dm-note img,.dm-note .cav{width:46px;height:46px;border-radius:50%;object-fit:cover}
+.dm-note .cav{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px}
+.ig-grid .rl-vw{position:absolute;left:5px;bottom:4px;color:#fff;font-size:11px;font-weight:700;display:flex;gap:3px;align-items:center;text-shadow:0 1px 3px rgba(0,0,0,.65)}
+.ig-grid .rl-vw svg{width:13px;height:13px}
+.reel-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.reel-ui{position:absolute;left:0;right:0;bottom:0;padding:14px 66px calc(16px + env(safe-area-inset-bottom)) 14px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+.reel-ui .ru{font-weight:700;font-size:14px;margin-bottom:5px}
+.reel-ui .rc{font-size:13px;line-height:1.5}
+.reel-rail{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:17px;align-items:center;color:#fff;z-index:3}
+.reel-rail button{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:#fff}
+.reel-rail svg{width:27px;height:27px}
+.reel-vol{position:absolute;top:calc(52px + env(safe-area-inset-top));right:56px;z-index:3;color:#fff;width:34px;height:34px;display:flex;align-items:center;justify-content:center}
+.reel-vol svg{width:22px;height:22px}
 </style>
 </head>
 <body>
@@ -712,7 +807,7 @@ svg{display:block}
 <button class="t-btn main" id="t-start">はじめから</button>
 <button class="t-btn sub" id="t-cont">つづきから</button>
 <div class="t-note">実在の人物・番組を題材にした創作フィクション（ファンメイド作品）です。会話やナオ・大翔の結果は創作であり、史実の選抜結果とは異なる分岐を含みます。</div>
-<div class="t-ver">LASTART編 v10</div>
+<div class="t-ver">LASTART編 v11</div>
 </div>
 </div>
 <!-- LOCK -->
@@ -751,7 +846,7 @@ svg{display:block}
 </div>
 <!-- CHAT -->
 <div class="view" id="v-chat">
-<div class="chead"><button class="back" data-back="list">‹</button><h2 id="chat-title"></h2><button class="hbtn" data-deco><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg></button><button class="hbtn" data-deco style="padding-right:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+<div class="chead"><button class="back" data-back="list">‹</button><h2 id="chat-title"></h2><button class="hbtn" id="chat-srch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg></button><button class="hbtn" data-deco style="padding-right:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
 <div id="chat-body"></div>
 <div id="chat-panel"></div>
 <div class="attach-panel" id="attach-panel" style="display:none"></div>
@@ -826,14 +921,14 @@ svg{display:block}
 <button class="set-prof" data-deco><img src="assets/av-nao.jpg" alt=""><span><span class="sn">ナオ</span><div class="ss">練習生としてLASTARTに参加中</div></span></button>
 <div class="set-grp">
 <button class="set-row" id="set-ends"><span class="lft"><span class="set-ic" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M18.5 3h-3V2.5A1.5 1.5 0 0 0 14 1H10a1.5 1.5 0 0 0-1.5 1.5V3H5.5A1.5 1.5 0 0 0 4 4.5c0 3 1.9 5.4 4.6 6.3A6 6 0 0 0 11 14.9v1.6H7.5a1.5 1.5 0 0 0-1.5 1.5v2h12v-2a1.5 1.5 0 0 0-1.5-1.5H13v-1.6a6 6 0 0 0 2.4-4.6C18.1 9.9 20 7.5 20 4.5A1.5 1.5 0 0 0 18.5 3zM6.2 7.2A4.4 4.4 0 0 1 6 5h1v3.4c-.3-.4-.6-.8-.8-1.2zM18 5h1a4.4 4.4 0 0 1-.2 2.2c-.2.4-.5.8-.8 1.2z" transform="scale(.92) translate(1,1)"/></svg></span>エンディングコレクション</span><span><span id="set-ends-n"></span><span class="chev">›</span></span></button>
-<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v10</span></button>
+<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v11</span></button>
 <button class="set-row" data-deco><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"><path d="M6.2 10.2a5.8 5.8 0 0 1 11.6 0c0 3.9 1.4 5.3 1.4 5.3H4.8s1.4-1.4 1.4-5.3z"/><path d="M10.1 19a2 2 0 0 0 3.8 0" stroke-linecap="round"/></svg></span>通知</span><span>オン<span class="chev">›</span></span></button>
 <button class="set-row" data-deco><span class="lft"><span class="set-ic" style="background:#34c759"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 9.5v5A1.5 1.5 0 0 0 5.5 16H9l5.2 4.4c.7.6 1.8.1 1.8-.8V4.4c0-.9-1.1-1.4-1.8-.8L9 8H5.5A1.5 1.5 0 0 0 4 9.5zm14.9-3.2-.9 1.2a5.6 5.6 0 0 1 0 9l.9 1.2a7.6 7.6 0 0 0 0-11.4z"/></svg></span>サウンドと触覚</span><span><span class="chev">›</span></span></button>
 </div>
 <div class="set-grp">
 <button class="set-row danger" id="set-reset"><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24"><path d="M9 3.5A1.5 1.5 0 0 1 10.5 2h3A1.5 1.5 0 0 1 15 3.5V4h4.5v2H4.5V4H9zm-3.2 3h12.4l-.8 12.2A2.5 2.5 0 0 1 14.9 21H9.1a2.5 2.5 0 0 1-2.5-2.3L5.8 6.5zM9.5 9v8.5h1.8V9zm4.7 0v8.5H16V9z" transform="scale(.94) translate(.7,.5)"/></svg></span>最初からやり直す</span><span>セーブを消去</span></button>
 </div>
-<div class="locknote">『デビュー前の彼らに出会う件』v10<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v11<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
 </div>
 </div>
 <div id="ovl"></div>
@@ -878,7 +973,7 @@ const KSTAT={
  haruta:{st:"がんばります！"},
  kassho:{st:"福岡から、世界へ"},
  heitetsu:{st:"最後まで、諦めない"},
- hiroto:{st:"ラストチャンスは、絶対に掴む",mus:"♪ 7th Sense ― NCT U"}
+ hiroto:{st:"ラストチャンスは、絶対に掴む",mus:"♪ The 7th Sense ― NCT U"}
 };
 /* roster: res: 0=未発表 1=デビュー確定(史実) 2=選抜後離脱(史実) 3=最終選出ならず(史実) - nao/hirotoはIFで動的 */
 const ROSTER=[
@@ -1213,8 +1308,9 @@ const A_GIFT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 const A_PIN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21.5S5 15.6 5 9.8A7 7 0 0 1 19 9.8c0 5.8-7 11.7-7 11.7z"/><circle cx="12" cy="9.8" r="2.6"/></svg>';
 const A_FILE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3.5h8L19 8.5v12H6z"/><path d="M13.5 3.5v5.5H19"/></svg>';
 function fmtN(n){n=+n||0;if(n>=10000){const v=n/10000;return (v>=100?Math.round(v):Math.round(v*10)/10)+"万";}return n.toLocaleString();}
-function ovl(html){const o=$("#ovl");o.innerHTML=html;o.classList.add("on");o.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",closeOvl));}
-function closeOvl(){const o=$("#ovl");o.classList.remove("on");o.innerHTML="";}
+let ovlT=null;
+function ovl(html){clearTimeout(ovlT);const o=$("#ovl");o.classList.remove("out");o.innerHTML=html;o.classList.add("on");o.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",closeOvl));}
+function closeOvl(){const o=$("#ovl");if(!o.classList.contains("on")||o.classList.contains("out"))return;o.classList.add("out");clearTimeout(ovlT);ovlT=setTimeout(()=>{o.classList.remove("on","out");o.innerHTML="";},180);}
 const APPS=[
  {id:"kakao",n:"カカオトーク",cls:"ic-kakao",ic:SVG_KAKAO},
  {id:"line",n:"LINE",cls:"ic-line",ic:"LINE"},
@@ -1248,6 +1344,67 @@ function fmtKDate(dstr){const m=String(dstr).match(/(\d+)月(\d+)日/);return m?
 function roleOf(k){const r=ROSTER.find(x=>x.k===k);return r?r.role:"練習生";}
 const TABS_KAKAO=[["friends","친구",IC_PERSON],["chat","채팅",IC_BUB],["open","오픈채팅",IC_OPEN],["shop","쇼핑",IC_BAG],["more","더보기",IC_DOT3]];
 const TABS_LINE=[["home","ホーム",IC_HOME],["talk","トーク",IC_BUB],["voom","VOOM",IC_VOOM],["news","ニュース",IC_NEWS],["wallet","ウォレット",IC_WALLET]];
+/* ===== v11 data: kakao open chat / more, LINE news / voom ===== */
+const OC_ROOMS=[
+ {img:"assets/lastart1.jpg",t:"『LASTART』 실시간 응원방",tags:"#LASTART #NCTUniverse #실시간",n:"1,284",msgs:[["wish_stan","오늘 방송 봤어?? 첫 미션 무대 진짜 대박이었어","오후 9:12"],["teaser_loop","티저 영상만 무한 반복 중… 누가 최애인지 아직 못 정했어","오후 9:14"],["nctzen_kr","막내 라인 실력, 저 나이 맞아??","오후 9:15"]]},
+ {img:"assets/group2023.jpg",t:"SM 연습생 정보 공유방",tags:"#SMROOKIES #연습생 #프로필",n:"3,572",msgs:[["rookie_watch","공개된 연습생 프로필, 나이랑 포지션 정리해서 올려뒀어요","오후 2:03"],["kr_fan07","사진 올라올 때마다 심장이 떨려요","오후 2:05"]]},
+ {img:"assets/stage.jpg",t:"케이팝 무대 복습방",tags:"#스테이지 #명곡미션 #복습",n:"986",msgs:[["mission_og","명곡 미션 원곡이랑 번갈아 봤는데 완성도 실화야?","오후 7:41"],["afro_king","고정 멤버 무대는 진짜 여러 번 돌려보게 돼","오후 7:44"]]},
+ {img:"assets/av-sakuya.jpg",t:"07년생 막내라인 덕질방",tags:"#SAKUYA #RYO #막내라인",n:"2,047",msgs:[["saku_bread","막내들 무대만 따로 모아서 보는 중","오후 10:02"],["ryo_saku","둘이 같이 화면에 나오면 자동으로 웃음이 나","오후 10:03"]]},
+ {img:"assets/av-riku.jpg",t:"일본 연습생 응원방",tags:"#RIKU #일본연습생 #응원",n:"764",msgs:[["riku_niisan","일본에서도 방송 챙겨보는 사람 진짜 많아","오후 8:27"],["lastart_jp","언어 달라도 무대로 다 통해","오후 8:29"]]}];
+const I_GIFT='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><rect x="4" y="10.5" width="16" height="9.5" rx="1"/><path d="M12 10.5V20M4 14.5h16M12 10.5C8.5 10.5 7 9.2 7 7.4 7 6.2 7.9 5.3 9 5.3c1.9 0 3 2.3 3 5.2zm0 0c3.5 0 5-1.3 5-3.1 0-1.2-.9-2.1-2-2.1-1.9 0-3 2.3-3 5.2z"/></svg>';
+const I_PIN='<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 21.5S4.8 15.4 4.8 9.6A7.2 7.2 0 0 1 12 2.4a7.2 7.2 0 0 1 7.2 7.2c0 5.8-7.2 11.9-7.2 11.9zm0-9.4a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2z"/></svg>';
+const I_SMILE='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.6"/><circle cx="9.2" cy="10" r="1.15" fill="#fff" stroke="none"/><circle cx="14.8" cy="10" r="1.15" fill="#fff" stroke="none"/><path d="M8.2 14.2c1.1 1.4 2.4 2 3.8 2s2.7-.6 3.8-2"/></svg>';
+const I_CAL2='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>';
+const I_CAR='<svg viewBox="0 0 24 24" fill="#fff"><path d="M5 15.2 6.3 9.6A2 2 0 0 1 8.2 8h7.6a2 2 0 0 1 1.9 1.6L19 15.2v3.3a1 1 0 0 1-1 1h-1.2a1 1 0 0 1-1-1v-.7H8.2v.7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zM8.2 13.8h7.6l-.8-3.4H9z"/></svg>';
+const MORE_SVC=[["선물하기",I_GIFT,"#ff9d8a"],["쇼핑하기",IC_BAG,"#ff7a59"],["이모티콘",I_SMILE,"#ffc93c"],["메이커스",IC_BUB,"#7b61c9"],["프렌즈",IC_PERSON,"#a97e4f"],["게임",IC_OPEN,"#5a6acf"],["주문하기",IC_NEWS,"#f06595"],["예약하기",I_CAL2,"#4dabf7"],["헤어샵",IC_DOT3,"#e88bb0"],["카카오맵",I_PIN,"#51cf66"],["카카오T",I_CAR,"#3b5bdb"],["멜론",I_NOTE,"#00c73c"]];
+function openOpenRoom(i){const r=OC_ROOMS[i];if(!r)return;
+ ovl(`<div class="ovl-full" style="background:#b2c7d9"><div class="dm-head" style="background:rgba(255,255,255,.94)"><button class="back" data-close>‹</button><span class="un" style="font-size:15px">${esc(r.t)}</span><span style="width:30px"></span></div>
+ <div style="padding:10px 14px 2px;font-size:12px;color:#33506b">${esc(r.tags)} · 참여 ${r.n}명</div>
+ <div style="flex:1;overflow-y:auto;padding-top:6px">${r.msgs.map(m=>`<div class="oc-msg">${cmAv(m[0])}<div class="col"><span class="who">${esc(m[0])}</span><span class="bub">${esc(m[1])}</span></div><span class="tm">${m[2]}</span></div>`).join("")}</div>
+ <div class="locknote" style="background:rgba(255,255,255,.94);margin:0;padding:10px 16px calc(12px + env(safe-area-inset-bottom))">オープンチャットは「見るだけ」の面だよ。ナオは参加せず、世間の空気だけ感じ取っている。</div></div>`);}
+function newsList(){const a=[
+ {img:"assets/av-sakuya.jpg",src:"モデルプレス",date:"2023年7月15日",t:"最年少15歳・サクヤら、LASTART練習生プロフィール公開 日本人練習生の多さにも注目",b:"SMエンタテインメントは『NCT Universe : LASTART』に出演する練習生のプロフィールを公開した。最年少は15歳のサクヤ。日本人練習生が多数名を連ねる構成も、従来のサバイバル番組との違いとして話題になっている。放送は7月27日スタート。"},
+ {img:"assets/lastart1.jpg",src:"Kstyle",date:"2023年7月28日",t:"「LASTART」放送開始！“最後のNCT”を懸けた戦いに世界中から反響",b:"『NCT Universe : LASTART』が27日、放送を開始した。固定メンバーのシオンとユウシ、そして選抜を目指す練習生たち。初回からミッションのレベルの高さがSNSで大きな反響を呼んでいる。"},
+ {img:"assets/stage.jpg",src:"Kstyle",date:"2023年8月4日",t:"最初のミッションのステージ映像が話題「固定メンバーの実力は別格」の声",b:"公開されたミッションのステージ映像に、ファンから驚きの声が相次いでいる。固定メンバーの完成度はもちろん、挑戦する練習生たちの成長速度にも注目が集まっている。"}];
+ if(S.scene>=8||S.ended)a.unshift({img:"assets/group2023.jpg",src:"Kstyle",date:"2023年9月8日",t:"「LASTART」デビューメンバー発表 リク1位・サクヤ2位、新チームの活動に期待",b:"『NCT Universe : LASTART』の最終ミッションが放送され、デビューメンバーが発表された。1位はリク、2位はサクヤ、3位はデヨン。選抜メンバーは今後、プレデビュー活動に入る予定だ。"});
+ if(S.ended){a.unshift({img:"assets/stage.jpg",src:"スポーツ報知",date:"2024年2月22日",t:"NCT WISH、東京ドームでデビューショーケース 夢の舞台から物語が始まる",b:"NCT WISHが21日、東京ドームでデビューショーケースを開催した。昨年夏のサバイバル番組から生まれたグループの船出に、会場は大きな歓声に包まれた。"});
+ a.splice(1,0,{img:"assets/group2023.jpg",src:"Kstyle",date:"2023年10月9日",t:"NCT NEW TEAM、プレデビューシングル「Hands Up」配信開始 ツアーも開幕",b:"NCT NEW TEAMのプレデビューシングル『Hands Up』が8日に配信リリースされ、プレデビューツアーが開幕した。9月にはNCT NATION大阪で初披露され、大きな話題を呼んだステージだ。"});}
+ return a;}
+function openNews(i){const a=newsList()[i];if(!a)return;
+ ovl(`<div class="sheet-wrap" data-closewrap><div class="sheet"><div class="grab"></div><div class="sh-h">ニュース<button data-close>${IC_X}</button></div><div class="sh-b"><img src="${a.img}" style="width:100%;height:200px;object-fit:cover;display:block" alt=""><div class="nw-meta">${esc(a.src)} · ${esc(a.date)}</div><div style="padding:6px 18px 0;font-size:16.5px;font-weight:700;line-height:1.55">${esc(a.t)}</div><p class="nw-body">${esc(a.b)}</p></div></div></div>`);
+ const wrap=$("#ovl .sheet-wrap");wrap.addEventListener("click",e=>{if(e.target===wrap)closeOvl();});}
+function voomCards(){const a=[
+ {img:"assets/lastart1.jpg",date:"2023年7月27日",cap:"『NCT Universe : LASTART』放送スタート！最後のNCTを懸けた戦い、応援よろしくお願いします。",likes:12804,cm:342},
+ {img:"assets/stage.jpg",date:"2023年8月10日",cap:"ミッションのステージ映像を公開中。練習生たちの本気、ぜひ見てください。",likes:23917,cm:518}];
+ if(S.scene>=4)a.push({img:"assets/group2023.jpg",date:"2023年8月18日",cap:"新しい仲間も加わって、チームはさらに一体感が増しています。引き続き応援お願いします。",likes:30155,cm:764});
+ if(S.ended)a.push({img:"assets/group2023.jpg",date:"2023年10月8日",cap:"プレデビューシングル『Hands Up』本日配信＆ツアー開幕！会場で会いましょう。",likes:88412,cm:2951});
+ return a;}
+function openListSearch(){
+ ovl(`<div class="sheet-wrap" data-closewrap><div class="sheet"><div class="grab"></div><div class="sh-h">${curApp==="kakao"?"채팅 / 친구 검색":"トーク・友だち検索"}<button data-close>${IC_X}</button></div>
+ <div class="srch-in">${IC_SEARCH}<input id="srch-q" type="text" placeholder="${curApp==="kakao"?"이름, 채팅방 검색":"名前・トークを検索"}"></div>
+ <div class="sh-b" id="srch-res"><div class="locknote">トークのタイトルや友だちの名前で検索できるよ。</div></div></div></div>`);
+ const wrap=$("#ovl .sheet-wrap");wrap.addEventListener("click",e=>{if(e.target===wrap)closeOvl();});
+ const inp=$("#srch-q");inp.focus();
+ inp.addEventListener("input",()=>{const raw=inp.value.trim();const q=raw.toLowerCase();const res=$("#srch-res");if(!q){res.innerHTML=`<div class="locknote">トークのタイトルや友だちの名前で検索できるよ。</div>`;return;}
+  let h="";
+  Object.keys(THREADS).filter(t=>THREADS[t].app===curApp&&THREADS[t].title.toLowerCase().includes(q)).forEach(t=>{h+=`<button class="srch-hit" data-srth="${t}"><b>${esc(THREADS[t].title)}</b><span>${curApp==="kakao"?"채팅":"トーク"}</span></button>`;});
+  if(curApp==="kakao"){Object.keys(CAST).filter(k=>(CAST[k].n||"").toLowerCase().includes(q)||(KSTAT[k]&&KSTAT[k].st.toLowerCase().includes(q))).forEach(k=>{h+=`<button class="srch-hit" data-srkp="${k}"><b>${esc(CAST[k].n)}</b><span>${esc((KSTAT[k]&&KSTAT[k].st)||roleOf(k))}</span></button>`;});}
+  else{[["nao","ナオ"],["mom","母"],["hiroto","井汲大翔"]].filter(x=>x[1].includes(raw)).forEach(x=>{h+=`<button class="srch-hit" data-srlp="${x[0]}"><b>${x[1]}</b><span>友だち</span></button>`;});}
+  res.innerHTML=h||`<div class="locknote">「${esc(raw)}」は見つからなかったよ。</div>`;
+  res.querySelectorAll("[data-srth]").forEach(b=>b.addEventListener("click",()=>openThread(b.dataset.srth)));
+  res.querySelectorAll("[data-srkp]").forEach(b=>b.addEventListener("click",()=>openKakaoProfile(b.dataset.srkp)));
+  res.querySelectorAll("[data-srlp]").forEach(b=>b.addEventListener("click",()=>openLineProfile(b.dataset.srlp)));});}
+function openChatSearch(){if(!cur)return;const sc=cur;const app=THREADS[sc.thread].app;
+ ovl(`<div class="sheet-wrap" data-closewrap><div class="sheet"><div class="grab"></div><div class="sh-h">대화 내용 검색<button data-close>${IC_X}</button></div>
+ <div class="srch-in">${IC_SEARCH}<input id="srch-q" type="text" placeholder="검색어 입력"></div>
+ <div class="sh-b" id="srch-res"><div class="locknote">このトーク内の表示済みメッセージから検索するよ。</div></div></div></div>`);
+ const wrap=$("#ovl .sheet-wrap");wrap.addEventListener("click",e=>{if(e.target===wrap)closeOvl();});
+ const inp=$("#srch-q");inp.focus();
+ inp.addEventListener("input",()=>{const q=inp.value.trim();const res=$("#srch-res");if(!q){res.innerHTML=`<div class="locknote">このトーク内の表示済みメッセージから検索するよ。</div>`;return;}
+  const n=Math.min(S.shown,sc.steps.length);let h="",cnt=0;
+  for(let i=0;i<n&&cnt<20;i++){const st=sc.steps[i];const txt=st.t||st.m||st._me||"";if(txt&&txt.includes(q)){cnt++;h+=`<button class="srch-hit" data-hit="${i}"><b>${esc(txt.length>42?txt.slice(0,42)+"…":txt)}</b><span>${st.f?esc((CAST[st.f]||{}).n||"")+" · ":""}${sceneClock(sc,i,app)}</span></button>`;}}
+  res.innerHTML=h||`<div class="locknote">「${esc(q)}」を含むメッセージはないよ。</div>`;
+  res.querySelectorAll("[data-hit]").forEach(b=>b.addEventListener("click",()=>{const idx=b.dataset.hit;closeOvl();setTimeout(()=>{const el=document.querySelector(`#chat-body [data-lp="${idx}"]`);if(el){el.scrollIntoView({block:"center"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}},60);}));});}
 function threadRows(app){const tids=Object.keys(THREADS).filter(t=>THREADS[t].app===app);
  const curSc=!S.ended?SCENES[S.scene]:null;
  let h="";
@@ -1262,8 +1419,8 @@ function threadRows(app){const tids=Object.keys(THREADS).filter(t=>THREADS[t].ap
  return h;}
 function renderList(app,tab){curApp=app;if(tab)listTabs[app]=tab;const tb=listTabs[app];
  const curSc=!S.ended?SCENES[S.scene]:null;
- $("#list-title").textContent=app==="kakao"?(tb==="friends"?"친구":"채팅"):(tb==="home"?"ホーム":"トーク");
- $("#tk-icons").innerHTML=`<button data-deco>${IC_SEARCH}</button>`+(app==="kakao"&&tb!=="friends"?`<button data-deco>${IC_NEWCHAT}</button>`:"")+(app==="line"&&tb==="talk"?`<button data-deco>${IC_NEWCHAT}</button>`:"")+`<button data-deco>${IC_GEAR}</button>`;
+ $("#list-title").textContent=app==="kakao"?({friends:"친구",chat:"채팅",open:"오픈채팅",more:"더보기"})[tb]:({home:"ホーム",talk:"トーク",voom:"VOOM",news:"ニュース",wallet:"ウォレット"})[tb];
+ $("#tk-icons").innerHTML=(tb==="more"||tb==="wallet"?"":`<button data-lsearch>${IC_SEARCH}</button>`)+(app==="kakao"&&tb==="chat"?`<button data-deco>${IC_NEWCHAT}</button>`:"")+(app==="line"&&tb==="talk"?`<button data-deco>${IC_NEWCHAT}</button>`:"")+`<button data-deco>${IC_GEAR}</button>`;
  let h="";
  if(app==="kakao"&&tb==="friends"){
   h+=`<button class="me-row" data-kprof="nao"><img class="av" src="assets/av-nao.jpg" alt=""><span><span class="nm">ナオ</span><div class="st">${esc(KSTAT.nao.st)}</div></span></button>`;
@@ -1286,11 +1443,39 @@ function renderList(app,tab){curApp=app;if(tab)listTabs[app]=tab;const tb=listTa
   h+=`<button class="thread" data-lprof="hiroto">${avHTML("hiroto",50)}<span class="tt"><span class="tn">井汲大翔</span><span class="tp">LASTART挑戦中</span></span></button>`;
   h+=`<div class="fr-sec"><span>サービス</span></div><div class="svc-grid">${[["スタンプ",IC_BUB,"#7ac74f"],["着せかえ",IC_PERSON,"#e88bb0"],["マンガ",IC_NEWS,"#f5a623"],["ショッピング",IC_BAG,"#e8590c"],["VOOM",IC_VOOM,"#111"],["ニュース",IC_NEWS,"#4a90d9"],["ウォレット",IC_WALLET,"#00b900"],["ゲーム",IC_OPEN,"#7b61c9"]].map(s=>`<button data-deco><span class="sv-ic" style="background:${s[2]}">${s[1]}</span>${s[0]}</button>`).join("")}</div>`;
   h+=`<div class="locknote">物語は「トーク」タブのトークで進みます。</div>`;
+ }else if(app==="kakao"&&tb==="open"){
+  h+=`<div class="oc-cats"><span class="on">전체</span><span>인기</span><span>연예</span><span>음악</span><span>게임</span><span>스포츠</span><span>취미</span></div>`;
+  h+=`<div class="fr-sec"><span>지금 인기 있는 오픈채팅</span></div>`;
+  h+=OC_ROOMS.map((r,i)=>`<button class="oc-room" data-ocroom="${i}"><img src="${r.img}" alt=""><span class="tt"><span class="tn">${esc(r.t)}</span><span class="tp">${esc(r.tags)}</span></span><span class="oc-cnt"><span class="oc-live"></span>${r.n}명<br>대화 중</span></button>`).join("");
+  h+=`<div class="locknote">オープンチャットは当時（2023年）の人気ルーム風。タップで中をのぞけるよ（参加はしないよ）。</div>`;
+ }else if(app==="kakao"&&tb==="more"){
+  h+=`<button class="me-row" data-mprof><img class="av" src="assets/av-nao.jpg" alt=""><span><span class="nm">ナオ</span><div class="st">${esc(KSTAT.nao.st)}</div></span></button>`;
+  h+=`<div class="more-pay"><div class="mp-t">kakao pay</div><div class="mp-b">23,500원</div><div class="mp-btns"><button data-deco>충전</button><button data-deco>송금</button><button data-deco>결제</button></div></div>`;
+  h+=`<div class="fr-sec"><span>서비스</span></div><div class="svc-grid">${MORE_SVC.map(s=>`<button data-deco><span class="sv-ic" style="background:${s[2]}">${s[1]}</span>${s[0]}</button>`).join("")}</div>`;
+  h+=`<div style="margin-top:10px">${[["공지사항",""],["실험실",""],["고객센터 / 도움말",""],["버전 정보","10.3.5"]].map(r=>`<button class="more-row" data-deco><span>${r[0]}</span><span>${r[1]}</span></button>`).join("")}</div>`;
+  h+=`<div class="locknote">더보기は当時（2023年）のカカオのサービス構成。物語は채팅タブで進みます。</div>`;
+ }else if(app==="line"&&tb==="news"){
+  const arts=newsList();
+  h+=`<div class="nw-chips"><span class="on">トップ</span><span data-deco>エンタメ</span><span data-deco>スポーツ</span><span data-deco>経済</span><span data-deco>テクノロジー</span></div>`;
+  h+=arts.map((a,i)=>i===0?`<button class="nw-top" data-news="${i}"><img src="${a.img}" alt=""><span class="nw-tt" style="display:block">${esc(a.t)}</span></button>`:`<button class="nw-row" data-news="${i}"><span class="tt">${esc(a.t)}<div class="tm2">${esc(a.src)} · ${esc(a.date)}</div></span><img src="${a.img}" alt=""></button>`).join("");
+  h+=`<div class="locknote">LINE NEWS風の面。放送スケジュールに合わせて記事が増えるよ。</div>`;
+ }else if(app==="line"&&tb==="voom"){
+  h+=`<div style="display:flex;gap:16px;padding:12px 16px 10px"><b style="font-size:15px">おすすめ</b><span style="font-size:15px;color:#9a9aa0">フォロー中</span></div>`;
+  h+=voomCards().map(c=>`<div class="vm-card"><div class="vm-hd"><img src="assets/group2023.jpg" alt=""><span class="tt"><span class="tn">${S.ended?"NCT WISH 公式":"NCT NEW TEAM 公式"}</span><span class="tp" style="display:block">公式アカウント · ${esc(c.date)}</span></span><button class="vm-fol" data-vfol>フォロー</button></div><img class="vm-img" src="${c.img}" alt=""><div class="vm-cap">${esc(c.cap)}</div><div class="vm-acts"><button data-vlike="${c.likes}">${I_HEART}<span>${fmtN(c.likes)}</span></button><span>コメント ${c.cm}件</span></div></div>`).join("");
+  h+=`<div class="locknote">LINE VOOM風の面。物語の進行に合わせて投稿が増えるよ。</div>`;
  }else{
   h+=threadRows(app);
   h+=`<div class="locknote">物語はトークを開くと進むよ。バッジのあるトークが現在の章。</div>`;
  }
  $("#list-body").innerHTML=h;
+ $("#list-body").style.background=(app==="line"&&(tb==="voom"||tb==="news"))?"#f4f4f6":"";
+ const lb=$("#list-body");lb.classList.remove("swap");void lb.offsetWidth;lb.classList.add("swap");
+ const lsb=document.querySelector("#tk-icons [data-lsearch]");if(lsb)lsb.addEventListener("click",openListSearch);
+ document.querySelectorAll("[data-ocroom]").forEach(b=>b.addEventListener("click",()=>openOpenRoom(+b.dataset.ocroom)));
+ document.querySelectorAll("[data-mprof]").forEach(b=>b.addEventListener("click",()=>openKakaoProfile("nao")));
+ document.querySelectorAll("[data-news]").forEach(b=>b.addEventListener("click",()=>openNews(+b.dataset.news)));
+ document.querySelectorAll("[data-vlike]").forEach(b=>b.addEventListener("click",()=>{const on=b.classList.toggle("liked");b.querySelector("span").textContent=fmtN(+b.dataset.vlike+(on?1:0));b.querySelector("svg").outerHTML=on?I_HEART_F:I_HEART;}));
+ document.querySelectorAll("[data-vfol]").forEach(b=>b.addEventListener("click",()=>{const on=b.classList.toggle("on");b.textContent=on?"フォロー中":"フォロー";}));
  const tabs=app==="kakao"?TABS_KAKAO:TABS_LINE;
  const un=(curSc&&THREADS[curSc.thread].app===app)?1:0;
  $("#list-tabs").className="tabbar on "+app;
@@ -1300,8 +1485,8 @@ function renderList(app,tab){curApp=app;if(tab)listTabs[app]=tab;const tb=listTa
  document.querySelectorAll("[data-lprof]").forEach(b=>b.addEventListener("click",()=>openLineProfile(b.dataset.lprof)));
  document.querySelectorAll("[data-mus]").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();toast("プロフィールミュージック ― "+b.dataset.mus);}));
  document.querySelectorAll("[data-ltab]").forEach(b=>b.addEventListener("click",()=>{const t=b.dataset.ltab;
-  if(app==="kakao"){if(t==="friends"||t==="chat")renderList(app,t);else toast("このタブは物語では使わないよ");}
-  else{if(t==="home"||t==="talk")renderList(app,t);else toast("このタブは物語では使わないよ");}}));}
+  if(app==="kakao"){if(t==="shop")toast("このタブは物語では使わないよ");else renderList(app,t);}
+  else{if(t==="wallet")toast("このタブは物語では使わないよ");else renderList(app,t);}}));}
 function daeyoungIn(){return S.scene>=4||S.ended;}
 function openThread(tid){gotoThread(tid);}
 function gotoThread(tid){if(S.ended&&tid==="hirotoL"){closeOvl();openFree();return;}
@@ -1404,6 +1589,7 @@ function startCall(){callLine=0;$("#call-av").style.display="block";$("#call-sil
 $("#call-acc").addEventListener("click",()=>{callSec=0;$("#call-status").textContent="00:00";$("#call-btns").style.display="none";$("#call-sub-btns").style.display="none";$("#call-grid").style.display="grid";$("#call-end").style.display="block";$("#call-sub").textContent="タップで会話が進むよ";clearInterval(callTimer);callTimer=setInterval(()=>{callSec++;$("#call-status").textContent=String(Math.floor(callSec/60)).padStart(2,"0")+":"+String(callSec%60).padStart(2,"0");},1000);});
 $("#call-dec").addEventListener("click",()=>toast("この着信は物語の重要な場面だよ"));
 document.addEventListener("click",e=>{if(e.target.closest("[data-deco]"))toast("この機能は物語では使わないよ");});
+$("#chat-srch").addEventListener("click",()=>{if(freeMode||!cur){toast("検索は物語のトークの中で使えるよ");return;}openChatSearch();});
 $("#call-end").addEventListener("click",()=>{if(callLine<CALL_LINES.length){$("#call-sub").textContent="「"+CALL_LINES[callLine]+"」";callLine++;return;}clearInterval(callTimer);toast("通話が終わった");if(S.scene>=SCENES.length){doEnding();return;}curApp=THREADS[SCENES[S.scene].thread].app;renderList(curApp);show("list");});
 /* ===== ENDING ===== */
 function doEnding(){const g=S.g;let id;const naoSel=g.eval>=76&&g.crisis<=34;const duo=naoSel&&g.bond>=74;
@@ -1474,6 +1660,19 @@ function renderIGDisc(){const body=$("#ig-body");const posts=igPosts();igList=po
  body.scrollTop=0;
  body.querySelectorAll("[data-grid]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.grid;igMode="feed";renderIG();setTimeout(()=>{const el=document.getElementById("igp-"+id);if(el)el.scrollIntoView({block:"start"});},40);}));
  igNavSync();}
+let igReels=[];
+const I_PLAY_SM='<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5v13l11-6.5z"/></svg>';
+function openReel(p){if(!p)return;
+ ovl(`<div class="ovl-full ovl-dark"><video class="reel-v" src="${p.v}" poster="${p.img}" autoplay loop playsinline muted></video>
+ <button class="ovl-x" data-close style="top:calc(46px + env(safe-area-inset-top))">${IC_X}</button>
+ <button class="reel-vol" data-rvol>${T_VOL_OFF}</button>
+ <div class="reel-rail"><button data-rlike>${I_HEART}<span>${fmtN(p.likes)}</span></button><button data-deco>${I_CMT}<span>${fmtN((p.likes/37)|0)}</span></button><button data-deco>${I_PLANE}<span>共有</span></button></div>
+ <div class="reel-ui"><div class="ru">${esc(p.user)}</div><div class="rc">${esc(p.cap)}</div><div class="rc" style="margin-top:5px;font-size:12px">${esc(p.song)}</div></div></div>`);
+ const v=$("#ovl video");const vb=$("#ovl [data-rvol]");
+ vb.addEventListener("click",()=>{v.muted=!v.muted;vb.innerHTML=v.muted?T_VOL_OFF:T_VOL_ON;if(v.paused)v.play().catch(()=>{});});
+ v.addEventListener("click",()=>{if(v.paused)v.play().catch(()=>{});else v.pause();});
+ const lk=$("#ovl [data-rlike]");lk.addEventListener("click",()=>{const on=lk.classList.toggle("liked");lk.querySelector("svg").outerHTML=on?I_HEART_F:I_HEART;lk.style.color=on?"#ff3040":"";});
+ const xb=$("#ovl [data-close]");if(xb)xb.addEventListener("click",()=>{try{v.pause();}catch(e){}});}
 function renderIGProf(posts){const body=$("#ig-body");const un=S.ended?"nctwish_official":"nct_newteam";
  let h=`<div class="ig-phead"><button class="back" id="ig-back">‹</button><span class="un">${un} ${VB}</span><span class="phi"><button data-deco style="display:flex">${I_BELL}</button><button data-deco style="display:flex">${IC_DOT3}</button></span></div>`;
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group2023.jpg" alt=""></span><div class="ig-stats"><div><b>${posts.length}</b><span>投稿</span></div><div><b>214万</b><span>フォロワー</span></div><div><b>8</b><span>フォロー中</span></div></div></div>
@@ -1482,12 +1681,15 @@ function renderIGProf(posts){const body=$("#ig-body");const un=S.ended?"nctwish_
  h+=`<div class="ig-tabs"><button data-igt="grid" class="${igTab==="grid"?"on":""}">${I_GRID}</button><button data-igt="reel" class="${igTab==="reel"?"on":""}">${I_REEL}</button><button data-igt="tag" class="${igTab==="tag"?"on":""}">${I_TAG}</button></div>`;
  if(igTab==="grid"){h+=`<div class="ig-grid">${posts.map(p=>`<button data-grid="${p.id}"><img src="${p.img}" alt=""></button>`).join("")||`<div class="ig-lock">まだ投稿がないよ</div>`}</div>`;
   if(!S.ended)h+=`<div class="locknote">物語を進めると投稿が増えていくよ</div>`;}
- else h+=`<div class="ig-grid"><div class="ig-empty">${igTab==="reel"?"リールはまだありません":"タグ付けされた投稿はありません"}</div></div>`;
+ else if(igTab==="reel"){igReels=TT_POSTS.filter(p=>p.v&&ttVisible(p));
+  h+=igReels.length?`<div class="ig-grid">${igReels.map((p,i)=>`<button data-reel="${i}"><img src="${p.img}" alt=""><span class="rl-vw">${I_PLAY_SM}${fmtN(Math.round(p.likes*1.83))}</span></button>`).join("")}</div>`:`<div class="ig-grid"><div class="ig-empty">リールはまだありません</div></div>`;}
+ else h+=`<div class="ig-grid"><div class="ig-empty">タグ付けされた投稿はありません</div></div>`;
  body.innerHTML=h;body.scrollTop=0;
  $("#ig-back").addEventListener("click",()=>{igMode="feed";renderIG();});
  $("#ig-msg").addEventListener("click",openDM);
  body.querySelectorAll("[data-igt]").forEach(b=>b.addEventListener("click",()=>{igTab=b.dataset.igt;renderIGProf(igList);}));
  body.querySelectorAll("[data-grid]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.grid;igMode="feed";renderIG();setTimeout(()=>{const el=document.getElementById("igp-"+id);if(el)el.scrollIntoView({block:"start"});},40);}));
+ body.querySelectorAll("[data-reel]").forEach(b=>b.addEventListener("click",()=>openReel(igReels[+b.dataset.reel])));
  igNavSync();}
 function openStory(k){const m=CAST[k];const KS=["sion","yushi","riku","sakuya","daeyoung","ryo"];const idx=KS.indexOf(k);
  const imgs=["assets/lastart1.jpg","assets/stage.jpg","assets/group2023.jpg"];const times=["2時間前","3時間前","5時間前","1時間前","4時間前","6時間前"];
@@ -1507,12 +1709,27 @@ function openIgComments(pid){const p=igList.find(x=>x.id===pid)||IG_POSTS.find(x
  document.querySelectorAll("#ovl [data-ch]").forEach(b=>b.addEventListener("click",()=>{const on=b.classList.toggle("liked");b.querySelector("svg").outerHTML=on?I_HEART_F:I_HEART;}));
  const send=()=>{const inp=$("#cm-in");const v=inp.value.trim();if(!v)return;const b=$("#ovl .sh-b");b.insertAdjacentHTML("beforeend",`<div class="cm-row"><img class="cav" src="assets/av-nao.jpg" alt=""><div class="cb2"><b>nao</b>${esc(v)}<div class="cm-m"><span>たった今</span></div></div><button class="ch">${I_HEART}<span>0</span></button></div>`);inp.value="";b.scrollTop=b.scrollHeight;};
  $("#cm-snd").addEventListener("click",send);$("#cm-in").addEventListener("keydown",e=>{if(e.key==="Enter")send();});}
+const DM_FANS=[["wish_stan","『LASTART』の投稿をシェアしました","2時間",1],["teaser_loop","個人ティザー、もう100回は見た","5時間",0],["saku_bread","サクヤのティザー見た？？","1日",0]];
 function openDM(){const un=S.ended?"nctwish_official":"nct_newteam";
+ const notes=[["wish_stan","初回リアタイした"],["teaser_loop","ティザー無限ループ中"],["saku_bread","パン買ってきた"]];
  ovl(`<div class="ovl-full ovl-white"><div class="dm-head"><button class="back" data-close>‹</button><span class="un">nao</span><button data-deco style="display:flex">${I_PLUSBOX}</button></div>
- <div class="dm-search">${IC_SEARCH} 検索</div><div class="dm-sec">メッセージ<span>リクエスト</span></div>
+ <div class="dm-notes">${notes.map(nt=>`<span class="dm-note"><span class="nb2">${esc(nt[1])}</span>${cmAv(nt[0])}<span>${esc(nt[0])}</span></span>`).join("")}</div>
+ <div class="dm-search">${IC_SEARCH} 検索</div><div class="dm-sec">メッセージ<span>リクエスト（2）</span></div>
  <button class="thread" id="dm-row" style="width:100%"><span class="phr" style="width:50px;height:50px;border-radius:50%;padding:2.5px;background:linear-gradient(45deg,#feda75,#d62976,#962fbf);flex:none;display:block"><img src="assets/group2023.jpg" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff" alt=""></span><span class="tt"><span class="tn">${un} ${VB}</span><span class="tp">公式アカウント · メッセージは送信できません</span></span></button>
- <div class="locknote">推しの公式アカウントにDMは送れない（2023年の仕様どおり）。<br>応援は、コメントとステージで。</div></div>`);
- $("#dm-row").addEventListener("click",()=>toast("公式アカウントにはDMを送れないよ"));}
+ <button class="thread" id="dm-row2" style="width:100%"><span class="phr" style="width:50px;height:50px;border-radius:50%;padding:2.5px;background:linear-gradient(45deg,#feda75,#d62976,#962fbf);flex:none;display:block"><img src="assets/lastart1.jpg" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff" alt=""></span><span class="tt"><span class="tn">sm_nctuniverse ${VB}</span><span class="tp">LASTART公式 · メッセージは送信できません</span></span></button>
+ ${DM_FANS.map(f=>`<button class="thread" data-dmfan="${f[0]}" style="width:100%">${cmAv(f[0])}<span class="tt"><span class="tn">${esc(f[0])}</span><span class="tp">${esc(f[1])} · ${f[2]}</span></span>${f[3]?`<span class="ub">1</span>`:""}</button>`).join("")}
+ <div class="locknote">推しの公式アカウントにDMは送れない（2023年の仕様どおり）。<br>ファン同士のDMは物語には影響しないよ。応援は、コメントとステージで。</div></div>`);
+ $("#dm-row").addEventListener("click",()=>toast("公式アカウントにはDMを送れないよ"));
+ $("#dm-row2").addEventListener("click",()=>toast("公式アカウントにはDMを送れないよ"));
+ document.querySelectorAll("#ovl [data-dmfan]").forEach(b=>b.addEventListener("click",()=>openFanDM(b.dataset.dmfan)));}
+function openFanDM(name){const p=IG_POSTS[0];
+ ovl(`<div class="ovl-full ovl-white"><div class="dm-head"><button class="back" id="dmfan-back">‹</button><span class="un" style="font-size:15px">${esc(name)}</span><span style="width:30px"></span></div>
+ <div class="abody" id="dmfan-body" style="flex:1"><div style="display:flex;padding:12px 14px 2px"><span style="background:#f0f0f3;border-radius:16px;padding:3px;max-width:62%"><img src="${p.img}" style="width:100%;border-radius:13px;display:block" alt=""><span style="display:block;padding:7px 9px;font-size:12px;color:#333">${esc(p.user)} の投稿をシェアしました</span></span></div>
+ <div class="locknote">ファン同士のDMだよ。ここでのやりとりは物語には影響しないよ。</div></div>
+ <div class="sh-in" style="border-top:1px solid #f0f0f3"><img src="assets/av-nao.jpg" alt=""><input class="fld" id="dmfan-in" placeholder="メッセージ…"><button class="snd" id="dmfan-snd">送信</button></div></div>`);
+ $("#dmfan-back").addEventListener("click",openDM);
+ const send=()=>{const inp=$("#dmfan-in");const v=inp.value.trim();if(!v)return;const b=$("#dmfan-body");b.insertAdjacentHTML("beforeend",`<div style="display:flex;justify-content:flex-end;padding:5px 14px"><span style="background:#7b2ff7;color:#fff;border-radius:19px;padding:8px 13px;font-size:14px;max-width:70%;line-height:1.45">${esc(v)}</span></div>`);inp.value="";b.scrollTop=b.scrollHeight;};
+ $("#dmfan-snd").addEventListener("click",send);$("#dmfan-in").addEventListener("keydown",e=>{if(e.key==="Enter")send();});}
 /* ===== TIKTOK ===== */
 function ttVisible(p){return p.end?!!S.ended:S.scene>=(p.min||0);}
 let ttObs=null,ttSound=false;
