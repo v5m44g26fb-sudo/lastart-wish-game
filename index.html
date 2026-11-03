@@ -557,6 +557,9 @@ svg{display:block}
 .pv-tools button.liked{color:#ff3040}
 /* call svg */
 .cg i svg,.cb i svg{width:26px;height:26px;fill:#fff}
+.call-grid .cg{cursor:pointer}
+.call-grid .cg.on i{background:#f2f2f7}
+.call-grid .cg.on i svg{fill:#1c1c1e}
 .cb .dec svg{transform:rotate(135deg)}
 .call-sub-btns{display:flex;gap:74px;margin-top:auto;margin-bottom:20px}
 #call-btns{margin-top:0;padding-bottom:52px}
@@ -915,7 +918,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="t-btn sub" id="t-cont">つづきから</button>
 <button class="t-btn sub" id="t-ends">エンディングコレクション <span id="t-ends-n"></span></button>
 <div class="t-note">実在の人物・番組を題材にした創作フィクション（ファンメイド作品）です。会話やナオ・大翔の結果は創作であり、史実の選抜結果とは異なる分岐を含みます。</div>
-<div class="t-ver">LASTART編 v21</div>
+<div class="t-ver">LASTART編 v22</div>
 </div>
 </div>
 <!-- LOCK -->
@@ -1030,7 +1033,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="set-prof" data-deco><img src="assets/av-nao.jpg" alt=""><span><span class="sn">ナオ</span><div class="ss" id="set-prof-sub">練習生としてLASTARTに参加中</div></span></button>
 <div class="set-grp">
 <button class="set-row" id="set-ends"><span class="lft"><span class="set-ic" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M18.5 3h-3V2.5A1.5 1.5 0 0 0 14 1H10a1.5 1.5 0 0 0-1.5 1.5V3H5.5A1.5 1.5 0 0 0 4 4.5c0 3 1.9 5.4 4.6 6.3A6 6 0 0 0 11 14.9v1.6H7.5a1.5 1.5 0 0 0-1.5 1.5v2h12v-2a1.5 1.5 0 0 0-1.5-1.5H13v-1.6a6 6 0 0 0 2.4-4.6C18.1 9.9 20 7.5 20 4.5A1.5 1.5 0 0 0 18.5 3zM6.2 7.2A4.4 4.4 0 0 1 6 5h1v3.4c-.3-.4-.6-.8-.8-1.2zM18 5h1a4.4 4.4 0 0 1-.2 2.2c-.2.4-.5.8-.8 1.2z" transform="scale(.92) translate(1,1)"/></svg></span>エンディングコレクション</span><span><span id="set-ends-n"></span><span class="chev">›</span></span></button>
-<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v21</span></button>
+<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v22</span></button>
 <button class="set-row" data-deco><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"><path d="M6.2 10.2a5.8 5.8 0 0 1 11.6 0c0 3.9 1.4 5.3 1.4 5.3H4.8s1.4-1.4 1.4-5.3z"/><path d="M10.1 19a2 2 0 0 0 3.8 0" stroke-linecap="round"/></svg></span>通知</span><span>オン<span class="chev">›</span></span></button>
 <button class="set-row" id="set-a11y"><span class="lft"><span class="set-ic" style="background:#0a84ff"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="4.4" r="2.2"/><path d="M19.6 8.1c-2.5.6-5 0.9-7.6 0.9s-5.1-.3-7.6-.9l.5-2c2.3.5 4.7.8 7.1.8s4.8-.3 7.1-.8l.5 2z"/><path d="M13.1 10.2v3.3l2.8 5.2-1.9 1-2.4-4.5-2.5 4.5-1.9-1 2.8-5.2v-3.3h3.1z" transform="translate(-1.05 0)"/></svg></span>アクセシビリティ</span><span><span id="set-a11y-st">標準</span> <span class="chev">›</span></span></button>
 <button class="set-row" id="set-sfx"><span class="lft"><span class="set-ic" style="background:#34c759"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 9.5v5A1.5 1.5 0 0 0 5.5 16H9l5.2 4.4c.7.6 1.8.1 1.8-.8V4.4c0-.9-1.1-1.4-1.8-.8L9 8H5.5A1.5 1.5 0 0 0 4 9.5zm14.9-3.2-.9 1.2a5.6 5.6 0 0 1 0 9l.9 1.2a7.6 7.6 0 0 0 0-11.4z"/></svg></span>サウンドと触覚</span><span><span id="set-sfx-st"></span> <span class="chev">›</span></span></button>
@@ -1038,7 +1041,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div class="set-grp">
 <button class="set-row danger" id="set-reset"><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24"><path d="M9 3.5A1.5 1.5 0 0 1 10.5 2h3A1.5 1.5 0 0 1 15 3.5V4h4.5v2H4.5V4H9zm-3.2 3h12.4l-.8 12.2A2.5 2.5 0 0 1 14.9 21H9.1a2.5 2.5 0 0 1-2.5-2.3L5.8 6.5zM9.5 9v8.5h1.8V9zm4.7 0v8.5H16V9z" transform="scale(.94) translate(.7,.5)"/></svg></span>最初からやり直す</span><span>セーブを消去</span></button>
 </div>
-<div class="locknote">『デビュー前の彼らに出会う件』v21<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v22<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
 </div>
 </div>
 <div id="ovl"></div>
@@ -1393,7 +1396,7 @@ function ringStart(){ringStop();if(sfxEnabled()){const ring=()=>{if(!acx())retur
 function ringStop(){if(ringInt){clearInterval(ringInt);ringInt=null;}if(ringVibInt){clearInterval(ringVibInt);ringVibInt=null;}if("vibrate" in navigator){try{navigator.vibrate(0);}catch(e){}}}
 const VIEWS=["title","lock","home","list","chat","roster","ig","tt","notes","cal","photos","music","call","ending","set"];
 let CUR="title";
-function show(v){CUR=v;if(v!=="tt")ttPauseAll();VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));{const sb=document.querySelector(".statusbar");if(sb)sb.classList.toggle("sb-w",["title","lock","home","tt","call","ending"].includes(v));}if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();if(v==="set")renderSet();window.scrollTo(0,0);}
+function show(v){const _pv=CUR;CUR=v;if(_pv==="call"&&v!=="call")endCallState();if(v!=="tt")ttPauseAll();VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));{const sb=document.querySelector(".statusbar");if(sb)sb.classList.toggle("sb-w",["title","lock","home","tt","call","ending"].includes(v));}if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();if(v==="set")renderSet();window.scrollTo(0,0);}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-back]");if(b){show(b.dataset.back==="list"?"list":"home");if(b.dataset.back==="list")renderList(curApp);}});
 $("#v-lock").addEventListener("click",()=>show("home"));
 function renderLock(){const n1=$("#lock-n1-t");if(n1)n1.textContent=S.ended?"LASTART 練習生ルーム：あの夏は終わった。でも、連絡は続いている":S.scene>=8?"LASTART 練習生ルーム：今日、デビューメンバーが発表される":S.scene>=1?"LASTART 練習生ルーム：新しいトークが届いている":"LASTART 練習生ルーム：明日、最初のミッションが始まる";
@@ -1740,12 +1743,14 @@ function finishScene(){const sc=cur;if(sc.memo&&!S.memos.includes(sc.id))S.memos
 /* ===== CALL (after s6: Hiroto) ===== */
 const CALL_LINES=["……俺や。今日のこと、誰にも言うなよ。お前の事情も、今日見たことも","聞かれたら、俺の荷物だって言い通す。……だから、お前は練習だけ見てろ","泣くなよ。……泣いてないか。そっか、強いな、お前は","約束、覚えてるか。どっちかだけ残るのは、なし。……最終まで、あきらめるな"];
 let callLine=0,callTimer=null,callSec=0;
-function startCall(){callLine=0;$("#call-av").style.display="block";$("#call-sil").style.display="none";$("#call-name").textContent="井汲大翔";$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";$("#call-sub-btns").style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");ringStart();}
+function endCallState(){ringStop();try{if(callTimer){clearInterval(callTimer);callTimer=null;}}catch(e){}}
+function startCall(){callLine=0;endCallState();callSec=0;document.querySelectorAll("#call-grid .cg.on").forEach(el=>el.classList.remove("on"));$("#call-av").style.display="block";$("#call-sil").style.display="none";$("#call-name").textContent="井汲大翔";$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";$("#call-sub-btns").style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");ringStart();}
 $("#call-acc").addEventListener("click",()=>{ringStop();callSec=0;$("#call-status").textContent="00:00";$("#call-btns").style.display="none";$("#call-sub-btns").style.display="none";$("#call-grid").style.display="grid";$("#call-end").style.display="block";$("#call-sub").textContent="タップで会話が進むよ";clearInterval(callTimer);callTimer=setInterval(()=>{callSec++;$("#call-status").textContent=String(Math.floor(callSec/60)).padStart(2,"0")+":"+String(callSec%60).padStart(2,"0");},1000);});
 $("#call-dec").addEventListener("click",()=>toast("この着信は物語の重要な場面だよ"));
 document.addEventListener("click",e=>{if(e.target.closest("[data-deco]"))toast("この機能は物語では使わないよ");});
 $("#chat-srch").addEventListener("click",()=>{if(freeMode||!cur){toast("検索は物語のトークの中で使えるよ");return;}openChatSearch();});
-$("#call-end").addEventListener("click",()=>{ringStop();if(callLine<CALL_LINES.length){$("#call-sub").textContent="「"+CALL_LINES[callLine]+"」";callLine++;return;}clearInterval(callTimer);toast("通話が終わったよ");if(S.scene>=SCENES.length){doEnding();return;}curApp=THREADS[SCENES[S.scene].thread].app;renderList(curApp);show("list");showBanner(curApp,"新しいトークが届いた ―「"+SCENES[S.scene].title+"」");});
+$("#call-end").addEventListener("click",()=>{ringStop();if(callLine<CALL_LINES.length){$("#call-sub").textContent="「"+CALL_LINES[callLine]+"」";callLine++;return;}clearInterval(callTimer);callTimer=null;toast("通話が終わったよ");if(S.scene>=SCENES.length){doEnding();return;}curApp=THREADS[SCENES[S.scene].thread].app;renderList(curApp);show("list");showBanner(curApp,"新しいトークが届いた ―「"+SCENES[S.scene].title+"」");});
+document.querySelectorAll("#call-grid .cg").forEach(el=>{el.addEventListener("click",()=>{const lb=el.textContent.trim();if(lb==="消音"||lb==="スピーカー"){el.classList.toggle("on");buzz(15);}else toast("この機能は物語では使わないよ");});});
 /* ===== ENDING ===== */
 function doEnding(){const g=S.g;let id;const naoSel=g.eval>=76&&g.crisis<=34;const duo=naoSel&&g.bond>=74;
  if(duo)id="duo";else if(naoSel)id="solo";else if(g.eval>=64||g.bond>=66)id="next";else id="step";
@@ -2088,7 +2093,7 @@ function renderTitle(){const hp=hasProgress();const c=$("#t-cont");c.disabled=!h
 $("#t-start").addEventListener("click",()=>{if(hasProgress()&&!confirm("今のセーブを消して、最初から始める？"))return;if(hasProgress()){localStorage.removeItem(SKEY);load();renderHome();}show("lock");});
 $("#t-cont").addEventListener("click",()=>{if(hasProgress())show("home");});
 $("#t-ends").addEventListener("click",()=>openEndCol());
-$("#homebar").addEventListener("click",()=>{if(CUR!=="title"&&CUR!=="lock")show("home");});
+$("#homebar").addEventListener("click",()=>{if(CUR!=="title"&&CUR!=="lock"&&CUR!=="call")show("home");});
 /* ===== INIT ===== */
 load();applyA11y();renderHome();renderTitle();fit();
 /* v15: when the tab is hidden or the page is left, flush the save and pause feed/reel videos, so returning or reloading always restores a clean state (the TT IntersectionObserver resumes the in-view video on return). */
