@@ -159,6 +159,8 @@ img{user-select:none;-webkit-user-drag:none}
 /* ===== roster ===== */
 .ro-card{display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid #f0f0f3;width:100%;text-align:left;align-items:flex-start}
 .ro-card img.av{width:54px;height:54px;border-radius:19px;object-fit:cover;flex:none}
+.ro-card img.ro-portrait{width:96px;height:120px;object-fit:cover;border-radius:14px;flex:none}
+.me-row img.av{width:50px;height:50px;border-radius:18px;object-fit:cover;flex:none}
 .ro-card .avc{width:54px;height:54px;border-radius:19px;font-size:21px}
 .ro-card .rn{font-size:15.5px;font-weight:700}
 .ro-card .rn .tag{font-size:10px;font-weight:700;color:#fff;background:#3a7bd5;border-radius:6px;padding:2px 6px;margin-left:6px;vertical-align:2px}
@@ -399,8 +401,8 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 <div class="wall"></div>
 <div class="lock-top"><div class="lock-date" id="lock-date">7月26日 水曜日</div><div class="lock-time" id="lock-clock">21:00</div></div>
 <div class="lock-notifs">
-<div class="lnotif"><span class="ln-ic">💬</span><div style="flex:1;min-width:0"><div class="ln-h">カカオトーク<span>今</span></div><div class="ln-t">LASTART 練習生ルーム：明日、最初のミッションが始まる</div></div></div>
-<div class="lnotif"><span class="ln-ic" style="background:#00b900;color:#fff;font-weight:800;font-size:12px">LINE</span><div style="flex:1;min-width:0"><div class="ln-h">LINE<span>5分前</span></div><div class="ln-t">大翔：着いたら連絡して。……俺も、まだ起きてるから</div></div></div>
+<div class="lnotif"><span class="ln-ic">💬</span><div style="flex:1;min-width:0"><div class="ln-h">カカオトーク<span>今</span></div><div class="ln-t" id="lock-n1-t">LASTART 練習生ルーム：明日、最初のミッションが始まる</div></div></div>
+<div class="lnotif"><span class="ln-ic" id="lock-n2-ic" style="background:#fff;font-size:15px">📅</span><div style="flex:1;min-width:0"><div class="ln-h" id="lock-n2-h">カレンダー<span>5分前</span></div><div class="ln-t" id="lock-n2-t">明日 9:00 ― 最初のミッション収録</div></div></div>
 </div>
 <div class="lock-btns"><span class="lk-btn">🔦</span><span class="lk-btn">📷</span></div>
 <div class="lock-hint">タップしてロック解除</div>
@@ -470,7 +472,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 </div>
 <!-- CALL -->
 <div class="view" id="v-call">
-<img class="call-av" id="call-av" src="assets/av-sion.jpg" alt="" style="display:none"><div class="call-sil" id="call-sil">大</div>
+<img class="call-av" id="call-av" src="assets/av-hiroto.jpg" alt="" style="display:none"><div class="call-sil" id="call-sil">大</div>
 <div id="call-name">井汲大翔</div><div id="call-status">着信中…</div>
 <div id="call-sub"></div>
 <div class="call-grid" id="call-grid" style="display:none">
@@ -493,7 +495,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 <div class="abody">
 <button class="set-row" id="set-reset">最初からやり直す<span>セーブを消去</span></button>
 <button class="set-row" id="set-ends">エンディングコレクション<span id="set-ends-n"></span></button>
-<div class="locknote">『デビュー前の彼らに出会う件』v2<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v3<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
 </div>
 </div>
 <div class="homebar" id="homebar"></div>
@@ -516,31 +518,32 @@ const CAST={
  haruta:{n:"ハルタ",c:"#6e8a4a",ini:"ハ"},
  minjae:{n:"ミンジェ",c:"#546e7a",ini:"ミ"},
  heitetsu:{n:"ヘイテツ",c:"#795548",ini:"ヘ"},
- hiroto:{n:"大翔",c:"#274b8f",ini:"大"},
+ hiroto:{n:"大翔",av:"assets/av-hiroto.jpg",c:"#274b8f",ini:"大"},
+ nao:{n:"ナオ",av:"assets/av-nao.jpg",c:"#8e8e93",ini:"ナ"},
  mom:{n:"母",c:"#b06a8a",ini:"母"}
 };
 /* roster: res: 0=未発表 1=デビュー確定(史実) 2=選抜後離脱(史実) 3=最終選出ならず(史実) - nao/hirotoはIFで動的 */
 const ROSTER=[
  {k:"sion",fix:1,role:"SMROOKIES／固定メンバー",prof:"2002年5月11日生まれ（当時21歳）・韓国出身。練習期間は約4年。最初からデビューが決まっている2人のうちの1人で、後のリーダー。考えすぎるほど真面目で、周りをよく見ている。",res:1,resT:"デビュー確定（固定メンバー）"},
  {k:"yushi",fix:1,role:"SMROOKIES／固定メンバー",prof:"2004年4月5日生まれ（当時19歳）・日本出身。SMROOKIESとしてシオンと共に先行公開された固定メンバー。口数は少ないが、言うべき時ははっきり言う。",res:1,resT:"デビュー確定（固定メンバー）"},
- {k:"riku",role:"練習生",prof:"前田陸。2003年6月28日生まれ（当時20歳）・日本出身。最終順位1位。安定した実力で全ミッションを通して上位を守り続けた。",res:1,resT:"最終1位 ― デビューメンバー"},
- {k:"sakuya",role:"練習生",prof:"藤永咲哉。2007年11月18日生まれ（当時15歳）・日本出身。参加者最年少。最終順位2位。言葉選びが丁寧で、不思議な感性を持っている。ナオの「推し」だが、本人には絶対に言えない。",res:1,resT:"最終2位 ― デビューメンバー"},
- {k:"daeyoung",role:"練習生（第4話から合流）",prof:"2005年6月22日生まれ（当時18歳）・韓国出身。ボーカル強化のために途中合流した唯一の追加練習生。最終順位3位。2024年1月、グループ名発表と同時に活動名が「ジェヒ」に変わる。",res:1,resT:"最終3位 ― デビューメンバー（後のジェヒ）"},
- {k:"ryo",role:"練習生",prof:"廣瀬遼。2007年8月21日生まれ（当時15歳）・日本出身。サクヤと同い年。最終順位5位。当初4枠だった選抜が緊急会議で増員され、追加で選ばれた。",res:1,resT:"最終5位 ― デビューメンバー（増員枠）"},
+ {k:"riku",role:"練習生",prof:"前田陸。2003年6月28日生まれ（当時20歳）・日本出身。安定した実力で、ミッションを通して上位を守り続ける存在。",res:1,resT:"最終1位 ― デビューメンバー"},
+ {k:"sakuya",role:"練習生",prof:"藤永咲哉。2007年11月18日生まれ（当時15歳）・日本出身。参加者最年少。言葉選びが丁寧で、不思議な感性を持っている。ナオの「推し」だが、本人には絶対に言えない。",res:1,resT:"最終2位 ― デビューメンバー"},
+ {k:"daeyoung",role:"練習生（第4話から合流）",prof:"2005年6月21日生まれ（当時18歳）・韓国出身。ボーカル強化のために途中合流した唯一の追加練習生。練習生期間は約3か月。",res:1,resT:"最終3位 ― デビューメンバー（後のジェヒ）"},
+ {k:"ryo",role:"練習生",prof:"廣瀬遼。2007年8月4日生まれ（当時15歳）・日本出身。サクヤと同い年の、最年少ラインの1人。",res:1,resT:"最終5位 ― デビューメンバー（増員枠）"},
  {k:"jungmin",role:"練習生",prof:"2004年7月24日生まれ（当時19歳）・韓国出身。練習期間3年、歌う動画がきっかけでスカウトされた。ミッションでは1位を取るほどの実力者。",res:2,resT:"最終4位で選抜 → 体調上の理由で離脱（史実）"},
- {k:"anderson",role:"練習生",prof:"2005年8月17日生まれ（当時17歳）・カナダ（トロント）出身。練習期間は約半年の短期ながら最終6位まで残った。",res:3,resT:"最終6位 ― 選出ならず"},
- {k:"minjae",role:"練習生",prof:"2002年6月15日生まれ（当時21歳）・韓国出身。練習期間2年。年上組で、周りからは「パパ」と呼ばれることも。最終8位。",res:3,resT:"最終8位 ― 選出ならず"},
- {k:"haruta",role:"練習生",prof:"2006年3月5日生まれ（当時17歳）・日本出身。最終9位。",res:3,resT:"最終9位 ― 選出ならず"},
- {k:"kassho",role:"練習生",prof:"2006年1月20日生まれ（当時17歳）・日本出身（福岡）。練習期間は約半年。最終10位。",res:3,resT:"最終10位 ― 選出ならず"},
- {k:"heitetsu",role:"練習生",prof:"2002年5月7日生まれ（当時21歳）・日本出身（仙台）。参加者最年長。LINEオーディション合格から練習生になり、期間は約10か月。最終11位。",res:3,resT:"最終11位 ― 選出ならず"},
+ {k:"anderson",role:"練習生",prof:"2005年8月17日生まれ（当時17歳）・カナダ（トロント）出身。練習期間は約半年の短期ながら、ミッションで強い印象を残す存在。",res:3,resT:"最終6位 ― 選出ならず"},
+ {k:"minjae",role:"練習生",prof:"2002年6月15日生まれ（当時21歳）・韓国出身。練習期間2年。年上組で、周りからは「パパ」と呼ばれることも。",res:3,resT:"最終8位 ― 選出ならず"},
+ {k:"haruta",role:"練習生",prof:"2006年3月5日生まれ（当時17歳）・日本出身。",res:3,resT:"最終9位 ― 選出ならず"},
+ {k:"kassho",role:"練習生",prof:"2006年1月20日生まれ（当時17歳）・日本出身（福岡）。練習期間は約半年。",res:3,resT:"最終10位 ― 選出ならず"},
+ {k:"heitetsu",role:"練習生",prof:"2002年5月7日生まれ（当時21歳）・日本出身（仙台）。参加者最年長。LINEオーディション合格から練習生になり、期間は約10か月。",res:3,resT:"最終11位 ― 選出ならず"},
  {k:"nao",if:1,role:"練習生（作中の人物）",prof:"本作の主人公。女であることを隠して男子練習生として参加している。ビジュアルと実力で初回から注目を集めた。秘密を知る者は、開始時点では誰もいない。サクヤペンであることも秘密。",res:0,resT:"結果はまだ分からない（IF）"},
  {k:"hiroto",if:1,role:"練習生（作中の人物）",prof:"井汲大翔。2002年8月23日生まれ。日プSeason1や海外のサバイバルを経てSM練習生になった苦労人。LASTARTは事実上ラストチャンス。ナオとは番組共演程度の面識から始まる。",res:0,resT:"結果はまだ分からない（IF）"}
 ];
 const THREADS={
  dorm:{app:"kakao",title:"LASTART 練習生ルーム",av:"assets/group2023.jpg",c:"#3a7bd5",ini:"L"},
  sion:{app:"kakao",title:"シオン",av:"assets/av-sion.jpg",c:"#3a7bd5",ini:"シ"},
- hirotoK:{app:"kakao",title:"大翔",c:"#274b8f",ini:"大"},
- hirotoL:{app:"line",title:"井汲大翔",c:"#274b8f",ini:"大"},
+ hirotoK:{app:"kakao",title:"大翔",av:"assets/av-hiroto.jpg",c:"#274b8f",ini:"大"},
+ hirotoL:{app:"line",title:"井汲大翔",av:"assets/av-hiroto.jpg",c:"#274b8f",ini:"大"},
  mom:{app:"line",title:"母",c:"#b06a8a",ini:"母"}
 };
 /* steps: {d}日付 {s}システム {m}自分 {f,t}相手 {img,f,src,cap} {c:[{t,e,r:[[key,text]]}]} {msn} */
@@ -563,7 +566,7 @@ const SCENES=[
  ]},
  {f:"sion",t:"固定メンバーだって、油断したら置いていかれるのは同じだ。ユウシ、そうだよな"},
  {f:"yushi",t:"うん。決まってるからって、楽なわけじゃない"},
- {s:"固定メンバーの2人を含め、全員が同じスタートラインに立つ。ここから、最後のNCTを争う日々が始まる――"}
+ {s:"デビューが約束された2人と、残りの枠を争う練習生たち。立場は違っても、同じ夏が始まる――"}
  ]},
 {id:"s1",thread:"dorm",date:"7月27日(木)",start:13*60+5,title:"第1話 ― 最初のミッション",ig:1,tt:0,photo:1,
  memo:{t:"初回ミッションの手応え",b:"審査の視線は痛いほど分かった。「もっと見たい」と思わせることが大事。ビジュアルの注目は武器にもなるし、油断すると危ない。"},
@@ -698,10 +701,10 @@ const SCENES=[
  {f:"hiroto",t:"（カカオの個人連絡で）準備、進んでるか。……最終、悔いのないようにしよう"},
  {s:"いよいよ、最後のミッション。選ばれるのは、限られた数だけ"}
  ]},
-{id:"s8",thread:"dorm",date:"9月6日(水)",start:23*60+41,title:"最終話 ― デビュー発表",ig:4,tt:3,photo:5,
+{id:"s8",thread:"dorm",date:"9月7日(木)",start:23*60+41,title:"最終話 ― デビュー発表",ig:4,tt:3,photo:5,
  memo:{t:"発表の日",b:"名前を呼ばれるかどうかは、私の物語の全てじゃない。でも――この場所で出会った人たちと過ごした夏は、結果がどうあれ、本物だった。"},
  steps:[
- {d:"2023年9月6日（水）"},
+ {d:"2023年9月7日（木）"},
  {s:"最終ミッション『BOSS』『90's Love』が終わり、デビューメンバーの発表が行われた"},
  {f:"sion",t:"……全員の名前、俺は忘れない。結果がどうであれ、同じ夏を戦った仲間だ"},
  {f:"riku",t:"呼ばれた人も、呼ばれなかった人も。……ありがとう、みんな"},
@@ -712,7 +715,7 @@ const SCENES=[
  ]}
 ];
 const ENDINGS={
- duo:{t:"END ― 2人で、最後のNCTへ",bg:"assets/group2023.jpg",tx:"発表。リク、サクヤ、デヨン、リョウ――史実どおりの名前が呼ばれていく。\nそして、増員の発表とともに、最後の枠に呼ばれたのは――ナオと大翔、2人の名前だった。\n史実とは違う未来。けれど、審査が選んだのは実力と、この夏の全部だった。\n大翔は隣で、小さく震える声で言った。「……どっちかだけ残るのは、なしにしようって、言ったやろ」。\n秘密は、まだ抱えたまま。でも、隣には知っている人がいる。\n2024年1月18日、グループ名は『NCT WISH』と発表された。2月、東京ドームのデビューステージへ――物語は、ここから始まる。"},
+ duo:{t:"END ― 2人で、最後のNCTへ",bg:"assets/group2023.jpg",tx:"発表。リク、サクヤ、デヨン、リョウ――史実どおりの名前が呼ばれていく。\nそして、異例の追加発表で呼ばれたのは――ナオと大翔、2人の名前だった。\n史実とは違う未来。けれど、審査が選んだのは実力と、この夏の全部だった。\n大翔は隣で、小さく震える声で言った。「……どっちかだけ残るのは、なしにしようって、言ったやろ」。\n秘密は、まだ抱えたまま。でも、隣には知っている人がいる。\n2024年1月18日、グループ名は『NCT WISH』と発表された。2月、東京ドームのデビューステージへ――物語は、ここから始まる。"},
  solo:{t:"END ― 秘密を抱えて、デビューメンバーに",bg:"assets/lastart1.jpg",tx:"発表。呼ばれた名前の中に、ナオがあった。\nリク、サクヤ、デヨン、リョウと並んで、最後のNCTのメンバーに選ばれた。\n大翔の名前は、呼ばれなかった。彼は笑って、最初に拍手をしてくれた。「約束、半分は果たせたな」と。\n「残り半分は、俺が追いつくまで待っとけ」――その言葉を信じて、進むしかない。\n秘密はまだ続く。でも、ステージに立つ理由は、もう隠すためだけじゃない。\n2024年1月18日、グループ名『NCT WISH』発表。2月、東京ドームへ。"},
  next:{t:"END ― 選ばれなかった夏の先へ",bg:"assets/stage.jpg",tx:"発表。ナオの名前は、呼ばれなかった。\n史実どおり、リク、サクヤ、デヨン、リョウが選ばれ、チームは6人体制（ジョンミンは選抜後に体調の理由で離脱）で進んでいく。\nでも、この夏は無駄じゃなかった。スタッフからは「実力は認める。次の扉を用意したい」と声がかかり、大翔も同じ場所に残った。\n「終わらせるって言ったの、撤回するわ。……お前と、もう一回、ステージで会うまでな」\n2024年2月、東京ドームでデビューする彼らの姿を、客席から見た。次は、自分の番だ。"},
  step:{t:"END ― それでも、音楽は続く",bg:"assets/stage.jpg",tx:"発表。ナオの名前も、大翔の名前も呼ばれなかった。\n力不足と、抱え続けた秘密の重さ。悔しさは本物だった。\nそれでも寮を出る日、大翔は言った。「綺麗に終わらせる、って前に言ったけどな。……やっぱり、終われへんわ」\n2人は別々の道で、音楽を続けることを選んだ。\n2024年1月18日、『NCT WISH』の名前が発表され、2月には東京ドームでデビューした彼らを、遠くから見守った。\nこの夏の物語は、ここで一区切り。でも、2人の物語は、まだ終わっていない。"}
@@ -752,7 +755,7 @@ const CAL=[
  {m:"7月",d:"26",w:"水",t:"ソウル到着・寮入り",p:"秘密を守る生活が始まる"},
  {m:"7月",d:"27",w:"木",t:"『NCT Universe : LASTART』放送開始",p:"最初のミッション（史実：2023年7月27日放送開始）"},
  {m:"8月",d:"17",w:"木",t:"デヨン途中合流（放送回）",p:"ボーカル強化のための追加練習生（史実）"},
- {m:"9月",d:"6",w:"水",t:"最終ミッション・デビューメンバー発表",p:"史実：リク1位、サクヤ2位、デヨン3位、ジョンミン4位、リョウ5位で選抜"},
+ {m:"9月",d:"7",w:"木",t:"最終ミッション・デビューメンバー発表",p:"史実：リク1位、サクヤ2位、デヨン3位、ジョンミン4位、リョウ5位で選抜"},
  {m:"10月",d:"2",w:"月",t:"ジョンミン離脱の発表（史実）",p:"体調上の理由により、プレデビュー活動前に離脱"},
  {m:"10月",d:"8",w:"日",t:"プレデビューツアー開始（史実）",p:"NCT NEW TEAMとして日本のツアーへ"},
  {m:"10月",d:"19",w:"木",t:"プレデビューシングル『Hands Up』（史実）",p:"ミュージックアプリで公式プレビューが聞ける"},
@@ -773,9 +776,13 @@ function endingsGot(){try{return JSON.parse(localStorage.getItem(EKEY))||{};}cat
 function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),2300);}
 const VIEWS=["title","lock","home","list","chat","roster","ig","tt","notes","cal","photos","music","call","ending","set"];
 let CUR="title";
-function show(v){CUR=v;VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));if(v==="title")renderTitle();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();window.scrollTo(0,0);}
+function show(v){CUR=v;VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();window.scrollTo(0,0);}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-back]");if(b){show(b.dataset.back==="list"?"list":"home");if(b.dataset.back==="list")renderList(curApp);}});
 $("#v-lock").addEventListener("click",()=>show("home"));
+function renderLock(){const n1=$("#lock-n1-t");if(n1)n1.textContent=S.ended?"LASTART 練習生ルーム：あの夏は終わった。でも、連絡は続いている":S.scene>=8?"LASTART 練習生ルーム：今日、デビューメンバーが発表される":S.scene>=1?"LASTART 練習生ルーム：新しいトークが届いている":"LASTART 練習生ルーム：明日、最初のミッションが始まる";
+ const h=$("#lock-n2-h"),t=$("#lock-n2-t"),ic=$("#lock-n2-ic");if(!t)return;
+ if(S.scene>=5||S.ended){ic.textContent="LINE";ic.style.cssText="background:#00b900;color:#fff;font-weight:800;font-size:12px";h.innerHTML="LINE<span>5分前</span>";t.textContent="大翔：着いたら連絡して。……俺も、まだ起きてるから";}
+ else{ic.textContent="📅";ic.style.cssText="background:#fff;font-size:15px";h.innerHTML="カレンダー<span>5分前</span>";t.textContent="明日 9:00 ― 最初のミッション収録";}}
 function clock(){const d=new Date();const t=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");$("#sb-time").textContent=t;$("#lock-clock").textContent=t;const wd=["日","月","火","水","木","金","土"][d.getDay()];$("#lock-date").textContent=(d.getMonth()+1)+"月"+d.getDate()+"日 "+wd+"曜日";}
 setInterval(clock,20000);clock();
 /* ===== HOME ===== */
@@ -800,7 +807,7 @@ const APPS=[
 function appHTML(a,badge){return `<button class="app" data-app="${a.id}"><span class="ic ${a.cls}">${a.cal?`<span class="cwd">${"日月火水木金土"[new Date().getDay()]}</span><span class="cd2">${new Date().getDate()}</span>`:a.note?`<span class="nb"></span><span class="nl"></span><span class="nl"></span>`:a.ic}</span>${a.n}${badge?`<span class="bdg">${badge}</span>`:""}</button>`;}
 function renderHome(){const sc=!S.ended?SCENES[S.scene]:null;
  $("#gm-eval").style.width=S.g.eval+"%";$("#gm-crisis").style.width=S.g.crisis+"%";$("#gm-bond").style.width=S.g.bond+"%";
- if(sc){const dt=sc.date.replace(/\(.*\)/,"");$("#hw-ev").innerHTML=sc.title+"<br>"+dt;$("#hw-d").textContent=dt.replace(/[^0-9]/g,"").slice(-2)||"26";$("#hw-wd").textContent=sc.date;$("#hw-next").textContent="つぎのトーク：「"+sc.title+"」が届いているよ";}
+ if(sc){const dt=sc.date.replace(/\(.*\)/,"");$("#hw-ev").innerHTML=sc.title+"<br>"+dt;const dm=dt.match(/(\d+)月(\d+)日/);$("#hw-d").textContent=dm?dm[2]:"26";$("#hw-wd").textContent=sc.date;$("#hw-next").textContent="つぎのトーク：「"+sc.title+"」が届いているよ";}
  else{$("#hw-ev").innerHTML="物語は完結<br>フリーチャット解放中";$("#hw-next").textContent="エンディング到達。大翔とのフリーチャットが解放されているよ";}
  const curAppName=sc?THREADS[sc.thread].app:null;
  $("#home-apps").innerHTML=APPS.map(a=>{let b="";if(sc&&((a.id==="kakao"&&curAppName==="kakao")||(a.id==="line"&&curAppName==="line")))b="1";if(a.id==="notes"&&S.memos.length)b=S.memos.length;return appHTML(a,b);}).join("");
@@ -815,7 +822,8 @@ function renderList(app){curApp=app;$("#list-title").textContent=app==="kakao"?"
  const tids=Object.keys(THREADS).filter(t=>THREADS[t].app===app);
  const curSc=!S.ended?SCENES[S.scene]:null;
  let h="";
- if(app==="line")h+=`<button class="me-row"><span class="sil" style="width:50px;height:50px;background:#8e8e93;font-size:18px">ナ</span><span><span class="nm">ナオ</span><div class="st">LASTART、最後まで駆け抜ける</div></span></button>`;
+ if(app==="line")h+=`<button class="me-row"><img class="av" src="assets/av-nao.jpg" alt=""><span><span class="nm">ナオ</span><div class="st">LASTART、最後まで駆け抜ける</div></span></button>`;
+ if(app==="kakao")h+=`<button class="me-row"><img class="av" src="assets/av-nao.jpg" alt=""><span><span class="nm">ナオ</span><div class="st">프로필（プロフィール） ― 練習生として参加中</div></span></button>`;
  tids.forEach(tid=>{const th=THREADS[tid];const mine=SCENES.map((s,i)=>[s,i]).filter(x=>x[0].thread===tid);const doneOnes=mine.filter(x=>x[1]<S.scene||S.ended);const lastDone=doneOnes.length?doneOnes[doneOnes.length-1][0]:null;
   let badge="",prev="",time="";
   if(S.ended&&tid==="hirotoL"){badge=`<span class="ub" style="background:#c94f7c">FREE</span>`;prev="フリーチャット解放中（タップで話せる）";time="";}
@@ -875,12 +883,12 @@ function finishScene(){const sc=cur;if(sc.memo&&!S.memos.includes(sc.id))S.memos
 /* ===== CALL (after s6: Hiroto) ===== */
 const CALL_LINES=["……俺や。今日のこと、誰にも言うなよ。お前の事情も、今日見たことも","聞かれたら、俺の荷物だって言い通す。……だから、お前は練習だけ見てろ","泣くなよ。……泣いてないか。そっか、強いな、お前は","約束、覚えてるか。どっちかだけ残るのは、なし。……最終まで、あきらめるな"];
 let callLine=0,callTimer=null,callSec=0;
-function startCall(){callLine=0;$("#call-sil").textContent="大";$("#call-av").style.display="none";$("#call-sil").style.display="flex";$("#call-name").textContent="井汲大翔";$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");}
+function startCall(){callLine=0;$("#call-av").style.display="block";$("#call-sil").style.display="none";$("#call-name").textContent="井汲大翔";$("#call-status").textContent="着信中…";$("#call-sub").textContent="";$("#call-btns").style.display="flex";$("#call-grid").style.display="none";$("#call-end").style.display="none";show("call");}
 $("#call-acc").addEventListener("click",()=>{callSec=0;$("#call-status").textContent="00:00";$("#call-btns").style.display="none";$("#call-grid").style.display="grid";$("#call-end").style.display="block";$("#call-sub").textContent="タップで会話が進むよ";clearInterval(callTimer);callTimer=setInterval(()=>{callSec++;$("#call-status").textContent=String(Math.floor(callSec/60)).padStart(2,"0")+":"+String(callSec%60).padStart(2,"0");},1000);});
 $("#call-end").addEventListener("click",()=>{if(callLine<CALL_LINES.length){$("#call-sub").textContent="「"+CALL_LINES[callLine]+"」";callLine++;return;}clearInterval(callTimer);toast("通話が終わった");if(S.scene>=SCENES.length){doEnding();return;}curApp=THREADS[SCENES[S.scene].thread].app;renderList(curApp);show("list");});
 /* ===== ENDING ===== */
-function doEnding(){const g=S.g;let id;const naoSel=g.eval>=76&&g.crisis<=72;const duo=naoSel&&g.bond>=74;
- if(duo)id="duo";else if(naoSel)id="solo";else if(g.eval>=58||g.bond>=60)id="next";else id="step";
+function doEnding(){const g=S.g;let id;const naoSel=g.eval>=76&&g.crisis<=34;const duo=naoSel&&g.bond>=74;
+ if(duo)id="duo";else if(naoSel)id="solo";else if(g.eval>=64||g.bond>=66)id="next";else id="step";
  S.ended=true;S.endId=id;S.rosterRevealed=true;S.ig=4;S.tt=3;S.photos=5;const eg=endingsGot();eg[id]=true;try{localStorage.setItem(EKEY,JSON.stringify(eg));}catch(e){}
  const last=SCENES[SCENES.length-1];if(last.memo&&!S.memos.includes(last.id))S.memos.push(last.id);save();
  const E=ENDINGS[id];$("#end-title").textContent=E.t;$("#end-text").textContent=E.tx;$("#end-bg").src=E.bg;
@@ -893,18 +901,19 @@ function ifResult(k){if(!S.rosterRevealed)return "結果はまだ分からない
  if(S.endId==="solo")return k==="nao"?"デビューメンバー（IF）":"選出ならず（IF）";
  return "選出ならず（IF）";}
 function renderRoster(){let h=`<div class="ro-sec">固定メンバー・史実の練習生（結果は物語の進行で公開）</div>`;
- ROSTER.filter(r=>!r.if).forEach(r=>{const m=CAST[r.k];const res=S.rosterRevealed?`<div class="rr done">${esc(r.resT)}</div>`:`<div class="rr">結果：未発表</div>`;
+ ROSTER.filter(r=>!r.if).forEach(r=>{if(r.k==="daeyoung"&&S.scene<4&&!S.ended){h+=`<div class="ro-card"><span class="avc" style="width:54px;height:54px;background:#b9bec6">？</span><div style="flex:1;min-width:0"><div class="rn">？？？</div><div class="rp">追加練習生<br>まだ合流していない</div><div class="rr">結果：未発表</div></div></div>`;return;}
+  const m=CAST[r.k];const res=S.rosterRevealed?`<div class="rr done">${esc(r.resT)}</div>`:`<div class="rr">結果：未発表</div>`;
   h+=`<div class="ro-card">${avHTML(r.k,54)}<div style="flex:1;min-width:0"><div class="rn">${esc(m.n)}${r.fix?'<span class="tag fix">固定</span>':""}</div><div class="rp">${esc(r.role)}<br>${esc(r.prof)}</div>${res}</div></div>`;});
  h+=`<div class="ro-sec">作中の2人（結果はIF ― あなたの選択で分岐）</div>`;
- ROSTER.filter(r=>r.if).forEach(r=>{const m=CAST[r.k==="nao"?"mom":r.k];const nm=r.k==="nao"?"ナオ":m.n;
-  h+=`<div class="ro-card">${r.k==="nao"?`<span class="avc" style="background:#8e8e93">ナ</span>`:avHTML(r.k,54)}<div style="flex:1;min-width:0"><div class="rn">${nm}<span class="tag if">IF</span></div><div class="rp">${esc(r.role)}<br>${esc(r.prof)}</div><div class="rr ${S.rosterRevealed?"done":""}">${esc(ifResult(r.k))}</div></div></div>`;});
+ ROSTER.filter(r=>r.if).forEach(r=>{const m=CAST[r.k];
+  h+=`<div class="ro-card">${r.k==="nao"?`<img class="ro-portrait" src="assets/nao-profile.jpg" alt="">`:avHTML(r.k,54)}<div style="flex:1;min-width:0"><div class="rn">${esc(m.n)}<span class="tag if">IF</span></div><div class="rp">${esc(r.role)}<br>${esc(r.prof)}</div><div class="rr ${S.rosterRevealed?"done":""}">${esc(ifResult(r.k))}</div></div></div>`;});
  h+=`<div class="locknote">史実では最終順位1位リク、2位サクヤ、3位デヨン、4位ジョンミン、5位リョウが選抜され、<br>ジョンミンは体調上の理由で離脱、最終的に6人体制でデビューしました（2024年）。</div>`;
  $("#roster-body").innerHTML=h;}
 /* ===== IG ===== */
-function renderIG(){const posts=IG_POSTS.slice(0,Math.min(S.ig,IG_POSTS.length));
+function renderIG(){const posts=S.ended?IG_POSTS.slice(0,IG_POSTS.length):IG_POSTS.slice(0,Math.min(S.ig,1));
  let h=`<div class="ig-head"><span class="ig-wm">Instagram</span><span class="ig-hi">⊕ ♡ ☰</span></div><div class="stories">${["sion","yushi","riku","sakuya","daeyoung","ryo"].map(k=>`<button class="story"><span class="ring ${S.ig>1?"":"seen"}"><img src="${CAST[k].av}"></span>${CAST[k].n}</button>`).join("")}</div>`;
  h+=`<div class="ig-prof"><div class="ig-top"><span class="ring"><img src="assets/group2023.jpg"></span><div class="ig-stats"><div><b>${posts.length}</b><span>投稿</span></div><div><b>214万</b><span>フォロワー</span></div><div><b>8</b><span>フォロー中</span></div></div></div>
- <div class="ig-bio"><b>nctwish_official</b> ✔<br>NCT WISH 公式（2024年〜）／ NCT NEW TEAM<br>最後のNCT、ここから始まる💫<br><span class="lnk">smtown.com</span></div>
+ <div class="ig-bio"><b>${S.ended?"nctwish_official":"nct_newteam"}</b> ✔<br>${S.ended?"NCT WISH 公式アカウント":"NCT NEW TEAM 公式アカウント"}<br>最後のNCT、ここから始まる💫<br><span class="lnk">smtown.com</span></div>
  <div class="ig-btns"><button class="fol">フォロー中</button><button>メッセージ</button></div></div>`;
  h+=`<div class="ig-tabs"><button class="on">▦</button><button>🎬</button><button>👤</button></div>`;
  h+=posts.map(p=>`<div class="post"><div class="ph"><img src="${CAST[p.who].av}"><div><b>${esc(p.user)}</b><span>${esc(p.loc)}</span></div></div><img src="${p.img}"><div class="pa"><span class="like" data-like="${p.id}">♡</span><span>💬</span><span>➤</span></div><div class="pl">いいね！${esc(p.likes)}件</div><div class="pc"><b>${esc(p.user)}</b>${esc(p.cap)}</div>${p.cm.map(c=>`<div class="pcm"><b>${esc(c[0])}</b> ${esc(c[1])}</div>`).join("")}<div class="pt2">${esc(p.time)}</div></div>`).join("");
@@ -913,7 +922,7 @@ function renderIG(){const posts=IG_POSTS.slice(0,Math.min(S.ig,IG_POSTS.length))
  document.querySelectorAll("[data-like]").forEach(el=>el.addEventListener("click",()=>{el.classList.toggle("liked");el.textContent=el.classList.contains("liked")?"♥":"♡";}));}
 /* ===== TIKTOK ===== */
 const TT_ORDER=[1,0,2];
-function renderTT(){const unlocked=TT_ORDER.slice(0,Math.min(S.tt,3)).map(i=>TT_POSTS[i]);
+function renderTT(){const unlocked=(S.ended?TT_ORDER:TT_ORDER.slice(0,Math.min(S.tt,1))).map(i=>TT_POSTS[i]);
  const au=$("#au-handsup");
  $("#tt-feed").innerHTML=(unlocked.length?unlocked:[TT_POSTS[1]]).map((p,i)=>`<div class="tt-item"><img src="${p.img}" class="${i===0?"kenburns":""}"><div class="tt-shade"></div>
  <div class="tt-top"><span>フォロー中</span><span class="on">おすすめ</span></div>
