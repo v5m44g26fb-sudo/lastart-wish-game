@@ -221,6 +221,8 @@ img{user-select:none;-webkit-user-drag:none}
 .tt-feed{flex:1;overflow-y:auto;scroll-snap-type:y mandatory}
 .tt-item{position:relative;height:100%;min-height:480px;scroll-snap-align:start;overflow:hidden}
 .tt-item>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+.tt-item>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.tt-paused{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;color:rgba(255,255,255,.85);text-shadow:0 2px 14px rgba(0,0,0,.6);z-index:2;pointer-events:none}
 .tt-item .kenburns{animation:kb 14s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.13)}}
 .tt-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),transparent 30%,transparent 62%,rgba(0,0,0,.55))}
@@ -495,7 +497,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 <div class="abody">
 <button class="set-row" id="set-reset">最初からやり直す<span>セーブを消去</span></button>
 <button class="set-row" id="set-ends">エンディングコレクション<span id="set-ends-n"></span></button>
-<div class="locknote">『デビュー前の彼らに出会う件』v7<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v8<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。</div>
 </div>
 </div>
 <div class="homebar" id="homebar"></div>
@@ -748,10 +750,21 @@ const IG_POSTS=[
  {id:2,img:"assets/group2023.jpg",user:"nct_newteam",who:"sion",loc:"Seoul, South Korea",likes:"92万",cap:"NCT NEW TEAM プレデビューシングル『Hands Up』🙌 応援してくれる皆さまへ、最初のあいさつです。",cm:[["newteam_fan","Hands Upの中毒性すごい"],["tour_ikita","プレデビューツアーで生で見たけど全員仕上がってた"],["jungmin_voice","ジョンミンの声がもう聞けないの、まだ信じられない"]],time:"2023年10月"},
  {id:3,img:"assets/stage.jpg",user:"nctwish_official",who:"sion",loc:"Tokyo Dome, Tokyo",likes:"156万",cap:"2024.02.21 東京ドームでデビューしました。NCT WISH、ここから始まります💫",cm:[["wish_jp","デビューおめでとう😭"],["ctzennie","東京ドームから始まる物語、最高"],["maknae_z","最年少コンビがここまで来たの感慨深い"]],time:"2024年2月"}
 ];
+/* TikTok投稿: min=その章(シーンindex)に到達で解放 / end=エンディング到達後(プレデビュー期)に解放。動画は全て公式YouTube(SMTOWN / SMTOWN Friends / NCT WISH)の2023年当時公開素材 */
 const TT_POSTS=[
- {img:"assets/group2023.jpg",user:"@nctwish_official",who:"sion",cap:"『Hands Up』🙌 プレデビューツアーで会いましょう！ #NCTNEWTEAM #HandsUp",song:"♪ Hands Up ― NCT NEW TEAM",likes:1204832,cm:[["fan_a","振り付け覚えた！"],["fan_b","全員ビジュアルが強い"],["handsup_loop","サビの手の振り、永遠に見れる"]]},
- {img:"assets/lastart1.jpg",user:"@sm_nctuniverse",who:"sion",cap:"LASTART、舞台裏の素顔。固定メンバー・シオンの真剣な横顔 #LASTART #SION",song:"♪ オリジナル音源",likes:438291,cm:[["fan_c","この横顔は反則"],["fan_d","デビュー確定組の風格"],["u_team_wait","次のミッションのUチームも楽しみすぎる"]]},
- {img:"assets/stage.jpg",user:"@nctwish_official",who:"sion",cap:"東京ドーム、デビューステージの景色。この景色を一生忘れない #NCTWISH #東京ドーム",song:"♪ WISH ― NCT WISH",likes:2041883,cm:[["fan_e","デビューおめでとう！"],["fan_f","ここから伝説が始まる"]]}
+ {v:"assets/video/tt-trailer.mp4",img:"assets/lastart1.jpg",user:"@sm_nctuniverse",who:"sion",min:0,cap:"『NCT Universe : LASTART』MAIN TRAILER💫 最後のNCTを手にするのは誰だ #LASTART",song:"♪ オリジナル音源 ― SMTOWN",likes:892340,cm:[["lastart_jp","予告だけで鳥肌"],["nctzen_kr","7月27日が待ちきれない"],["teaser_loop","シオンとユウシの存在感がすごい"]]},
+ {v:"assets/video/tt-teaser-sakuya.mp4",img:"assets/av-sakuya.jpg",user:"@sm_nctuniverse",who:"sakuya",min:0,cap:"SM練習生公開 ― サクヤ SAKUYA💫 最年少15歳 #LASTART #SAKUYA",song:"♪ オリジナル音源 ― SMTOWN",likes:654210,cm:[["sakuya_pan","最年少なのに目を引く"],["wish_mirai","この子、絶対デビューする"],["kr_fan07","声がもう好き"]]},
+ {v:"assets/video/tt-teaser-riku.mp4",img:"assets/av-riku.jpg",user:"@sm_nctuniverse",who:"riku",min:0,cap:"SM練習生公開 ― リク RIKU💫 #LASTART #RIKU",song:"♪ オリジナル音源 ― SMTOWN",likes:701455,cm:[["riku_niisan","高橋愛の従兄弟って本当だったんだ"],["lastart_jp","実力派の予感しかない"]]},
+ {v:"assets/video/tt-teaser-ryo.mp4",img:"assets/av-ryo.jpg",user:"@sm_nctuniverse",who:"ryo",min:0,cap:"SM練習生公開 ― リョウ RYO💫 サクヤと同い年の最年少ライン #LASTART #RYO",song:"♪ オリジナル音源 ― SMTOWN",likes:588930,cm:[["ryo_saku","最年少コンビ尊い"],["nctzen_kr","15歳の完成度じゃない"]]},
+ {img:"assets/lastart1.jpg",user:"@sm_nctuniverse",who:"sion",min:0,cap:"LASTART、舞台裏の素顔。固定メンバー・シオンの真剣な横顔 #LASTART #SION",song:"♪ オリジナル音源",likes:438291,cm:[["fan_c","この横顔は反則"],["fan_d","デビュー確定組の風格"],["u_team_wait","次のミッションのUチームも楽しみすぎる"]]},
+ {v:"assets/video/tt-afrolex.mp4",img:"assets/stage.jpg",user:"@sm_nctuniverse",who:"sion",min:1,cap:"シオン＆ユウシ『Afrolex』ステージ リプレイ💫 固定メンバーの実力を見せつけた最初のミッション #LASTART #SION #YUSHI",song:"♪ Afrolex ― LASTART Mission",likes:923118,cm:[["afro_king","固定メンバーの格が違う"],["yushi_cool","ユウシのダンス、キレッキレ"]]},
+ {v:"assets/video/tt-chewinggum.mp4",img:"assets/stage.jpg",user:"@sm_nctuniverse",who:"sakuya",min:2,cap:"リョウ＆サクヤ『Chewing Gum』ステージ リプレイ🍬 最年少コンビの挑戦 #LASTART #RYO #SAKUYA",song:"♪ Chewing Gum ― NCT DREAM",likes:1104382,cm:[["gum_stage","ホバーボードの上でこの安定感"],["sakuya_pan","サクヤの笑顔にやられた"]]},
+ {v:"assets/video/tt-lucifer.mp4",img:"assets/stage.jpg",user:"@sm_nctuniverse",who:"sion",min:3,cap:"SM名曲グループミッション『Lucifer』ステージ リプレイ💫 #LASTART #Lucifer",song:"♪ Lucifer ― SHINee",likes:987204,cm:[["lucifer_loop","群舞の揃い方がプロ"],["mission_og","原曲の圧に負けてない"]]},
+ {v:"assets/video/tt-electrickiss.mp4",img:"assets/stage.jpg",user:"@sm_nctuniverse",who:"yushi",min:5,cap:"SM名曲グループミッション『Electric Kiss』ステージ リプレイ⚡ #LASTART #ElectricKiss",song:"♪ Electric Kiss ― EXO",likes:1032556,cm:[["ek_2023","このステージ、完成度が高すぎる"],["u_team_wait","中間ミッションの本気を見た"]]},
+ {v:"assets/video/tt-90slove.mp4",img:"assets/stage.jpg",user:"@sm_nctuniverse",who:"riku",min:8,cap:"最終ミッション『90's Love』ステージ リプレイ💫 原曲者テンのサプライズ訪問も話題に #LASTART #90sLove",song:"♪ 90's Love ― NCT U",likes:1458903,cm:[["final_stage","最終ミッションにふさわしい迫力"],["ten_san","原曲者本人の前でやり切ったのすごい"]]},
+ {img:"assets/group2023.jpg",user:"@nctwish_official",who:"sion",end:1,cap:"『Hands Up』🙌 プレデビューツアーで会いましょう！ #NCTNEWTEAM #HandsUp",song:"♪ Hands Up ― NCT NEW TEAM",likes:1204832,cm:[["fan_a","振り付け覚えた！"],["fan_b","全員ビジュアルが強い"],["handsup_loop","サビの手の振り、永遠に見れる"]]},
+ {v:"assets/video/tt-handsup-nation.mp4",img:"assets/group2023.jpg",user:"@nctwish_official",who:"sion",end:1,cap:"『Hands Up』🙌 NCT NATION : To The World（大阪）オープニングアクトの公式ステージ映像 #NCTNEWTEAM #HandsUp",song:"♪ Hands Up ― NCT NEW TEAM",likes:1876540,cm:[["nation_live","初披露の場所で見たかった"],["newteam_fan","プレデビューでこの完成度"]]},
+ {img:"assets/stage.jpg",user:"@nctwish_official",who:"sion",end:1,cap:"東京ドーム、デビューステージの景色。この景色を一生忘れない #NCTWISH #東京ドーム",song:"♪ WISH ― NCT WISH",likes:2041883,cm:[["fan_e","デビューおめでとう！"],["fan_f","ここから伝説が始まる"]]}
 ];
 const CAL=[
  {m:"7月",d:"26",w:"水",t:"ソウル到着・寮入り",p:"秘密を守る生活が始まる"},
@@ -778,7 +791,7 @@ function endingsGot(){try{return JSON.parse(localStorage.getItem(EKEY))||{};}cat
 function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),2300);}
 const VIEWS=["title","lock","home","list","chat","roster","ig","tt","notes","cal","photos","music","call","ending","set"];
 let CUR="title";
-function show(v){CUR=v;VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();window.scrollTo(0,0);}
+function show(v){CUR=v;if(v!=="tt")ttPauseAll();VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();window.scrollTo(0,0);}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-back]");if(b){show(b.dataset.back==="list"?"list":"home");if(b.dataset.back==="list")renderList(curApp);}});
 $("#v-lock").addEventListener("click",()=>show("home"));
 function renderLock(){const n1=$("#lock-n1-t");if(n1)n1.textContent=S.ended?"LASTART 練習生ルーム：あの夏は終わった。でも、連絡は続いている":S.scene>=8?"LASTART 練習生ルーム：今日、デビューメンバーが発表される":S.scene>=1?"LASTART 練習生ルーム：新しいトークが届いている":"LASTART 練習生ルーム：明日、最初のミッションが始まる";
@@ -924,21 +937,36 @@ function renderIG(){const posts=S.ended?IG_POSTS.slice(0,IG_POSTS.length):IG_POS
  $("#ig-body").innerHTML=h;
  document.querySelectorAll("[data-like]").forEach(el=>el.addEventListener("click",()=>{el.classList.toggle("liked");el.textContent=el.classList.contains("liked")?"♥":"♡";}));}
 /* ===== TIKTOK ===== */
-const TT_ORDER=[1,0,2];
-function renderTT(){const unlocked=(S.ended?TT_ORDER:TT_ORDER.slice(0,Math.min(S.tt,1))).map(i=>TT_POSTS[i]);
+function ttVisible(p){return p.end?!!S.ended:S.scene>=(p.min||0);}
+let ttObs=null;
+function ttPauseAll(){document.querySelectorAll("#tt-feed video").forEach(x=>{try{x.pause();}catch(e){}});if(ttObs){ttObs.disconnect();ttObs=null;}}
+function renderTT(){
+ const list0=TT_POSTS.filter(ttVisible);
+ const list=list0.length?list0:[TT_POSTS[0]];
  const au=$("#au-handsup");
- $("#tt-feed").innerHTML=(unlocked.length?unlocked:[TT_POSTS[1]]).map((p,i)=>`<div class="tt-item"><img src="${p.img}" class="${i===0?"kenburns":""}"><div class="tt-shade"></div>
+ $("#tt-feed").innerHTML=list.map((p,i)=>`<div class="tt-item" data-tti="${i}">${p.v?`<video src="${p.v}" poster="${p.img||""}" muted loop playsinline preload="metadata"></video><div class="tt-paused" style="display:none">⏸</div>`:`<img src="${p.img}" class="${i===0?"kenburns":""}">`}<div class="tt-shade"></div>
  <div class="tt-top"><span>フォロー中</span><span class="on">おすすめ</span></div>
  <div class="tt-side"><span class="si"><span class="icn"><img src="${CAST[p.who].av}" style="width:46px;height:46px;border-radius:50%;border:2px solid #fff;object-fit:cover"></span></span>
  <span class="si"><span class="icn heart" data-ttlike="${i}">🤍</span><span data-ttn="${i}">${p.likes.toLocaleString()}</span></span>
  <span class="si"><span class="icn">💬</span>${(p.likes/37|0).toLocaleString()}</span><span class="si"><span class="icn">↗️</span>共有</span>
  <span class="tt-disc"><img src="${CAST[p.who].av}"></span></div>
  <div class="tt-info"><div class="tu">${esc(p.user)}</div><div class="tc">${esc(p.cap)}</div><div class="tt-music"><span>🎵</span><span class="mq">${esc(p.song)}　・　${esc(p.song)}　・　</span></div>
- ${p.song.includes("Hands Up")?`<button class="bigbtn" data-play="1" style="width:auto;padding:9px 16px;margin-top:9px;background:#fe2c55">▶ 公式プレビューを再生</button>`:""}</div>
+ ${!p.v&&p.song.includes("Hands Up")?`<button class="bigbtn" data-play="1" style="width:auto;padding:9px 16px;margin-top:9px;background:#fe2c55">▶ 公式プレビューを再生</button>`:""}</div>
  <div class="tt-prog" id="tt-prog-${i}"></div></div>`).join("");
- document.querySelectorAll("[data-ttlike]").forEach(el=>el.addEventListener("click",()=>{const i=el.dataset.ttlike;const n=document.querySelector(`[data-ttn="${i}"]`);const post=(unlocked.length?unlocked:[TT_POSTS[1]])[i];const liked=el.textContent==="❤️";el.textContent=liked?"🤍":"❤️";n.textContent=(post.likes+(liked?0:1)).toLocaleString();}));
- const pb=document.querySelector("[data-play]");if(pb)pb.addEventListener("click",()=>{if(au.paused){au.play();pb.textContent="⏸ 停止";}else{au.pause();pb.textContent="▶ 公式プレビューを再生";}});
- au.ontimeupdate=()=>{const bar=document.querySelector(".tt-prog");if(bar&&au.duration)bar.style.width=(au.currentTime/au.duration*100)+"%";};}
+ document.querySelectorAll("[data-ttlike]").forEach(el=>el.addEventListener("click",ev=>{ev.stopPropagation();const i=+el.dataset.ttlike;const n=document.querySelector(`[data-ttn="${i}"]`);const post=list[i];const liked=el.textContent==="❤️";el.textContent=liked?"🤍":"❤️";n.textContent=(post.likes+(liked?0:1)).toLocaleString();}));
+ const pb=document.querySelector("[data-play]");if(pb)pb.addEventListener("click",ev=>{ev.stopPropagation();if(au.paused){au.play();pb.textContent="⏸ 停止";}else{au.pause();pb.textContent="▶ 公式プレビューを再生";}});
+ const hi=list.findIndex(p=>!p.v&&p.song.includes("Hands Up"));
+ au.ontimeupdate=()=>{if(hi<0)return;const bar=document.querySelector("#tt-prog-"+hi);if(bar&&au.duration)bar.style.width=(au.currentTime/au.duration*100)+"%";};
+ const items=[...document.querySelectorAll("#tt-feed .tt-item")];
+ items.forEach(item=>{const v=item.querySelector("video");if(!v)return;const idx=+item.dataset.tti;const bar=document.querySelector("#tt-prog-"+idx);const pz=item.querySelector(".tt-paused");
+  v.addEventListener("timeupdate",()=>{if(bar&&v.duration)bar.style.width=(v.currentTime/v.duration*100)+"%";});
+  v.addEventListener("play",()=>{if(pz)pz.style.display="none";});
+  v.addEventListener("pause",()=>{if(pz)pz.style.display="flex";});
+  item.addEventListener("click",e=>{if(e.target.closest("[data-ttlike],[data-play],.tt-side,.tt-info"))return;if(v.paused)v.play().catch(()=>{});else v.pause();});});
+ if(ttObs)ttObs.disconnect();
+ if("IntersectionObserver" in window){ttObs=new IntersectionObserver(es=>{es.forEach(en=>{const v=en.target.querySelector("video");if(!v)return;if(en.intersectionRatio>=0.6)v.play().catch(()=>{});else v.pause();});},{root:$("#tt-feed"),threshold:[0,0.6,1]});
+  items.forEach(it=>{if(it.querySelector("video"))ttObs.observe(it);});}
+ $("#tt-feed").scrollTop=0;}
 /* ===== NOTES / CAL / PHOTOS / MUSIC ===== */
 function renderNotes(){const el=$("#notes-body");let h=S.memos.length?S.memos.map(id=>{const sc=SCENES.find(s=>s.id===id);return `<div class="note-item"><div class="nt">${esc(sc.memo.t)}<span>${esc(sc.date)}</span></div><p>${esc(sc.memo.b)}</p></div>`;}).join(""):`<div class="note-lock">🔒 ノートはまだ空だよ。物語を進めると記録が貯まっていく</div>`;
  const eg=endingsGot();const names={duo:"2人で、最後のNCTへ",solo:"秘密を抱えてデビュー",next:"選ばれなかった夏の先へ",step:"それでも、音楽は続く"};
