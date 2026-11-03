@@ -6,7 +6,7 @@
 <title>デビュー前の彼らに出会う件｜スマホ風SNSファンゲーム</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-:root{--ink:#111;--sub:#8e8e93;--bg:#f2f2f7;--red:#ff3b30;--line:#e3e3e8;--kakao:#fee500;--linegrn:#06c755}
+:root{--ink:#111;--sub:#8e8e93;--bg:#f2f2f7;--red:#ff3b30;--line:#e3e3e8;--kakao:#fee500;--linegrn:#06c755;--ease:cubic-bezier(.25,.9,.3,1)}
 html,body{height:100%}
 body{font-family:-apple-system,"SF Pro Text","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:radial-gradient(1100px 700px at 20% 0%,#2b3040 0%,#14161d 55%,#08090c 100%);color:#fff;display:flex;flex-direction:column;align-items:center;min-height:100dvh}
 .page-head{padding:16px 16px 8px;text-align:center;max-width:560px}
@@ -281,7 +281,7 @@ img{user-select:none;-webkit-user-drag:none}
 .end-card p{font-size:14px;line-height:1.8;color:#f0f0f3;white-space:pre-line}
 .end-card .eg{font-size:12px;color:#c9ccd4;margin-top:12px;line-height:1.6}
 .end-card .bigbtn{background:#fff;color:#111;margin-top:15px}
-.toast{position:absolute;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:rgba(20,20,24,.92);color:#fff;font-size:13px;padding:10px 17px;border-radius:20px;opacity:0;pointer-events:none;transition:.3s;z-index:300;max-width:86%;text-align:center;line-height:1.5}
+.toast{position:absolute;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:rgba(20,20,24,.92);color:#fff;font-size:13px;padding:10px 17px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:300;max-width:86%;text-align:center;line-height:1.5}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .set-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #f0f0f3;font-size:14.5px;width:100%;text-align:left}
 .set-row span{color:var(--sub);font-size:12.5px}
@@ -309,7 +309,7 @@ body{height:var(--app-h);min-height:0;overflow:hidden}
 .dock{bottom:calc(10px + env(safe-area-inset-bottom))}
 .homebar{bottom:calc(5px + env(safe-area-inset-bottom))}
 /* ===== v2: motion / tap feedback ===== */
-.view.on{animation:vIn .26s cubic-bezier(.25,.9,.3,1)}
+.view.on{animation:vIn .25s var(--ease)}
 @keyframes vIn{from{opacity:.3;transform:scale(.982)}to{opacity:1;transform:none}}
 .app .ic{transition:transform .15s ease}
 .app:active .ic{transform:scale(.88)}
@@ -390,7 +390,7 @@ svg{display:block}
 /* overlay (profiles / story / viewer / dm) */
 #ovl{position:absolute;inset:0;z-index:230;display:none}
 #ovl.on{display:block}
-.ovl-full{position:absolute;inset:0;display:flex;flex-direction:column;animation:vIn .24s cubic-bezier(.25,.9,.3,1)}
+.ovl-full{position:absolute;inset:0;display:flex;flex-direction:column;animation:vIn .25s var(--ease)}
 .ovl-dark{background:#000;color:#fff}
 .ovl-white{background:#fff;color:var(--ink)}
 .ovl-x{position:absolute;top:52px;right:12px;z-index:5;width:34px;height:34px;display:flex;align-items:center;justify-content:center;color:#fff}
@@ -416,7 +416,7 @@ svg{display:block}
 .pfl-acts button svg{width:26px;height:26px}
 /* sheets (comments) */
 .sheet-wrap{position:absolute;inset:0;background:rgba(0,0,0,.45);display:flex;flex-direction:column;justify-content:flex-end;z-index:2}
-.sheet{background:#fff;color:var(--ink);border-radius:15px 15px 0 0;height:84%;display:flex;flex-direction:column;animation:shUp .3s cubic-bezier(.25,.9,.3,1)}
+.sheet{background:#fff;color:var(--ink);border-radius:15px 15px 0 0;height:84%;display:flex;flex-direction:column;animation:shUp .28s var(--ease)}
 @keyframes shUp{from{transform:translateY(56px)}to{transform:none}}
 .sheet .grab{width:38px;height:5px;border-radius:3px;background:#d9d9de;margin:9px auto 3px;flex:none}
 .sheet .sh-h{padding:7px 16px 9px;font-size:13.5px;font-weight:700;text-align:center;border-bottom:1px solid #f0f0f3;flex:none;position:relative}
@@ -685,13 +685,13 @@ svg{display:block}
 .tt-music .tn-ic svg{width:12px;height:12px}
 /* ===== v11: openchat / more / news / voom / reels / feel ===== */
 button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-#ovl{transition:opacity .18s ease}
+#ovl{transition:opacity .25s var(--ease)}
 #ovl.out{opacity:0;pointer-events:none}
 #ovl.out .sheet{transform:translateY(52px)}
-#ovl .sheet{transition:transform .18s ease}
-#v-chat.on{animation:vSlide .24s cubic-bezier(.25,.9,.3,1)}
+#ovl .sheet{transition:transform .25s var(--ease)}
+#v-chat.on{animation:vSlide .25s var(--ease)}
 @keyframes vSlide{from{opacity:.35;transform:translateX(28px)}to{opacity:1;transform:none}}
-.swap{animation:vIn .18s ease}
+.swap{animation:vIn .2s var(--ease)}
 .thread:active,.svc-grid button:active{background:#f0f0f3}
 .tabbar button:active,.ig-nav button:active{opacity:.4}
 .ig-grid button:active img{opacity:.72}
@@ -780,15 +780,15 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .reel-vol svg{width:22px;height:22px}
 
 /* ===== v12: banner / chapter card / gauge pop / endings / music ===== */
-#bnr{position:absolute;top:54px;left:10px;right:10px;z-index:295;background:rgba(32,32,40,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:24px;padding:10px 13px;display:flex;gap:10px;align-items:flex-start;color:#fff;opacity:0;transform:translateY(-18px);pointer-events:none;transition:opacity .35s ease,transform .35s ease;box-shadow:0 14px 34px rgba(0,0,0,.38);cursor:pointer}
+#bnr{position:absolute;top:54px;left:10px;right:10px;z-index:295;background:rgba(32,32,40,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:24px;padding:10px 13px;display:flex;gap:10px;align-items:flex-start;color:#fff;opacity:0;transform:translateY(-18px);pointer-events:none;transition:opacity .35s var(--ease),transform .35s var(--ease);box-shadow:0 14px 34px rgba(0,0,0,.38);cursor:pointer}
 #bnr.show{opacity:1;transform:translateY(0);pointer-events:auto}
 #bnr .bn-ic{width:34px;height:34px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
 #bnr .bn-main{flex:1;min-width:0;display:block}
 #bnr .bn-h{font-size:12px;color:#c6c9d2;display:flex;justify-content:space-between;gap:8px}
 #bnr .bn-t{font-size:13.5px;line-height:1.45;margin-top:1px;display:block}
-#chapcard{position:absolute;inset:0;z-index:285;display:flex;align-items:center;justify-content:center;background:rgba(4,5,9,.58);opacity:0;pointer-events:none;transition:opacity .45s ease}
+#chapcard{position:absolute;inset:0;z-index:285;display:flex;align-items:center;justify-content:center;background:rgba(4,5,9,.58);opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
 #chapcard.show{opacity:1}
-#chapcard .cc-in{text-align:center;color:#fff;padding:0 36px;transform:translateY(10px);transition:transform .45s ease}
+#chapcard .cc-in{text-align:center;color:#fff;padding:0 36px;transform:translateY(10px);transition:transform .45s var(--ease)}
 #chapcard.show .cc-in{transform:translateY(0)}
 #chapcard .cc-d{font-size:12.5px;letter-spacing:.24em;color:#ffd60a;font-weight:700}
 #chapcard .cc-t{font-size:20.5px;font-weight:700;line-height:1.55;margin-top:11px}
@@ -874,7 +874,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="t-btn sub" id="t-cont">つづきから</button>
 <button class="t-btn sub" id="t-ends">エンディングコレクション <span id="t-ends-n"></span></button>
 <div class="t-note">実在の人物・番組を題材にした創作フィクション（ファンメイド作品）です。会話やナオ・大翔の結果は創作であり、史実の選抜結果とは異なる分岐を含みます。</div>
-<div class="t-ver">LASTART編 v17</div>
+<div class="t-ver">LASTART編 v18</div>
 </div>
 </div>
 <!-- LOCK -->
@@ -989,14 +989,14 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="set-prof" data-deco><img src="assets/av-nao.jpg" alt=""><span><span class="sn">ナオ</span><div class="ss" id="set-prof-sub">練習生としてLASTARTに参加中</div></span></button>
 <div class="set-grp">
 <button class="set-row" id="set-ends"><span class="lft"><span class="set-ic" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M18.5 3h-3V2.5A1.5 1.5 0 0 0 14 1H10a1.5 1.5 0 0 0-1.5 1.5V3H5.5A1.5 1.5 0 0 0 4 4.5c0 3 1.9 5.4 4.6 6.3A6 6 0 0 0 11 14.9v1.6H7.5a1.5 1.5 0 0 0-1.5 1.5v2h12v-2a1.5 1.5 0 0 0-1.5-1.5H13v-1.6a6 6 0 0 0 2.4-4.6C18.1 9.9 20 7.5 20 4.5A1.5 1.5 0 0 0 18.5 3zM6.2 7.2A4.4 4.4 0 0 1 6 5h1v3.4c-.3-.4-.6-.8-.8-1.2zM18 5h1a4.4 4.4 0 0 1-.2 2.2c-.2.4-.5.8-.8 1.2z" transform="scale(.92) translate(1,1)"/></svg></span>エンディングコレクション</span><span><span id="set-ends-n"></span><span class="chev">›</span></span></button>
-<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v17</span></button>
+<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v18</span></button>
 <button class="set-row" data-deco><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"><path d="M6.2 10.2a5.8 5.8 0 0 1 11.6 0c0 3.9 1.4 5.3 1.4 5.3H4.8s1.4-1.4 1.4-5.3z"/><path d="M10.1 19a2 2 0 0 0 3.8 0" stroke-linecap="round"/></svg></span>通知</span><span>オン<span class="chev">›</span></span></button>
 <button class="set-row" id="set-sfx"><span class="lft"><span class="set-ic" style="background:#34c759"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 9.5v5A1.5 1.5 0 0 0 5.5 16H9l5.2 4.4c.7.6 1.8.1 1.8-.8V4.4c0-.9-1.1-1.4-1.8-.8L9 8H5.5A1.5 1.5 0 0 0 4 9.5zm14.9-3.2-.9 1.2a5.6 5.6 0 0 1 0 9l.9 1.2a7.6 7.6 0 0 0 0-11.4z"/></svg></span>サウンドと触覚</span><span><span id="set-sfx-st"></span> <span class="chev">›</span></span></button>
 </div>
 <div class="set-grp">
 <button class="set-row danger" id="set-reset"><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24"><path d="M9 3.5A1.5 1.5 0 0 1 10.5 2h3A1.5 1.5 0 0 1 15 3.5V4h4.5v2H4.5V4H9zm-3.2 3h12.4l-.8 12.2A2.5 2.5 0 0 1 14.9 21H9.1a2.5 2.5 0 0 1-2.5-2.3L5.8 6.5zM9.5 9v8.5h1.8V9zm4.7 0v8.5H16V9z" transform="scale(.94) translate(.7,.5)"/></svg></span>最初からやり直す</span><span>セーブを消去</span></button>
 </div>
-<div class="locknote">『デビュー前の彼らに出会う件』v17<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v18<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
 </div>
 </div>
 <div id="ovl"></div>
@@ -1963,7 +1963,7 @@ function renderMusic(){const au=$("#au-handsup");const open=handsUpOpen();
  <div class="mu-lib"><div class="mu-libh">プレイリスト ― LASTART 2023</div><button class="mu-row" id="mu-row"><img src="assets/group2023.jpg" alt=""><div class="mr"><b>Hands Up</b><span>NCT NEW TEAM · プレデビューシングル（2023年10月8日配信）</span></div><span class="mu-eq"><i></i><i></i><i></i></span><span class="dur">0:30</span></button></div>`;
  if(!open){if(!au.paused)au.pause();
   $("#music-body").innerHTML=head+`<div class="locknote">この曲はプレデビュー曲です（2023年10月公開）。<br>2023年9月9日・10日の『NCT NATION : To The World』（大阪）で初披露され、10月8日に配信リリース、プレデビューツアーでも披露されました。<br>作中の時期がプレデビュー期（最終発表のあと）に到達すると、ここで聴けるようになります。</div>`;
-  const _lk=()=>toast("プレデビュー曲はまだ公開前だよ（2023年10月公開）");$("#mu-play").addEventListener("click",_lk);const _lr=$("#mu-row");if(_lr)_lr.addEventListener("click",_lk);
+  const _lk=()=>toast("プレデビュー曲はまだ公開前だよ（2023年10月公開）");$("#mu-play").addEventListener("click",_lk);const _lr=$("#mu-row");if(_lr)_lr.addEventListener("click",_lk);["#mu-prev","#mu-next","#mu-rep"].forEach(s=>{const b=$(s);if(b)b.addEventListener("click",_lk);});
   return;}
  $("#music-body").innerHTML=head+`<div class="locknote">プレデビュー曲『Hands Up』の公式プレビュー音源（30秒）を収録。<br>2023年9月のNCT NATIONで初披露され、プレデビューツアーでも歌われた、デビュー前の彼らの始まりの曲。</div>`;
  const btn=$("#mu-play"),row=$("#mu-row"),prog=$("#mu-prog");
