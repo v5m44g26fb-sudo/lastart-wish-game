@@ -954,6 +954,56 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 .stv-zone{position:absolute;top:0;bottom:0;width:38%;z-index:2;background:none;border:none}
 .stv-zone.l{left:0}.stv-zone.r{right:0}
 
+/* ===== v49: per-app realism round 3 (2023) — LINE talk-list swipe actions, Kakao/LINE emoticon & sticker panels, Kakao friends favorites+channels, TikTok LIVE room + unfollow sheet, lock-screen notification stack, Settings search ===== */
+.swrow{position:relative;overflow:hidden;background:#fff}
+.swacts{position:absolute;top:0;right:0;bottom:0;display:flex}
+.swacts button{width:74px;border:none;color:#fff;font-size:11.5px;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-family:inherit}
+.swacts button svg{width:20px;height:20px}
+.swacts .swa-pin{background:#b9b9bf}.swacts .swa-bell{background:#8e8e93}.swacts .swa-del{background:#ff3b30}
+.swmain{position:relative;background:#fff;touch-action:pan-y;will-change:transform}
+.emo-panel{background:#f7f7f9;border-top:1px solid var(--line);padding:0 0 calc(8px + env(safe-area-inset-bottom))}
+.emo-tabs{display:flex;gap:2px;padding:7px 10px 3px;border-bottom:1px solid #ececf0;overflow-x:auto;scrollbar-width:none}
+.emo-tabs::-webkit-scrollbar{display:none}
+.emo-tabs button{flex:none;border:none;background:none;font-size:19px;padding:4px 9px;border-radius:9px;line-height:1.2}
+.emo-tabs button.on{background:#e6e6eb}
+.emo-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;padding:9px 10px 3px}
+.emo-grid button{border:none;background:none;font-size:25px;padding:5px 0;line-height:1.25;border-radius:10px}
+.emo-grid button:active{background:#e9e9ee}
+.emo-grid.stamp button{font-size:34px;padding:8px 0}
+.emo-foot{display:flex;justify-content:flex-end;padding:2px 12px 0}
+.emo-foot button{border:none;background:#e6e6eb;border-radius:8px;font-size:12.5px;padding:5px 13px;color:#333;font-family:inherit}
+.chat-input .field{position:relative}
+.chat-input .fld-emo{position:absolute;right:5px;top:50%;transform:translateY(-50%);border:none;background:none;color:#8e8e93;display:flex;padding:2px}
+.tt-live{background:none;border:none;color:#fff;font-family:inherit;cursor:pointer}
+.tt-live::before{content:'';width:7px;height:7px;border-radius:50%;background:#fe2c55;animation:lvpulse 1.6s infinite}
+@keyframes lvpulse{0%,100%{opacity:1}50%{opacity:.35}}
+.lv-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.72)}
+.lv-top{position:absolute;top:calc(52px + env(safe-area-inset-top));left:12px;right:12px;display:flex;align-items:center;gap:8px;z-index:3}
+.lv-host{display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.38);border-radius:20px;padding:3px 10px 3px 3px;color:#fff;font-size:12.5px;font-weight:600}
+.lv-host img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+.lv-host button{border:none;background:#fe2c55;color:#fff;font-size:11.5px;font-weight:700;border-radius:6px;padding:4px 9px;font-family:inherit;white-space:nowrap;flex:none}
+.lv-view{margin-left:auto;background:rgba(0,0,0,.38);color:#fff;font-size:11.5px;border-radius:6px;padding:4px 8px;display:flex;gap:4px;align-items:center}
+.lv-badge{background:#fe2c55;color:#fff;font-size:10px;font-weight:800;border-radius:4px;padding:2.5px 5px;letter-spacing:.05em}
+.lv-x{background:rgba(0,0,0,.38);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:15px;flex:none}
+.lv-cmts{position:absolute;left:12px;bottom:86px;width:72%;display:flex;flex-direction:column;gap:6px;z-index:2;max-height:216px;overflow:hidden;justify-content:flex-end}
+.lv-cmt{background:rgba(0,0,0,.34);border-radius:13px;padding:5px 10px;color:#fff;font-size:12.5px;line-height:1.45;width:fit-content;max-width:100%}
+.lv-cmt b{color:#ffd6de;margin-right:5px;font-weight:700}
+.lv-btm{position:absolute;left:12px;right:12px;bottom:calc(16px + env(safe-area-inset-bottom));display:flex;gap:9px;align-items:center;z-index:3}
+.lv-in{flex:1;background:rgba(0,0,0,.42);color:#c9c9ce;border-radius:19px;padding:9px 14px;font-size:13.5px}
+.lv-heart{position:relative;width:42px;height:42px;border-radius:50%;border:none;background:rgba(0,0,0,.42);color:#fe2c55;display:flex;align-items:center;justify-content:center;flex:none}
+.lv-heart svg{width:22px;height:22px}
+.lv-fh{position:absolute;bottom:52px;right:6px;color:#fe2c55;pointer-events:none;animation:lvfloat 1.5s ease-out forwards;z-index:4}
+.lv-fh svg{width:24px;height:24px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))}
+@keyframes lvfloat{0%{transform:translateY(0) scale(.6);opacity:0}12%{opacity:1}100%{transform:translateY(-190px) translateX(-14px) scale(1.15);opacity:0}}
+.ch-chip{flex:none;background:#fee500;color:#3a1d1d;font-size:11.5px;font-weight:700;border-radius:6px;padding:5px 9px}
+.fr-star{color:#f5b301;font-size:13px;margin-left:4px}
+.lnotif.stack{position:relative;z-index:1}
+.lnotif.stack::before,.lnotif.stack::after{content:'';position:absolute;left:7px;right:7px;bottom:-5px;height:100%;background:rgba(38,38,44,.38);border-radius:22px;z-index:-1}
+.lnotif.stack::after{left:14px;right:14px;bottom:-10px;background:rgba(38,38,44,.22)}
+.lock-stack-n{position:relative;text-align:center;font-size:11.5px;color:rgba(255,255,255,.75);margin-top:15px}
+.set-search{display:flex;align-items:center;gap:6px;background:#e9e9ee;color:#8e8e93;border-radius:10px;padding:8px 11px;font-size:14.5px;margin:12px 16px 2px}
+.set-search svg{width:15px;height:15px;flex:none}
+
 /* ===== v14: real-device Safari fit (overscroll containment) ===== */
 html,body{overscroll-behavior:none}
 .abody,#chat-body,.home-scroll,.tt-feed,.sheet .sh-b,.ttp-grid{overscroll-behavior:contain}
@@ -993,7 +1043,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="t-btn sub" id="t-cont">つづきから</button>
 <button class="t-btn sub" id="t-ends">エンディングコレクション <span id="t-ends-n"></span></button>
 <div class="t-note">実在の人物・番組を題材にした創作フィクション（ファンメイド作品）です。会話やナオ・大翔の結果は創作であり、史実の選抜結果とは異なる分岐を含みます。</div>
-<div class="t-ver">LASTART編 v48</div>
+<div class="t-ver">LASTART編 v49</div>
 </div>
 </div>
 <!-- LOCK -->
@@ -1001,8 +1051,10 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div class="wall"></div>
 <div class="lock-top"><div class="lock-pad"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.8a5 5 0 0 0-5 5V10H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1V7.8a5 5 0 0 0-5-5zm-3 7.2V7.8a3 3 0 1 1 6 0V10zm3 3.4a1.9 1.9 0 0 1 1 3.3V18h-2v-1.3a1.9 1.9 0 0 1 1-3.3z"/></svg></div><div class="lock-date" id="lock-date">7月26日 水曜日</div><div class="lock-time" id="lock-clock">21:00</div></div>
 <div class="lock-notifs">
-<div class="lnotif"><span class="ln-ic"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M12 3.2C6.4 3.2 1.9 6.9 1.9 11.4c0 2.9 1.9 5.4 4.7 6.8l-.7 3.3 4.4-2.4c.5.1 1.1.2 1.7.2 5.6 0 10.1-3.7 10.1-8.2S17.6 3.2 12 3.2z" fill="#3a1d1d"/><circle cx="7.5" cy="11.3" r="1.3" fill="#fee500"/><circle cx="12" cy="11.3" r="1.3" fill="#fee500"/><circle cx="16.5" cy="11.3" r="1.3" fill="#fee500"/></svg></span><div style="flex:1;min-width:0"><div class="ln-h">カカオトーク<span>今</span></div><div class="ln-t" id="lock-n1-t">LASTART 練習生ルーム：明日、最初のミッションが始まる</div></div></div>
+<div class="lnotif stack"><span class="ln-ic"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M12 3.2C6.4 3.2 1.9 6.9 1.9 11.4c0 2.9 1.9 5.4 4.7 6.8l-.7 3.3 4.4-2.4c.5.1 1.1.2 1.7.2 5.6 0 10.1-3.7 10.1-8.2S17.6 3.2 12 3.2z" fill="#3a1d1d"/><circle cx="7.5" cy="11.3" r="1.3" fill="#fee500"/><circle cx="12" cy="11.3" r="1.3" fill="#fee500"/><circle cx="16.5" cy="11.3" r="1.3" fill="#fee500"/></svg></span><div style="flex:1;min-width:0"><div class="ln-h">カカオトーク<span>今</span></div><div class="ln-t" id="lock-n1-t">LASTART 練習生ルーム：明日、最初のミッションが始まる</div></div></div>
 <div class="lnotif"><span class="ln-ic" id="lock-n2-ic" style="background:#fff"></span><div style="flex:1;min-width:0"><div class="ln-h" id="lock-n2-h">カレンダー<span>5分前</span></div><div class="ln-t" id="lock-n2-t">明日 9:00 ― 最初のミッション収録</div></div></div>
+<div class="lnotif" id="lock-n3" style="display:none"><span class="ln-ic" style="background:linear-gradient(45deg,#feda75,#d62976,#962fbf);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.25" fill="#fff" stroke="none"/></svg></span><div style="flex:1;min-width:0"><div class="ln-h">Instagram<span>12分前</span></div><div class="ln-t" id="lock-n3-t">sm_nctuniverse が新しい投稿をシェアしました</div></div></div>
+<div class="lock-stack-n" id="lock-stack-n" style="display:none">カカオトークの通知 3件が積み重なっている</div>
 </div>
 <div class="lock-btns"><span class="lk-btn"><svg viewBox="0 0 24 24"><path d="M9.2 2.5h5.6l.9 3.4c1.3 1 2 2.5 2 4.1l-.3 8.2c0 .9-.7 1.6-1.6 1.6H8.2c-.9 0-1.6-.7-1.6-1.6L6.3 10c0-1.6.7-3.1 2-4.1l.9-3.4zm2.8 17.9a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2zM9.6 8.4l-.2 2h5.2l-.2-2H9.6z"/></svg></span><span class="lk-btn"><svg viewBox="0 0 24 24"><path d="M4 7h3.2l1.8-2.6c.2-.3.6-.5 1-.5h4c.4 0 .8.2 1 .5L16.8 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm8 3.2a4.3 4.3 0 1 0 0 8.6 4.3 4.3 0 0 0 0-8.6zm0 2a2.3 2.3 0 1 1 0 4.6 2.3 2.3 0 0 1 0-4.6z"/></svg></span></div>
 <div class="lock-hint">タップしてロック解除</div>
@@ -1037,6 +1089,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div id="chat-body"></div>
 <div id="chat-panel"></div>
 <div class="attach-panel" id="attach-panel" style="display:none"></div>
+<div class="emo-panel" id="emo-panel" style="display:none"></div>
 <div class="chat-input" id="chat-inputbar"><button class="plus" id="chat-plus" aria-label="添付メニュー"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><span class="field" id="chat-field">メッセージを入力</span><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1.15" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r="1.15" fill="currentColor" stroke="none"/><path d="M8 14.2c1.1 1.4 2.5 2.1 4 2.1s2.9-.7 4-2.1" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg></div>
 </div>
 <div id="gpop"></div>
@@ -1106,10 +1159,11 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div class="view" id="v-set">
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>設定</h2></div>
 <div class="abody">
+<div class="set-search" data-deco><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>検索</div>
 <button class="set-prof" data-deco><img src="assets/av-nao.jpg" alt=""><span><span class="sn">ナオ</span><div class="ss" id="set-prof-sub">練習生としてLASTARTに参加中</div></span></button>
 <div class="set-grp">
 <button class="set-row" id="set-ends"><span class="lft"><span class="set-ic" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M18.5 3h-3V2.5A1.5 1.5 0 0 0 14 1H10a1.5 1.5 0 0 0-1.5 1.5V3H5.5A1.5 1.5 0 0 0 4 4.5c0 3 1.9 5.4 4.6 6.3A6 6 0 0 0 11 14.9v1.6H7.5a1.5 1.5 0 0 0-1.5 1.5v2h12v-2a1.5 1.5 0 0 0-1.5-1.5H13v-1.6a6 6 0 0 0 2.4-4.6C18.1 9.9 20 7.5 20 4.5A1.5 1.5 0 0 0 18.5 3zM6.2 7.2A4.4 4.4 0 0 1 6 5h1v3.4c-.3-.4-.6-.8-.8-1.2zM18 5h1a4.4 4.4 0 0 1-.2 2.2c-.2.4-.5.8-.8 1.2z" transform="scale(.92) translate(1,1)"/></svg></span>エンディングコレクション</span><span><span id="set-ends-n"></span><span class="chev">›</span></span></button>
-<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v48</span></button>
+<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v49</span></button>
 <button class="set-row" data-deco><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"><path d="M6.2 10.2a5.8 5.8 0 0 1 11.6 0c0 3.9 1.4 5.3 1.4 5.3H4.8s1.4-1.4 1.4-5.3z"/><path d="M10.1 19a2 2 0 0 0 3.8 0" stroke-linecap="round"/></svg></span>通知</span><span>オン<span class="chev">›</span></span></button>
 <button class="set-row" id="set-a11y"><span class="lft"><span class="set-ic" style="background:#0a84ff"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="4.4" r="2.2"/><path d="M19.6 8.1c-2.5.6-5 0.9-7.6 0.9s-5.1-.3-7.6-.9l.5-2c2.3.5 4.7.8 7.1.8s4.8-.3 7.1-.8l.5 2z"/><path d="M13.1 10.2v3.3l2.8 5.2-1.9 1-2.4-4.5-2.5 4.5-1.9-1 2.8-5.2v-3.3h3.1z" transform="translate(-1.05 0)"/></svg></span>アクセシビリティ</span><span><span id="set-a11y-st">標準</span> <span class="chev">›</span></span></button>
 <button class="set-row" id="set-sfx"><span class="lft"><span class="set-ic" style="background:#34c759"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 9.5v5A1.5 1.5 0 0 0 5.5 16H9l5.2 4.4c.7.6 1.8.1 1.8-.8V4.4c0-.9-1.1-1.4-1.8-.8L9 8H5.5A1.5 1.5 0 0 0 4 9.5zm14.9-3.2-.9 1.2a5.6 5.6 0 0 1 0 9l.9 1.2a7.6 7.6 0 0 0 0-11.4z"/></svg></span>サウンドと触覚</span><span><span id="set-sfx-st"></span> <span class="chev">›</span></span></button>
@@ -1117,7 +1171,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div class="set-grp">
 <button class="set-row danger" id="set-reset"><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24"><path d="M9 3.5A1.5 1.5 0 0 1 10.5 2h3A1.5 1.5 0 0 1 15 3.5V4h4.5v2H4.5V4H9zm-3.2 3h12.4l-.8 12.2A2.5 2.5 0 0 1 14.9 21H9.1a2.5 2.5 0 0 1-2.5-2.3L5.8 6.5zM9.5 9v8.5h1.8V9zm4.7 0v8.5H16V9z" transform="scale(.94) translate(.7,.5)"/></svg></span>最初からやり直す</span><span>セーブを消去</span></button>
 </div>
-<div class="locknote">『デビュー前の彼らに出会う件』v48<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v49<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
 </div>
 </div>
 <div id="ovl"></div>
@@ -1707,7 +1761,9 @@ function renderLock(){const n1=$("#lock-n1-t");if(n1)n1.textContent=S.ended?"LAS
  const _ld=$("#lock-date"),_lc=$("#lock-clock");if(_ld&&_lc){let _d,_tm;if(S.ended){_d="2月21日 水曜日";_tm=SCENES[SCENES.length-1].start;}else{const _sc=SCENES[Math.min(S.scene,SCENES.length-1)];const _m=_sc.date.match(/(\d+月\d+日)\((.)\)/);_d=_m?_m[1]+" "+_m[2]+"曜日":_sc.date;_tm=_sc.start;}_ld.textContent=_d;_lc.textContent=String(Math.floor(_tm/60)%24).padStart(2,"0")+":"+String(_tm%60).padStart(2,"0");}
  const h=$("#lock-n2-h"),t=$("#lock-n2-t"),ic=$("#lock-n2-ic");if(!t)return;
  if(S.scene>=5||S.ended){ic.innerHTML='<span class="ln-line">LINE</span>';ic.style.cssText="background:#06c755";h.innerHTML="LINE<span>5分前</span>";t.textContent="大翔：着いたら連絡して。……俺も、まだ起きてるから";}
- else{const EV=[["木","27","明日 9:00 ― 最初のミッション収録"],["木","17","8月17日 ― デヨン途中合流（放送回）"],["木","17","8月17日 ― デヨン途中合流（放送回）"],["木","17","8月17日 ― デヨン途中合流（放送回）"],["木","7","9月7日 ― 最終ミッション・デビューメンバー発表"]];const ev=EV[Math.min(S.scene,4)];ic.innerHTML=`<span class="ln-cal"><span>${ev[0]}</span><b>${ev[1]}</b></span>`;ic.style.cssText="background:#fff";h.innerHTML="カレンダー<span>5分前</span>";t.textContent=ev[2];}}
+ else{const EV=[["木","27","明日 9:00 ― 最初のミッション収録"],["木","17","8月17日 ― デヨン途中合流（放送回）"],["木","17","8月17日 ― デヨン途中合流（放送回）"],["木","17","8月17日 ― デヨン途中合流（放送回）"],["木","7","9月7日 ― 最終ミッション・デビューメンバー発表"]];const ev=EV[Math.min(S.scene,4)];ic.innerHTML=`<span class="ln-cal"><span>${ev[0]}</span><b>${ev[1]}</b></span>`;ic.style.cssText="background:#fff";h.innerHTML="カレンダー<span>5分前</span>";t.textContent=ev[2];}
+ /* v49: iOS 16 notification stacking — the Kakao card reads as a stack, an IG notification joins once the official account has posted, and a grouped-count line sits under the stack */
+ const n3=$("#lock-n3"),sn=$("#lock-stack-n");if(n3)n3.style.display=(S.scene>=2||S.ended)?"flex":"none";if(sn)sn.style.display=S.scene>=1?"block":"none";}
 function clock(){const d=new Date();const t=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");$("#sb-time").textContent=t;}
 setInterval(clock,20000);clock();
 /* ===== HOME ===== */
@@ -1918,6 +1974,20 @@ function openChatSearch(){if(!cur)return;const sc=cur;const app=THREADS[sc.threa
   for(let i=0;i<n&&cnt<20;i++){const st=sc.steps[i];const txt=st.t||st.m||st._me||"";if(txt&&kanaN(txt).includes(q)){cnt++;h+=`<button class="srch-hit" data-hit="${i}"><b>${esc(txt.length>42?txt.slice(0,42)+"…":txt)}</b><span>${st.f?esc((CAST[st.f]||{}).n||"")+" · ":""}${sceneClock(sc,i,app)}</span></button>`;}}
   res.innerHTML=h||`<div class="locknote">「${esc(rawQ)}」を含むメッセージはないよ。</div>`;
   res.querySelectorAll("[data-hit]").forEach(b=>b.addEventListener("click",()=>{const idx=b.dataset.hit;closeOvl();setTimeout(()=>{const el=document.querySelector(`#chat-body [data-lp="${idx}"]`);if(el){el.scrollIntoView({block:"center"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}},60);}));});}
+/* ===== v49: LINE talk-list swipe actions (2023) — swipe left reveals ピン留め／通知オフ／削除, like the real list ===== */
+const I_PIN2='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6l-1 7 3 3H7l3-7z"/><path d="M12 14v7"/></svg>';
+const I_BELLOFF='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 10.2a5.8 5.8 0 0 1 11.6 0c0 3.9 1.4 5.3 1.4 5.3H9.5"/><path d="M10.1 19a2 2 0 0 0 3.8 0" /><path d="M4 4l16 16"/></svg>';
+let swGuardEl=null,swGuardT=0;
+document.addEventListener("click",e=>{const r=e.target.closest&&e.target.closest(".swmain");if(!r)return;if(r===swGuardEl&&Date.now()-swGuardT<350){e.stopPropagation();e.preventDefault();return;}if(r.classList.contains("open")){closeSwRow(r);e.stopPropagation();e.preventDefault();}},true);
+function closeSwRow(r){if(!r)return;r.style.transition="transform .22s";r.style.transform="";r.classList.remove("open");}
+function bindSwipeRows(){document.querySelectorAll("#list-body .swmain").forEach(row=>{let sx=null,sy=null,mode=0;const W=222;
+ row.addEventListener("pointerdown",e=>{sx=e.clientX;sy=e.clientY;mode=0;row.style.transition="none";document.querySelectorAll("#list-body .swmain.open").forEach(o=>{if(o!==row)closeSwRow(o);});});
+ row.addEventListener("pointermove",e=>{if(sx===null)return;const dx=e.clientX-sx,dy=e.clientY-sy;
+  if(!mode){if(Math.abs(dx)>9&&Math.abs(dx)>Math.abs(dy))mode=1;else if(Math.abs(dy)>9)mode=2;}
+  if(mode===1){const base=row.classList.contains("open")?-W:0;const x=Math.max(-W,Math.min(0,base+dx));row.style.transform="translateX("+x+"px)";}});
+ const end=()=>{if(sx===null)return;if(mode===1){const m=/translateX\((-?[\d.]+)px\)/.exec(row.style.transform||"");const x=m?+m[1]:0;const open=x<-60;row.style.transition="transform .22s";row.style.transform=open?"translateX(-222px)":"";row.classList.toggle("open",open);swGuardEl=row;swGuardT=Date.now();}sx=null;mode=0;};
+ row.addEventListener("pointerup",end);
+ row.addEventListener("pointercancel",()=>{if(mode===1)closeSwRow(row);sx=null;mode=0;});});}
 function threadRows(app){const tids=Object.keys(THREADS).filter(t=>THREADS[t].app===app);
  const curSc=!S.ended?SCENES[S.scene]:null;
  let h="";
@@ -1928,7 +1998,9 @@ function threadRows(app){const tids=Object.keys(THREADS).filter(t=>THREADS[t].ap
   else if(lastDone){badge=`<span class="done">✓ 済</span>`;prev=lastDone.title+"（完了）";time=app==="kakao"?fmtKDate(lastDone.date):lastDone.date;}
   else prev="（まだ届いていないトーク）";
   const tav=th.av?`<img class="av" loading="lazy" decoding="async" src="${th.av}" style="width:50px;height:50px" alt="">`:avHTML(tid==="hirotoK"||tid==="hirotoL"?"hiroto":tid,50);
-  h+=`<button class="thread" data-thread="${tid}">${tav}<span class="tt"><span class="tn">${th.title}<time>${time}</time></span><span class="tp">${prev}</span></span>${badge}</button>`;});
+  const row=`<button class="thread${app==="line"?" swmain":""}" data-thread="${tid}">${tav}<span class="tt"><span class="tn">${th.title}<time>${time}</time></span><span class="tp">${prev}</span></span>${badge}</button>`;
+  /* v49: LINE talk rows swipe left to the real action set (ピン留め／通知オフ／削除) — the actions themselves stay locked so the story order can't break */
+  h+=app==="line"?`<div class="swrow"><div class="swacts"><button class="swa-pin" data-swa="ピン留め">${I_PIN2}<span>ピン留め</span></button><button class="swa-bell" data-swa="通知オフ">${I_BELLOFF}<span>通知オフ</span></button><button class="swa-del" data-swa="削除">${I_TRASH}<span>削除</span></button></div>${row}</div>`:row;});
  return h;}
 function renderList(app,tab){curApp=app;if(tab)listTabs[app]=tab;const tb=listTabs[app];
  const _lv=$("#v-list");_lv.classList.remove("kakao","line");_lv.classList.add(app);
@@ -1947,10 +2019,19 @@ function renderList(app,tab){curApp=app;if(tab)listTabs[app]=tab;const tb=listTa
   const upd=fr.filter(k=>["sakuya","riku"].includes(k));
   h+=`<div class="fr-sec"><span>업데이트한 프로필</span></div>`;
   upd.forEach(k=>{h+=`<button class="thread" data-kprof="${k}">${avHTML(k,50)}<span class="tt"><span class="tn">${esc(CAST[k].n)}</span><span class="tp">프로필 업데이트 ― ${esc(KSTAT[k].st||roleOf(k))}</span></span>${musChip(k)}</button>`;});
+  /* v49: 즐겨찾기 (favorites) sits between updated profiles and the full friend list in the real friends tab */
+  h+=`<div class="fr-sec"><span>즐겨찾기</span></div>`;
+  ["sion","yushi"].forEach(k=>{h+=`<button class="thread" data-kprof="${k}">${avHTML(k,50)}<span class="tt"><span class="tn">${esc(CAST[k].n)}<span class="fr-star">★</span></span><span class="tp">${esc(KSTAT[k].st||roleOf(k))}</span></span>${musChip(k)}</button>`;});
   h+=`<div class="fr-sec"><span>친구 <b>${fr.length}</b></span></div>`;
   fr.forEach(k=>{h+=`<button class="thread" data-kprof="${k}">${avHTML(k,50)}<span class="tt"><span class="tn">${esc(CAST[k].n)}</span><span class="tp">${esc(KSTAT[k].st||roleOf(k))}</span></span>${musChip(k)}</button>`;});
+  /* v49: real KakaoTalk friends tab also carries a 채널 (channels) section under the friend list */
+  h+=`<div class="fr-sec"><span>채널</span></div>`;
+  h+=`<button class="thread" data-chan="SMTOWN"><img class="av" loading="lazy" decoding="async" src="assets/group2023.jpg" style="border-radius:14px" alt=""><span class="tt"><span class="tn">SMTOWN</span><span class="tp">SM 공식 채널 · 친구 182만</span></span><span class="ch-chip">채널 추가</span></button>`;
+  h+=`<button class="thread" data-chan="NCT Universe"><img class="av" loading="lazy" decoding="async" src="assets/lastart1.jpg" style="border-radius:14px" alt=""><span class="tt"><span class="tn">NCT Universe : LASTART</span><span class="tp">공식 채널 · 친구 96만</span></span><span class="ch-chip">채널 추가</span></button>`;
   h+=`<div class="locknote">プロフィールをタップすると、当時のカカオプロフィール画面が開くよ。<br>物語は채팅（チャット）タブのトークで進みます。</div>`;
  }else if(app==="line"&&tb==="home"){
+  /* v49: the real LINE home opens with a search bar above the profile card */
+  h+=`<div class="dm-search" data-deco style="margin:10px 16px 2px">${IC_SEARCH} 検索</div>`;
   h+=`<button class="me-row" data-lprof="nao"><img class="av" src="assets/av-nao.jpg" alt=""><span><span class="nm">ナオ</span><div class="st">LASTART、最後まで駆け抜ける</div></span></button>`;
   h+=`<div class="fr-sec"><span>友だち <b>2</b></span></div>`;
   h+=`<button class="thread" data-lprof="mom">${avHTML("mom",50)}<span class="tt"><span class="tn">母</span><span class="tp">実家（日本）</span></span></button>`;
@@ -1983,11 +2064,14 @@ function renderList(app,tab){curApp=app;if(tab)listTabs[app]=tab;const tb=listTa
   h+=`<div class="locknote">物語はトークを開くと進むよ。バッジのあるトークが現在の章。</div>`;
  }
  $("#list-body").innerHTML=h;
+ if(app==="line")bindSwipeRows();
+ document.querySelectorAll("[data-swa]").forEach(b=>b.addEventListener("click",()=>{toast(b.dataset.swa+"は物語では使わないよ（トークの順番は物語で固定だよ）");document.querySelectorAll("#list-body .swmain.open").forEach(closeSwRow);}));
  $("#list-body").style.background=(app==="line"&&(tb==="voom"||tb==="news"))?"#f4f4f6":"";
  const lb=$("#list-body");lb.classList.remove("swap");void lb.offsetWidth;lb.classList.add("swap");
  const lsb=document.querySelector("#tk-icons [data-lsearch]");if(lsb)lsb.addEventListener("click",openListSearch);
  document.querySelectorAll("[data-ocroom]").forEach(b=>b.addEventListener("click",()=>openOpenRoom(+b.dataset.ocroom)));
  document.querySelectorAll("[data-mprof]").forEach(b=>b.addEventListener("click",()=>openKakaoProfile("nao")));
+ document.querySelectorAll("[data-chan]").forEach(b=>b.addEventListener("click",()=>toast("채널 ― "+b.dataset.chan+"（追加は物語ではしないよ）")));
  document.querySelectorAll("[data-news]").forEach(b=>b.addEventListener("click",()=>openNews(+b.dataset.news)));
  document.querySelectorAll("[data-vlike]").forEach(b=>b.addEventListener("click",()=>{const on=b.classList.toggle("liked");const ci=+b.dataset.vidx;const k=S.vlk.indexOf(ci);if(on&&k<0)S.vlk.push(ci);if(!on&&k>=0)S.vlk.splice(k,1);save();b.querySelector("span").textContent=fmtN(+b.dataset.vlike+(on?1:0));b.querySelector("svg").outerHTML=on?I_HEART_F:I_HEART;if(on)sfx("like");}));
  document.querySelectorAll("[data-vfol]").forEach(b=>b.addEventListener("click",()=>{const on=b.classList.toggle("on");const ci=+b.dataset.vfol;const k=S.vfl.indexOf(ci);if(on&&k<0)S.vfl.push(ci);if(!on&&k>=0)S.vfl.splice(k,1);save();b.textContent=on?"フォロー中":"フォロー";}));
@@ -2051,10 +2135,20 @@ const IB_IMG=`<svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke
 const IB_MIC=`<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg>`;
 function syncInputBar(app){const bar=$("#chat-inputbar");if(!bar)return;const fld=app==="kakao"?"메시지 입력":"メッセージを入力";
  bar.innerHTML=app==="kakao"
- ?`<button class="plus" id="chat-plus" aria-label="添付メニュー">${IB_PLUS}</button><span class="field" id="chat-field">${fld}</span><span class="ibtn">${IB_EMOJI}</span><span class="ibtn">${IB_HASH}</span>`
- :`<button class="plus" id="chat-plus" aria-label="添付メニュー">${IB_PLUS}</button><span class="ibtn">${IB_CAM}</span><span class="ibtn">${IB_IMG}</span><span class="field" id="chat-field">${fld}</span><span class="ibtn">${IB_MIC}</span>`;
- const pb=bar.querySelector("#chat-plus");if(pb)pb.addEventListener("click",e=>{e.stopPropagation();const p=$("#attach-panel");if(p.style.display==="none"){renderAttach(cur?THREADS[cur.thread].app:(freeMode?"line":"kakao"));p.style.display="block";}else p.style.display="none";});}
-function openChat(sc){cancelFreePending();cur=sc;freeMode=false;const app=THREADS[sc.thread].app;$("#v-chat").className="view on "+app;$("#chat-title").textContent=THREADS[sc.thread].title;syncInputBar(app);const ap=$("#attach-panel");if(ap)ap.style.display="none";VIEWS.forEach(x=>{if(x!=="chat")$("#v-"+x).classList.remove("on");});renderChat();if(S.step===0&&S.shown===0)showChapCard(sc);}
+ ?`<button class="plus" id="chat-plus" aria-label="添付メニュー">${IB_PLUS}</button><span class="field" id="chat-field">${fld}</span><button class="ibtn" id="chat-emo" aria-label="絵文字" style="border:none;background:none;cursor:pointer">${IB_EMOJI}</button><span class="ibtn">${IB_HASH}</span>`
+ :`<button class="plus" id="chat-plus" aria-label="添付メニュー">${IB_PLUS}</button><span class="ibtn">${IB_CAM}</span><span class="ibtn">${IB_IMG}</span><span class="field" id="chat-field">${fld}<button class="fld-emo" id="chat-emo" aria-label="スタンプ">${IB_EMOJI}</button></span><span class="ibtn">${IB_MIC}</span>`;
+ const pb=bar.querySelector("#chat-plus");if(pb)pb.addEventListener("click",e=>{e.stopPropagation();const ep=$("#emo-panel");if(ep)ep.style.display="none";const p=$("#attach-panel");if(p.style.display==="none"){renderAttach(cur?THREADS[cur.thread].app:(freeMode?"line":"kakao"));p.style.display="block";}else p.style.display="none";});
+ const eb=bar.querySelector("#chat-emo");if(eb)eb.addEventListener("click",e=>{e.stopPropagation();toggleEmoPanel(app);});}
+/* ===== v49: KakaoTalk emoticon tray / LINE stamp panel — in free chat a tap appends to the real input; in story chats sending stays locked, like the attach panel ===== */
+const EMO_SETS={kakao:[["😀","😄","😂","🥹","😍","😘","😎","🤔","😴","😭","😱","🥺","😇","🤗","😋","😷","🥴","😏","🙄","😬","👍","👏","🙏","💪","🔥","✨","💯","🎉","❤️","💛","💚","💙"],["🐶","🐱","🐰","🐻","🐼","🦊","🐯","🦁","🐷","🐸","🐵","🐥","🦄","🐙","🌸","🍞","🍰","☕","🍗","🍕","🌙","⭐","☀️","🌈","❄️","🎵","🎤","💃","🕺","📸","🎧","🏀"]],line:[["😀","😆","😂","🤣","😍","🥰","😘","😎","😴","😭","🥺","😳","🤯","🥳","👍","👎","👏","🙌","🙏","💪","🔥","✨","💖","💢","💦","💤","🎉","㊗️","🆗","🙇","🍞","⭐"],["🐻","🐰","🐱","🐶","🐥","🌸","🍙","🍰","☕","🍺","🎵","⚽","🚗","✈️","🏠","💼","📱","💴","❤️","💛","💚","💙","💜","🖤","🤍","💯","‼️","⁉️","⭕","❌","🔟","🎂"]]};
+function renderEmoPanel(app){const p=$("#emo-panel");if(!p)return;const sets=EMO_SETS[app]||EMO_SETS.line;
+ p.innerHTML=`<div class="emo-tabs">${["🕐",...sets.map((s,i)=>s[0])].map((t,i)=>`<button data-emotab="${i}" class="${i===1?"on":""}">${t}</button>`).join("")}<button data-emotab="-1" style="margin-left:auto">⚙️</button></div><div class="emo-grid${app==="line"?" stamp":""}" id="emo-grid">${sets[0].map(e=>`<button data-emo="${e}">${e}</button>`).join("")}</div><div class="emo-foot"><button data-emodel>⌫ 削除</button></div>`;
+ p.querySelectorAll("[data-emotab]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.emotab;if(i<1){toast(i===0?"最近使った絵文字はまだないよ":"設定は物語では開かないよ");return;}p.querySelectorAll("[data-emotab]").forEach(x=>x.classList.toggle("on",x===b));const g=$("#emo-grid");g.innerHTML=sets[i-1].map(e=>`<button data-emo="${e}">${e}</button>`).join("");bindEmoGrid(app);}));
+ bindEmoGrid(app);
+ const del=p.querySelector("[data-emodel]");if(del)del.addEventListener("click",()=>{const inp=$("#free-input");if(freeMode&&inp){inp.value=[...inp.value].slice(0,-1).join("");inp.focus();}else toast("消すメッセージはまだないよ");});}
+function bindEmoGrid(app){document.querySelectorAll("#emo-grid [data-emo]").forEach(b=>b.addEventListener("click",()=>{const inp=$("#free-input");if(freeMode&&inp){inp.value+=b.dataset.emo;inp.focus();}else toast(app==="kakao"?"物語のトークでは送信しないよ（フリーチャットでは入力できるよ）":"物語のトークでは送れないよ（フリーチャットでは入力できるよ)");}));}
+function toggleEmoPanel(app){const p=$("#emo-panel");if(!p)return;const ap=$("#attach-panel");if(ap)ap.style.display="none";if(p.style.display==="none"){renderEmoPanel(app);p.style.display="block";}else p.style.display="none";}
+function openChat(sc){cancelFreePending();cur=sc;freeMode=false;const app=THREADS[sc.thread].app;$("#v-chat").className="view on "+app;$("#chat-title").textContent=THREADS[sc.thread].title;syncInputBar(app);const ap=$("#attach-panel");if(ap)ap.style.display="none";const ep=$("#emo-panel");if(ep)ep.style.display="none";VIEWS.forEach(x=>{if(x!=="chat")$("#v-"+x).classList.remove("on");});renderChat();if(S.step===0&&S.shown===0)showChapCard(sc);}
 function sceneClock(sc,idx,app){let t=sc.start+idx*2;const h=Math.floor(t/60)%24,m=t%60;app=app||THREADS[sc.thread].app;
  if(app==="kakao")return (h<12?"오전 ":"오후 ")+(h%12||12)+":"+String(m).padStart(2,"0");
  return h+":"+String(m).padStart(2,"0");}
@@ -2323,7 +2417,7 @@ function renderTT(){
  ttList=list;
  const au=$("#au-handsup");
  $("#tt-feed").innerHTML=list.map((p,i)=>{const gi=TT_POSTS.indexOf(p),cmN=(p.likes/37|0)+((S.ttc[gi]||[]).length),bkN=(p.likes/53|0),lk=S.ttl.includes(gi),bk=S.ttb.includes(gi);return `<div class="tt-item" data-tti="${i}">${p.v?`<video src="${p.v}" poster="${p.img||""}" muted loop playsinline preload="none"></video><div class="tt-paused" style="display:none">${T_PAUSE}</div>`:`<img loading="lazy" decoding="async" src="${p.img}" class="${i===0?"kenburns":""}">`}<div class="tt-shade"></div>
- <div class="tt-top"><span class="tt-live">LIVE</span><span>フォロー中</span><span class="on">おすすめ</span><button class="tt-srch" data-deco>${T_SEARCH}</button></div>
+ <div class="tt-top"><button class="tt-live" data-ttlive="${i}">LIVE</button><span>フォロー中</span><span class="on">おすすめ</span><button class="tt-srch" data-deco>${T_SEARCH}</button></div>
  <div class="tt-side"><span class="si"><span class="tt-avw"><img src="${CAST[p.who].av}" alt="" data-ttav="${i}">${S.ttf?"":`<span class="tt-plus" data-ttplus="${i}">+</span>`}</span></span>
  <button class="si" data-ttlike="${i}"${lk?' data-on="1"':""} style="color:${lk?"#fe2c55":"#fff"}">${T_HEART}<span class="cnt" data-ttn="${i}">${fmtN(p.likes+(lk?1:0))}</span></button>
  <button class="si" data-ttcmt="${i}" style="color:#fff">${T_CMT}<span class="cnt">${fmtN(cmN)}</span></button>
@@ -2341,6 +2435,7 @@ function renderTT(){
  document.querySelectorAll("[data-ttsh]").forEach(el=>el.addEventListener("click",ev=>{ev.stopPropagation();openTTShare(+el.dataset.ttsh);}));
  document.querySelectorAll("[data-ttvol]").forEach(el=>el.addEventListener("click",ev=>{ev.stopPropagation();ttSound=!ttSound;ttApplySound();if(ttSound){const v=el.closest(".tt-item").querySelector("video");if(v&&v.paused)v.play().catch(()=>{});}}));
  document.querySelectorAll("[data-ttcmt]").forEach(el=>el.addEventListener("click",ev=>{ev.stopPropagation();openTTComments(+el.dataset.ttcmt);}));
+ document.querySelectorAll("[data-ttlive]").forEach(el=>el.addEventListener("click",ev=>{ev.stopPropagation();openTTLive();}));
  const pb=document.querySelector("[data-play]");if(pb)pb.addEventListener("click",ev=>{ev.stopPropagation();if(au.paused){au.play();pb.textContent="⏸ 停止";}else{au.pause();pb.textContent="▶ 公式プレビューを再生";}});
  const hi=list.findIndex(p=>!p.v&&p.song.includes("Hands Up"));
  au.ontimeupdate=()=>{if(hi<0)return;const bar=document.querySelector("#tt-prog-"+hi);if(bar&&au.duration)bar.style.width=(au.currentTime/au.duration*100)+"%";};
@@ -2361,6 +2456,19 @@ function renderTT(){
  if("IntersectionObserver" in window){ttObs=new IntersectionObserver(es=>{es.forEach(en=>{const v=en.target.querySelector("video");if(!v)return;if(en.isIntersecting&&v.preload==="none")v.preload="metadata";if(en.intersectionRatio>=0.6){v.muted=!ttSound;v.play().catch(()=>{});}else v.pause();});},{root:$("#tt-feed"),threshold:[0,0.6,1]});
   items.forEach(it=>{if(it.querySelector("video"))ttObs.observe(it);});}
  $("#tt-feed").scrollTop=0;}
+/* ===== v49: TikTok LIVE room (2023) — tapping the LIVE label joins the official account's live: viewer count, scrolling fan comments and floating hearts, view-only like the real guest experience ===== */
+const LV_CMTS=[["wish_stan","きたー！生配信ありがとう"],["nctzen_kr","오늘도 응원해요!!"],["teaser_loop","画質いい…ずっと見てたい"],["saku_bread","막내들 화이팅"],["lastart_jp","リアタイできてうれしい"],["rookie_watch","コメントの速度すごい"],["gum_stage","다음 무대도 기대 중"],["kr_fan07","심장 떨려요…"],["u_team_wait","全員デビューしてほしい"],["mission_og","ステージ裏側もっと見たい"],["afro_king","声援届いてるといいな"],["ryo_saku","今日も平和に応援中"]];
+function openTTLive(){if(!S.ended&&S.scene<1){toast("今は配信していないよ（放送が始まるとLIVEが開くよ）");return;}
+ const un=S.ended?"@nctwish_official":"@sm_nctuniverse";let viewers=12483+((S.scene*137)%900);let ci=Math.floor(Math.random()*LV_CMTS.length);
+ ovl(`<div class="ovl-full ovl-dark"><img class="lv-bg" src="assets/stage.jpg" alt="">
+ <div class="lv-top"><span class="lv-host"><img src="assets/group2023.jpg" alt="">${un}<button data-lvfol>${S.ttf?"フォロー中":"フォロー"}</button></span><span class="lv-badge">LIVE</span><span class="lv-view">👁 <span id="lv-vn">${fmtN(viewers)}</span></span><button class="lv-x" data-close>✕</button></div>
+ <div class="lv-cmts" id="lv-cmts"></div>
+ <div class="lv-btm"><span class="lv-in" data-deco>コメントを追加…</span><button class="lv-heart" id="lv-heart">${T_HEART}</button></div></div>`);
+ const box=$("#lv-cmts");const push=()=>{if(!box||!document.body.contains(box))return;const c=LV_CMTS[ci%LV_CMTS.length];ci++;const d=document.createElement("div");d.className="lv-cmt";d.innerHTML=`<b>${esc(c[0])}</b>${esc(c[1])}`;box.appendChild(d);while(box.children.length>6)box.removeChild(box.firstChild);};
+ for(let j=0;j<3;j++)push();
+ const tm=setInterval(()=>{if(!document.body.contains(box)){clearInterval(tm);return;}push();viewers=Math.max(9000,viewers+Math.floor(Math.random()*481)-210);const vn=$("#lv-vn");if(vn)vn.textContent=fmtN(viewers);},1700);
+ const fb=$("#ovl [data-lvfol]");if(fb)fb.addEventListener("click",()=>{S.ttf=!S.ttf;save();fb.textContent=S.ttf?"フォロー中":"フォロー";if(S.ttf)sfx("like");ttSyncPlus();});
+ const hb=$("#lv-heart");if(hb)hb.addEventListener("click",()=>{sfx("like");for(let j=0;j<3;j++){const s=document.createElement("span");s.className="lv-fh";s.innerHTML=T_HEART;s.style.right=(2+Math.random()*26)+"px";s.style.animationDelay=(j*0.14)+"s";hb.appendChild(s);setTimeout(()=>s.remove(),2100);}});}
 function openTTShare(i){const p=ttList[i];if(!p)return;
  const fr=["sion","sakuya","riku","ryo","hiroto"].map(k=>`<button data-deco><img src="${CAST[k].av}" alt="">${esc(CAST[k].n)}</button>`).join("");
  const acts=[["リンクをコピー",I_SHARE,null],["LINEで送信",IC_BUB,"LINEは物語のトークで開くよ"],["Xで共有",'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3.5 10.7 12 4.3 20.5h2.2l5.1-6.8 4 6.8H20l-6.9-8.6 6.2-8.4h-2.2l-4.6 6.2-3.6-6.2z"/></svg>',"Xは物語では使わないよ"],["Instagram",'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.4"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.2" cy="6.8" r="1.3" fill="currentColor" stroke="none"/></svg>',"Instagramは左下のアイコンから開くよ"],["保存する",T_BOOK,"お気に入りは右のボタンから追加できるよ"],["興味なし",IC_X,"おすすめの精度が上がったよ（気分だけ）"],["通報",I_INFO,"通報は物語では使わないよ"]].map(a=>a[2]?`<button data-shact="${a[2]}"><span class="sa-ic">${a[1]}</span>${a[0]}</button>`:`<button data-shcopy="1"><span class="sa-ic">${a[1]}</span>${a[0]}</button>`).join("");
@@ -2382,7 +2490,14 @@ function openTTProfile(){const list=ttList.length?ttList:TT_POSTS.filter(ttVisib
  <div class="ttp-tabs"><button class="on" data-ttpt="v">${I_GRID}</button><button data-ttpt="l">${I_LOCK}</button></div>
  <div class="ttp-grid" id="ttp-grid">${list.map((p,i)=>`<button data-ttjump="${i}">${i===0?`<span class="pin">ピン留め</span>`:""}<img loading="lazy" decoding="async" src="${p.img||CAST[p.who].av}" alt=""><span class="vw">${T_PLAY}${fmtN(p.likes)}</span></button>`).join("")}</div></div>`);
  document.querySelectorAll("#ovl [data-ttjump]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.ttjump;closeOvl();const el=document.querySelector(`#tt-feed .tt-item[data-tti="${i}"]`);if(el)el.scrollIntoView({block:"start"});}));
- const tf=$("#ovl #ttp-fol");if(tf)tf.addEventListener("click",()=>{S.ttf=!S.ttf;save();tf.textContent=S.ttf?"フォロー中":"フォローする";if(S.ttf)sfx("like");ttSyncPlus();});
+ const tf=$("#ovl #ttp-fol");if(tf)tf.addEventListener("click",()=>{if(!S.ttf){S.ttf=true;save();tf.textContent="フォロー中";sfx("like");ttSyncPlus();return;}
+ /* v49: like the real app, フォロー中 opens a confirmation sheet instead of unfollowing instantly */
+ ovl(`<div class="sheet-wrap" data-closewrap><div class="sheet auto"><div class="grab"></div><div class="sh-h">${un}<button data-close>${IC_X}</button></div>
+ <button class="lp-row danger" data-unfol style="text-align:center;color:#fe2c55;font-weight:700">フォローをやめる</button>
+ <button class="lp-row" data-close style="text-align:center;border-top:1px solid #f0f0f3">キャンセル</button><div style="height:6px"></div></div></div>`);
+ const wrap=$("#ovl .sheet-wrap");wrap.addEventListener("click",e=>{if(e.target===wrap)openTTProfile();});
+ document.querySelectorAll("#ovl [data-close]").forEach(b=>b.addEventListener("click",()=>openTTProfile()));
+ $("#ovl [data-unfol]").addEventListener("click",()=>{S.ttf=false;save();ttSyncPlus();openTTProfile();});});
  document.querySelectorAll("#ovl [data-ttpt]").forEach(b=>b.addEventListener("click",()=>{if(b.dataset.ttpt==="l"){const g=$("#ttp-grid");if(g)g.innerHTML=`<div class="ttp-lock" style="grid-column:1/-1">${MU_LOCK}<span>物語を進めると、ミッションのステージ映像が<br>ここに増えていくよ（時代ゲート連動）</span></div>`;document.querySelectorAll("#ovl [data-ttpt]").forEach(x=>x.classList.toggle("on",x===b));}else openTTProfile();}));}
 function openTTSearch(){const tags=[["#LASTART","1280万回視聴"],["#SAKUYA","842万回視聴"],["#RIKU","796万回視聴"],(S.ended?["#HandsUp","2140万回視聴"]:["#ChewingGum","764万回視聴"]),["#NCTUNIVERSE","5310万回視聴"],["#SMROOKIES","689万回視聴"]];
  ovl(`<div class="ovl-full ttp"><div class="ttp-hd"><button class="back" data-close style="color:#fff;font-size:24px;background:none;border:none">‹</button><span class="un" style="text-align:left">発見</span></div>
@@ -2481,7 +2596,7 @@ function renderMusic(){const au=$("#au-handsup");const open=handsUpOpen();
  au.onended=()=>{const b=$("#mu-play");if(b)b.innerHTML=MU_PLAY;const f=$("#mu-fill");if(f)f.style.width="0";const rw=$("#mu-row");if(rw)rw.classList.remove("playing");};
  sync();}
 /* ===== FREE CHAT ===== */
-function openFree(){cancelFreePending();freeMode=true;cur=null;$("#v-chat").className="view on line";$("#chat-title").textContent="井汲大翔（フリーチャット）";syncInputBar("line");VIEWS.forEach(x=>{if(x!=="chat")$("#v-"+x).classList.remove("on");});
+function openFree(){cancelFreePending();freeMode=true;cur=null;$("#v-chat").className="view on line";$("#chat-title").textContent="井汲大翔（フリーチャット）";syncInputBar("line");const ep=$("#emo-panel");if(ep)ep.style.display="none";const ap2=$("#attach-panel");if(ap2)ap2.style.display="none";VIEWS.forEach(x=>{if(x!=="chat")$("#v-"+x).classList.remove("on");});
  const endNote={duo:"デビューが決まった後の、2人の休日。",solo:"デビューメンバーと、追いかける人の休日。",next:"選ばれなかった夏の先で、それでも続く連絡。",step:"別々の道を選んだ2人の、それでも続く連絡。"}[S.endId]||"";
  $("#chat-body").innerHTML=`<div class="day-pill"><span>エンディング後 ― ${endNote}</span></div>`+msgHTML({f:"hiroto",t:"よっ。……元気にしてるか"},SCENES[0],0,"line");renderPanel();$("#chat-body").scrollTop=$("#chat-body").scrollHeight;}
 let freeBusy=false,freeTimer=null,freeGen=0;
