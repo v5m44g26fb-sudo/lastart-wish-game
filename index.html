@@ -1036,6 +1036,96 @@ body.a11y-rm *,body.a11y-rm *::before,body.a11y-rm *::after{animation-duration:.
 .mu-artw img{transition:transform .45s var(--ease)}
 .mu-artw.playing img{transform:scale(1.035)}
 
+/* ===== v51: per-app realism round 5 (2023) — iOS Notification Center / Control Center pull-down on the home screen, IG dedicated post screen, TikTok inbox, Phone app (recents / favorites / contacts / keypad / voicemail), KakaoTalk full-screen search ===== */
+#ios-nc,#ios-cc{position:absolute;inset:0;z-index:250;display:none;flex-direction:column}
+#ios-nc.on,#ios-cc.on{display:flex;animation:iosDown .3s var(--ease)}
+@keyframes iosDown{from{transform:translateY(-4%);opacity:.4}to{transform:none;opacity:1}}
+#ios-nc{background:rgba(24,24,30,.42);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:#fff;padding:64px 14px 30px;overflow-y:auto}
+.nc-date{font-size:16px;font-weight:600;color:rgba(255,255,255,.85);text-align:center}
+.nc-time{font-size:74px;font-weight:700;text-align:center;line-height:1.05;letter-spacing:-1px}
+.nc-title{font-size:19px;font-weight:700;margin:20px 4px 10px}
+#ios-nc .lnotif{margin-bottom:9px;width:100%;text-align:left;font-family:inherit;color:#fff;cursor:pointer;border:none}
+.nc-hint{text-align:center;color:rgba(255,255,255,.65);font-size:12px;margin-top:auto;padding-top:14px}
+#ios-cc{background:rgba(24,24,30,.42);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:#fff;padding:64px 18px 30px;overflow-y:auto}
+.cc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cc-conn{background:rgba(58,58,64,.55);border-radius:22px;padding:13px;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.cc-cell{display:flex;flex-direction:column;align-items:center}
+.cc-cir{width:47px;height:47px;border-radius:50%;background:rgba(120,120,128,.45);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;border:none;padding:0}
+.cc-cir svg{width:24px;height:24px}
+.cc-cir.on{background:#0a84ff}
+.cc-cir.on.am{background:#ff9500}
+.cc-lab{font-size:10.5px;color:rgba(255,255,255,.75);text-align:center;margin-top:3px;white-space:nowrap}
+.cc-mus{background:rgba(58,58,64,.55);border-radius:22px;padding:13px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.cc-mus b{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc-mus span{font-size:12.5px;color:rgba(255,255,255,.65);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cc-mbtns{display:flex;justify-content:space-around;align-items:center;margin-top:auto;padding-top:8px}
+.cc-mbtns button{color:#fff;display:flex;background:none;border:none;cursor:pointer;padding:4px}
+.cc-mbtns svg{width:26px;height:26px}
+.cc-wide{background:rgba(58,58,64,.55);border-radius:22px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer;border:none;color:#fff;font-family:inherit;text-align:left;width:100%;margin-top:14px}
+.cc-wide svg{width:21px;height:21px;flex:none}
+.cc-wide.on{background:rgba(88,86,214,.75)}
+.cc-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.cc-slider{background:rgba(58,58,64,.55);border-radius:22px;padding:12px 14px;display:flex;flex-direction:column;gap:7px;font-size:12px;color:rgba(255,255,255,.8)}
+.cc-slider input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:26px;border-radius:13px;background:rgba(255,255,255,.28);outline:none;margin:0}
+.cc-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.35)}
+.cc-slider input[type=range]::-moz-range-thumb{width:24px;height:24px;border:none;border-radius:50%;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.35)}
+.cc-sq{background:rgba(58,58,64,.55);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:13px 4px;font-size:11.5px;color:#fff;cursor:pointer;border:none;font-family:inherit;width:100%}
+.cc-sq svg{width:24px;height:24px}
+.cc-sq.on{background:#f5f5f7;color:#111}
+.tt-nav>div{position:relative}
+.ttib-badge{position:absolute;top:-4px;right:8px;background:#fe2c55;color:#fff;font-size:10.5px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 5px;z-index:2}
+.ttib-row{display:flex;gap:11px;padding:11px 16px;align-items:center;width:100%;text-align:left;background:none;border:none;font-family:inherit;cursor:pointer;color:var(--ink)}
+.ttib-row img.ph{width:46px;height:46px;border-radius:8px;object-fit:cover;flex:none}
+.ttib-row .tt{flex:1;min-width:0}
+.ttib-row .tn{font-size:14.5px;display:flex;justify-content:space-between;gap:8px}
+.ttib-row .tn time{font-size:11.5px;color:var(--sub);flex:none}
+.ttib-row .tp{font-size:12.5px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;display:block}
+.ttib-dot{width:8px;height:8px;border-radius:50%;background:#fe2c55;flex:none}
+.tel-head{padding:56px 16px 2px;background:#f2f2f7;flex:none}
+.tel-head h2{font-size:30px;font-weight:800}
+#v-tel{background:#fff}
+#tel-body{background:#fff}
+.tel-seg{display:flex;background:#e3e3e8;border-radius:9px;padding:2px;margin:10px 16px 6px}
+.tel-seg button{flex:1;padding:5px 0;font-size:13px;font-weight:600;border-radius:7px;color:#111;background:none;border:none;font-family:inherit;cursor:pointer}
+.tel-seg button.on{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.tel-row{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:9px 16px 9px 30px;background:none;border:none;border-bottom:1px solid #eeeef1;font-family:inherit;cursor:pointer;position:relative;color:var(--ink)}
+.tel-row .tt{flex:1;min-width:0}
+.tel-row .tn{font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.tel-row .tn.miss{color:var(--red)}
+.tel-row .tp{font-size:12.5px;color:var(--sub);margin-top:1px;display:block}
+.tel-row time{font-size:12.5px;color:var(--sub);flex:none}
+.tel-row .tinfo{color:#c7c7cc;display:flex;flex:none}
+.tel-row .tinfo svg{width:19px;height:19px}
+.tel-row .tdir{position:absolute;left:9px;top:13px;color:#34c759;display:flex}
+.tel-row .tdir svg{width:13px;height:13px}
+.tel-tabs{flex:none;display:flex;background:rgba(249,249,251,.97);border-top:1px solid var(--line);padding:5px 2px calc(13px + env(safe-area-inset-bottom));z-index:5}
+.tel-tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:#8e8e93;background:none;border:none;font-family:inherit;cursor:pointer}
+.tel-tabs button.on{color:#0a84ff}
+.tel-tabs svg{width:24px;height:24px}
+.tel-num{min-height:46px;text-align:center;font-size:31px;padding:14px 10px 2px;word-break:break-all}
+.tel-pad{display:grid;grid-template-columns:repeat(3,74px);gap:12px 20px;justify-content:center;padding:6px 0 2px}
+.tel-key{width:74px;height:74px;border-radius:50%;background:#f2f2f7;border:none;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111;padding:0}
+.tel-key b{font-size:30px;font-weight:400;line-height:1.05}
+.tel-key span{font-size:9px;letter-spacing:2px;color:var(--sub);height:11px}
+.tel-key:active{background:#e3e3e8}
+.tel-callrow{display:flex;justify-content:center;align-items:center;gap:30px;padding:8px 0 16px}
+.tel-call{width:66px;height:66px;border-radius:50%;background:#34c759;border:none;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;padding:0}
+.tel-call svg{width:31px;height:31px}
+.tel-del{width:44px;height:44px;background:none;border:none;color:#8e8e93;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.tel-del svg{width:27px;height:27px}
+.kk-head{display:flex;align-items:center;gap:9px;padding:56px 12px 10px;border-bottom:1px solid #f0f0f3;flex:none}
+.kk-head .back{font-size:25px;background:none;border:none;cursor:pointer;color:#111;padding:2px 4px}
+.kk-field{flex:1;display:flex;align-items:center;gap:7px;background:#f2f2f4;border-radius:10px;padding:9px 12px;color:#8e8e93}
+.kk-field svg{width:16px;height:16px;flex:none}
+.kk-field input{flex:1;border:none;background:none;font-size:16px;font-family:inherit;outline:none;color:#111;min-width:0}
+.kk-sec{display:flex;justify-content:space-between;align-items:center;padding:15px 16px 7px;font-size:13px;font-weight:700;color:#111}
+.kk-sec button{font-size:12px;color:#8e8e93;background:none;border:none;font-family:inherit;cursor:pointer;font-weight:400}
+.kk-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px}
+.kk-chip{display:inline-flex;align-items:center;gap:5px;background:#f6f6f8;border-radius:16px;padding:7px 9px 7px 13px;font-size:13.5px;color:#111;cursor:pointer}
+.kk-chip i{font-style:normal;color:#b9b9bf;font-size:13px;padding:1px 3px}
+.kk-rank{display:flex;align-items:center;gap:13px;width:100%;text-align:left;padding:9px 16px;background:none;border:none;font-family:inherit;cursor:pointer;font-size:14.5px;color:#111}
+.kk-rank b{color:#fa6229;font-size:15px;width:18px;text-align:center;flex:none}
+
 /* ===== v14: real-device Safari fit (overscroll containment) ===== */
 html,body{overscroll-behavior:none}
 .abody,#chat-body,.home-scroll,.tt-feed,.sheet .sh-b,.ttp-grid{overscroll-behavior:contain}
@@ -1075,7 +1165,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="t-btn sub" id="t-cont">つづきから</button>
 <button class="t-btn sub" id="t-ends">エンディングコレクション <span id="t-ends-n"></span></button>
 <div class="t-note">実在の人物・番組を題材にした創作フィクション（ファンメイド作品）です。会話やナオ・大翔の結果は創作であり、史実の選抜結果とは異なる分岐を含みます。</div>
-<div class="t-ver">LASTART編 v50</div>
+<div class="t-ver">LASTART編 v51</div>
 </div>
 </div>
 <!-- LOCK -->
@@ -1144,7 +1234,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <!-- TIKTOK -->
 <div class="view" id="v-tt">
 <div class="tt-feed" id="tt-feed"></div>
-<div class="tt-nav"><div data-deco><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.1 2.8 11v9.4c0 .8.7 1.5 1.5 1.5h5.4v-6.7h4.6v6.7h5.4c.8 0 1.5-.7 1.5-1.5V11z"/></svg>ホーム</div><div id="tt-disc-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M15.8 8.2l-2.1 5.4-5.4 2.1 2.1-5.4z" fill="currentColor" stroke="none"/></svg>発見</div><div class="create" data-deco><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div><div data-deco><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 4h16a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1h-6.2L8 20.5v-5H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><circle cx="8.2" cy="9.8" r="1.25" fill="currentColor" stroke="none"/><circle cx="12.7" cy="9.8" r="1.25" fill="currentColor" stroke="none"/><circle cx="17.2" cy="9.8" r="1.25" fill="currentColor" stroke="none"/></svg>受信箱</div><div id="tt-prof-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.2c1.3-3.4 4.1-5.1 7.5-5.1s6.2 1.7 7.5 5.1" stroke-linecap="round"/></svg>プロフィール</div></div>
+<div class="tt-nav"><div data-deco><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.1 2.8 11v9.4c0 .8.7 1.5 1.5 1.5h5.4v-6.7h4.6v6.7h5.4c.8 0 1.5-.7 1.5-1.5V11z"/></svg>ホーム</div><div id="tt-disc-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M15.8 8.2l-2.1 5.4-5.4 2.1 2.1-5.4z" fill="currentColor" stroke="none"/></svg>発見</div><div class="create" data-deco><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div><div id="tt-inbox-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 4h16a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1h-6.2L8 20.5v-5H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><circle cx="8.2" cy="9.8" r="1.25" fill="currentColor" stroke="none"/><circle cx="12.7" cy="9.8" r="1.25" fill="currentColor" stroke="none"/><circle cx="17.2" cy="9.8" r="1.25" fill="currentColor" stroke="none"/></svg>受信箱</div><div id="tt-prof-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.2c1.3-3.4 4.1-5.1 7.5-5.1s6.2 1.7 7.5 5.1" stroke-linecap="round"/></svg>プロフィール</div></div>
 </div>
 <!-- NOTES -->
 <div class="view" id="v-notes">
@@ -1166,6 +1256,12 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div class="view" id="v-music">
 <div class="ahead"><button class="back" data-back="home">‹</button><h2>ミュージック <span class="sub">Apple Music プレビュー</span></h2></div>
 <div class="abody" id="music-body"></div>
+</div>
+<!-- PHONE -->
+<div class="view" id="v-tel">
+<div class="tel-head"><h2 id="tel-title">履歴</h2></div>
+<div class="abody" id="tel-body" style="padding-top:0"></div>
+<div class="tel-tabs" id="tel-tabs"></div>
 </div>
 <!-- CALL -->
 <div class="view" id="v-call">
@@ -1195,7 +1291,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <button class="set-prof" data-deco><img src="assets/av-nao.jpg" alt=""><span><span class="sn">ナオ</span><div class="ss" id="set-prof-sub">練習生としてLASTARTに参加中</div></span></button>
 <div class="set-grp">
 <button class="set-row" id="set-ends"><span class="lft"><span class="set-ic" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M18.5 3h-3V2.5A1.5 1.5 0 0 0 14 1H10a1.5 1.5 0 0 0-1.5 1.5V3H5.5A1.5 1.5 0 0 0 4 4.5c0 3 1.9 5.4 4.6 6.3A6 6 0 0 0 11 14.9v1.6H7.5a1.5 1.5 0 0 0-1.5 1.5v2h12v-2a1.5 1.5 0 0 0-1.5-1.5H13v-1.6a6 6 0 0 0 2.4-4.6C18.1 9.9 20 7.5 20 4.5A1.5 1.5 0 0 0 18.5 3zM6.2 7.2A4.4 4.4 0 0 1 6 5h1v3.4c-.3-.4-.6-.8-.8-1.2zM18 5h1a4.4 4.4 0 0 1-.2 2.2c-.2.4-.5.8-.8 1.2z" transform="scale(.92) translate(1,1)"/></svg></span>エンディングコレクション</span><span><span id="set-ends-n"></span><span class="chev">›</span></span></button>
-<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v50</span></button>
+<button class="set-row" id="set-ver" data-deco><span class="lft"><span class="set-ic" style="background:#8e8e93"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 10.6V17" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="7.4" r="1.4"/></svg></span>バージョン</span><span>v51</span></button>
 <button class="set-row" data-deco><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"><path d="M6.2 10.2a5.8 5.8 0 0 1 11.6 0c0 3.9 1.4 5.3 1.4 5.3H4.8s1.4-1.4 1.4-5.3z"/><path d="M10.1 19a2 2 0 0 0 3.8 0" stroke-linecap="round"/></svg></span>通知</span><span>オン<span class="chev">›</span></span></button>
 <button class="set-row" id="set-a11y"><span class="lft"><span class="set-ic" style="background:#0a84ff"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="4.4" r="2.2"/><path d="M19.6 8.1c-2.5.6-5 0.9-7.6 0.9s-5.1-.3-7.6-.9l.5-2c2.3.5 4.7.8 7.1.8s4.8-.3 7.1-.8l.5 2z"/><path d="M13.1 10.2v3.3l2.8 5.2-1.9 1-2.4-4.5-2.5 4.5-1.9-1 2.8-5.2v-3.3h3.1z" transform="translate(-1.05 0)"/></svg></span>アクセシビリティ</span><span><span id="set-a11y-st">標準</span> <span class="chev">›</span></span></button>
 <button class="set-row" id="set-sfx"><span class="lft"><span class="set-ic" style="background:#34c759"><svg viewBox="0 0 24 24" fill="#fff"><path d="M4 9.5v5A1.5 1.5 0 0 0 5.5 16H9l5.2 4.4c.7.6 1.8.1 1.8-.8V4.4c0-.9-1.1-1.4-1.8-.8L9 8H5.5A1.5 1.5 0 0 0 4 9.5zm14.9-3.2-.9 1.2a5.6 5.6 0 0 1 0 9l.9 1.2a7.6 7.6 0 0 0 0-11.4z"/></svg></span>サウンドと触覚</span><span><span id="set-sfx-st"></span> <span class="chev">›</span></span></button>
@@ -1203,7 +1299,7 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div class="set-grp">
 <button class="set-row danger" id="set-reset"><span class="lft"><span class="set-ic" style="background:#ff3b30"><svg viewBox="0 0 24 24"><path d="M9 3.5A1.5 1.5 0 0 1 10.5 2h3A1.5 1.5 0 0 1 15 3.5V4h4.5v2H4.5V4H9zm-3.2 3h12.4l-.8 12.2A2.5 2.5 0 0 1 14.9 21H9.1a2.5 2.5 0 0 1-2.5-2.3L5.8 6.5zM9.5 9v8.5h1.8V9zm4.7 0v8.5H16V9z" transform="scale(.94) translate(.7,.5)"/></svg></span>最初からやり直す</span><span>セーブを消去</span></button>
 </div>
-<div class="locknote">『デビュー前の彼らに出会う件』v50<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
+<div class="locknote">『デビュー前の彼らに出会う件』v51<br>実在の人物・番組を題材にした創作フィクションです。<br>史実の選抜（リク・サクヤ・デヨン・リョウ＋ジョンミン選抜後離脱）と<br>ナオ・大翔のIF結果は分岐します。<br>素材：動画は公式YouTube、音楽はApple Music公式プレビュー、写真は公式プロフィール写真など、公開情報・公開素材に基づきます。</div>
 </div>
 </div>
 <div id="ovl"></div>
@@ -1211,6 +1307,8 @@ div[style*="overflow-y:auto"]{overscroll-behavior:contain}
 <div class="toast" id="toast"></div>
 <div id="bnr"></div>
 <div id="chapcard"></div>
+<div id="ios-nc"></div>
+<div id="ios-cc"></div>
 </div></div>
 <audio id="au-handsup" src="assets/handsup.m4a" preload="none"></audio>
 <script>
@@ -1784,9 +1882,9 @@ function ringStart(){ringStop();ringWanted=true;if(sfxEnabled()){const ring=()=>
 function ringStop(){ringWanted=false;if(ringInt){clearInterval(ringInt);ringInt=null;}if(ringVibInt){clearInterval(ringVibInt);ringVibInt=null;}if("vibrate" in navigator){try{navigator.vibrate(0);}catch(e){}}}
 /* v34: while the tab is hidden the ring/vibration pauses (ringWanted stays on); it resumes if the incoming-call screen is still up when the tab returns */
 function ringHold(){if(ringInt){clearInterval(ringInt);ringInt=null;}if(ringVibInt){clearInterval(ringVibInt);ringVibInt=null;}if("vibrate" in navigator){try{navigator.vibrate(0);}catch(e){}}}
-const VIEWS=["title","lock","home","list","chat","roster","ig","tt","notes","cal","photos","music","call","ending","set"];
+const VIEWS=["title","lock","home","list","chat","roster","ig","tt","notes","cal","photos","music","tel","call","ending","set"];
 let CUR="title";
-function show(v){const _pv=CUR;CUR=v;if(v!=="home")exitEdit();if(_pv==="call"&&v!=="call")endCallState();if(v!=="chat")cancelFreePending();if(v!=="tt")ttPauseAll();VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));{const sb=document.querySelector(".statusbar");if(sb){sb.classList.toggle("sb-w",["title","lock","home","tt","call","ending"].includes(v));sb.classList.toggle("sb-lock",v==="lock");}}if(v!=="call")setTimeout(bnrDrain,60);if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();if(v==="set")renderSet();window.scrollTo(0,0);}
+function show(v){const _pv=CUR;CUR=v;if(v!=="home"){exitEdit();closeSys();}if(_pv==="call"&&v!=="call")endCallState();if(v!=="chat")cancelFreePending();if(v!=="tt")ttPauseAll();VIEWS.forEach(x=>$("#v-"+x).classList.toggle("on",x===v));{const sb=document.querySelector(".statusbar");if(sb){sb.classList.toggle("sb-w",["title","lock","home","tt","call","ending"].includes(v));sb.classList.toggle("sb-lock",v==="lock");}}if(v!=="call")setTimeout(bnrDrain,60);if(v==="title")renderTitle();if(v==="lock")renderLock();if(v==="home")renderHome();if(v==="roster")renderRoster();if(v==="ig")renderIG();if(v==="tt")renderTT();if(v==="notes")renderNotes();if(v==="cal")renderCal();if(v==="photos")renderPhotos();if(v==="music")renderMusic();if(v==="set")renderSet();if(v==="tel")renderTel();window.scrollTo(0,0);}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-back]");if(b){show(b.dataset.back==="list"?"list":"home");if(b.dataset.back==="list")renderList(curApp);}});
 $("#v-lock").addEventListener("click",()=>show("home"));
 function renderLock(){const n1=$("#lock-n1-t");if(n1)n1.textContent=S.ended?"LASTART 練習生ルーム：あの夏は終わった。でも、連絡は続いている":S.scene>=8?"LASTART 練習生ルーム：今日、デビューメンバーが発表される":S.scene>=1?"LASTART 練習生ルーム：新しいトークが届いている":"LASTART 練習生ルーム：明日、最初のミッションが始まる";
@@ -1887,7 +1985,7 @@ function renderHome(){homeEdit=false;{const _hv=$("#v-home");if(_hv)_hv.classLis
  $("#home-dock").innerHTML=[APPS[9],APPS[0],APPS[1],APPS[7]].map(a=>appHTML(a,"")).join("");
  document.querySelectorAll("[data-app]").forEach(b=>b.addEventListener("click",()=>appTap(b.dataset.app)));}
 function openApp(id){if(id==="kakao"){curApp="kakao";renderList("kakao");show("list");}else if(id==="line"){curApp="line";renderList("line");show("list");}
- else if(id==="tel"){toast("電話は物語の中でかかってくるよ");}else{show(id);}}
+ else if(id==="tel"){show("tel");}else{show(id);}}
 /* ===== v31: home edit mode (iOS 16 long-press jiggle + drag reorder, persisted as S.homeOrd) ===== */
 let homeEdit=false,_lpT=null,_lpX=0,_lpY=0,_drag=null;
 function appOrder(){const ids=APPS.map(a=>a.id);if(S&&Array.isArray(S.homeOrd)){const o=S.homeOrd.filter(id=>ids.indexOf(id)>=0);ids.forEach(id=>{if(o.indexOf(id)<0)o.push(id);});return o;}return ids;}
@@ -1981,7 +2079,9 @@ function voomCards(){const a=[
 /* v32: hiragana->katakana query normalization, shared by all in-game searches (roster got it in v30) */
 function kanaN(s){return String(s||"").replace(/[ぁ-ゖ]/g,ch=>String.fromCharCode(ch.charCodeAt(0)+0x60));}
 function openListSearch(){
- ovl(`<div class="sheet-wrap" data-closewrap><div class="sheet"><div class="grab"></div><div class="sh-h">${curApp==="kakao"?"채팅 / 친구 검색":"トーク・友だち検索"}<button data-close>${IC_X}</button></div>
+ /* v51: KakaoTalk search is its own full-screen page (below); LINE keeps the sheet */
+ if(curApp==="kakao"){openKakaoSearch();return;}
+ ovl(`<div class="sheet-wrap" data-closewrap><div class="sheet"><div class="grab"></div><div class="sh-h">トーク・友だち検索<button data-close>${IC_X}</button></div>
  <div class="srch-in">${IC_SEARCH}<input id="srch-q" type="text" placeholder="${curApp==="kakao"?"이름, 채팅방 검색":"名前・トークを検索"}"></div>
  <div class="sh-b" id="srch-res"><div class="locknote">トークのタイトルや友だちの名前で検索できるよ。</div></div></div></div>`);
  const wrap=$("#ovl .sheet-wrap");wrap.addEventListener("click",e=>{if(e.target===wrap)closeOvl();});
@@ -2330,7 +2430,7 @@ function renderRoster(){let h=`<div class="ro-search">${IC_SEARCH}<input id="ro-
   let sec=null,secVis=false;const flush=()=>{if(sec)sec.style.display=(!v||secVis)?"":"none";};document.querySelectorAll("#roster-body > *").forEach(el=>{if(el.classList.contains("ro-sec")){flush();sec=el;secVis=false;}else if(el.classList.contains("ro-card")&&el.style.display!=="none")secVis=true;});flush();
   const rn=$("#ro-none");if(rn)rn.style.display=v&&!vis?"":"none";});}
 /* ===== IG (2023) ===== */
-let igMode="feed",igTab="grid",igList=[],igSeen={};const dmRead=new Set();
+let igMode="feed",igTab="grid",igList=[],igSeen={},igPostId=null,igPostFrom="prof";const dmRead=new Set();
 const IG_DATES={1:"2023年7月19日",2:"2023年10月8日",3:"2024年2月21日"};
 const CM_COLS=["#d95f7b","#3a7bd5","#5aa469","#7b61c9","#e08a3c","#4a90a4","#c94f7c","#546e7a"];
 function cmAv(name){const c=CM_COLS[[...name].reduce((a,ch)=>a+ch.charCodeAt(0),0)%CM_COLS.length];return `<span class="cav" style="background:${c}">${esc(name.slice(0,1).toUpperCase())}</span>`;}
@@ -2370,6 +2470,7 @@ function openIGPostMenu(pid){const p=igList.find(x=>x.id===pid)||IG_POSTS.find(x
 function renderIG(){const posts=igPosts();igList=posts;const body=$("#ig-body");
  if(igMode==="prof"){renderIGProf(posts);return;}
  if(igMode==="disc"){renderIGDisc();return;}
+ if(igMode==="post"){renderIGPost();return;}
  const un=S.ended?"nctwish_official":"sm_nctuniverse";
  const dmUn=DM_FANS.filter(f=>f[3]&&!dmRead.has(f[0])).length;
  let h=`<div class="ig-head"><span class="ig-wm">Instagram</span><span class="ig-hbtns"><button data-deco>${I_PLUSBOX}</button><button data-deco>${I_HEART}</button><button data-igdm>${I_MSG}${dmUn?`<span class="ig-bdg">${dmUn}</span>`:""}</button></span></div>`;
@@ -2385,15 +2486,28 @@ function renderIG(){const posts=igPosts();igList=posts;const body=$("#ig-body");
  igNavSync();}
 function igNavSync(){document.querySelectorAll("#ig-nav [data-ignav]").forEach(b=>{const m=b.dataset.ignav;const on=m===igMode||(m==="reel"&&igMode==="prof"&&igTab==="reel");b.classList.toggle("dim",!on);});}
 document.querySelectorAll("#ig-nav [data-ignav]").forEach(b=>b.addEventListener("click",()=>{const m=b.dataset.ignav;if(m==="reel"){igMode="prof";igTab="reel";renderIG();}else{igMode=m;renderIG();}}));
+/* v51: the real 2023 post screen — tapping a grid tile (profile / explore) opens the dedicated 「投稿」 screen: a header with the account name, that post first, then the account's remaining posts below, instead of dropping into the main feed and scrolling */
+function renderIGPost(){const body=$("#ig-body");const posts=igPosts();igList=posts;const p=posts.find(x=>x.id===igPostId)||posts[0];
+ if(!p){igMode=igPostFrom;renderIG();return;}
+ const un=S.ended?"nctwish_official":"sm_nctuniverse";
+ const rest=posts.slice(posts.indexOf(p)+1);
+ let h=`<div class="ig-phead"><button class="back" id="igp-back">‹</button><span style="flex:1;min-width:0"><span style="display:block;font-size:11px;color:var(--sub)">${esc(un)}</span><span style="display:block;font-size:16.5px;font-weight:700">投稿</span></span><button data-deco style="display:flex">${I_BELL}</button></div>`;
+ h+=postHTML(p);
+ if(rest.length)h+=`<div class="fr-sec" style="border-top:1px solid #f0f0f3;margin-top:2px"><span>その他の投稿</span></div><div class="ig-grid">${rest.map(q=>`<button data-grid="${q.id}"><img loading="lazy" decoding="async" src="${q.img}" alt=""></button>`).join("")}</div>`;
+ body.innerHTML=h;body.scrollTop=0;
+ bindPostActs(body);
+ $("#igp-back").addEventListener("click",()=>{igMode=igPostFrom;renderIG();});
+ body.querySelectorAll("[data-grid]").forEach(b=>b.addEventListener("click",()=>{igPostId=+b.dataset.grid;renderIGPost();}));
+ igNavSync();}
 function renderIGDisc(){const body=$("#ig-body");const posts=igPosts();igList=posts;
  /* v50: like the real 2023 Explore grid, the mosaic mixes 1:1 tiles with a tall reel tile (with the reels glyph) and a 2x2 feature tile */
  const tiles=[...posts.map(p=>({img:p.img,id:p.id})),{img:"assets/av-sakuya.jpg"},{img:"assets/av-riku.jpg"},{img:"assets/stage.jpg"},{img:"assets/av-ryo.jpg"},{img:"assets/group2023.jpg"}];
  body.innerHTML=`<div class="ig-disc-h"><div class="dm-search" style="margin:0" data-deco>${IC_SEARCH} 検索</div></div>
  <div class="ig-chips">${["#LASTART","#個人ティザー","#SMROOKIES",(S.ended?"#HandsUp":"#Lucifer"),"#プレデビューツアー","#最後のNCT"].map(t=>`<span data-deco>${t}</span>`).join("")}</div>
  <div class="ig-grid ig-mosaic" style="margin-top:6px">${tiles.map((t,i)=>{const mz=i%7===2?"mz-tall":i%7===5?"mz-big":"";const ric=mz==="mz-tall"?`<span class="mz-ric">${I_REEL}</span>`:"";return t.id?`<button class="${mz}" data-grid="${t.id}"><img loading="lazy" decoding="async" src="${t.img}" alt="">${ric}</button>`:`<button class="${mz}" data-deco><img loading="lazy" decoding="async" src="${t.img}" alt="">${ric}</button>`;}).join("")}</div>
- <div class="locknote">検索・発見は当時（2023年）の話題で構成。投稿タイルをタップするとフィードへ移動します。</div>`;
+ <div class="locknote">検索・発見は当時（2023年）の話題で構成。投稿タイルをタップすると投稿画面が開きます。</div>`;
  body.scrollTop=0;
- body.querySelectorAll("[data-grid]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.grid;igMode="feed";renderIG();setTimeout(()=>{const el=document.getElementById("igp-"+id);if(el)el.scrollIntoView({block:"start"});},40);}));
+ body.querySelectorAll("[data-grid]").forEach(b=>b.addEventListener("click",()=>{igPostFrom="disc";igPostId=+b.dataset.grid;igMode="post";renderIG();}));
  igNavSync();}
 let igReels=[];
 const I_PLAY_SM='<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5v13l11-6.5z"/></svg>';
@@ -2425,7 +2539,7 @@ function renderIGProf(posts){const body=$("#ig-body");const un=S.ended?"nctwish_
  $("#ig-msg").addEventListener("click",openDM);
  const _fb=$("#ig-fol");if(_fb)_fb.addEventListener("click",()=>{S.igf=!S.igf;save();_fb.textContent=S.igf?"フォロー中":"フォローする";_fb.classList.toggle("fol",!S.igf);toast(S.igf?"フォローしたよ":"フォローをやめたよ");});
  body.querySelectorAll("[data-igt]").forEach(b=>b.addEventListener("click",()=>{igTab=b.dataset.igt;renderIGProf(igList);}));
- body.querySelectorAll("[data-grid]").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.grid;igMode="feed";renderIG();setTimeout(()=>{const el=document.getElementById("igp-"+id);if(el)el.scrollIntoView({block:"start"});},40);}));
+ body.querySelectorAll("[data-grid]").forEach(b=>b.addEventListener("click",()=>{igPostFrom="prof";igPostId=+b.dataset.grid;igMode="post";renderIG();}));
  body.querySelectorAll("[data-reel]").forEach(b=>b.addEventListener("click",()=>openReel(igReels[+b.dataset.reel])));
  body.querySelectorAll("[data-hl]").forEach(b=>b.addEventListener("click",()=>openHighlight(b.dataset.hl,b.dataset.hll)));
  igNavSync();}
@@ -2540,7 +2654,7 @@ function renderTT(){
  if(ttObs)ttObs.disconnect();
  if("IntersectionObserver" in window){ttObs=new IntersectionObserver(es=>{es.forEach(en=>{const v=en.target.querySelector("video");if(!v)return;if(en.isIntersecting&&v.preload==="none")v.preload="metadata";if(en.intersectionRatio>=0.6){v.muted=!ttSound;v.play().catch(()=>{});}else v.pause();});},{root:$("#tt-feed"),threshold:[0,0.6,1]});
   items.forEach(it=>{if(it.querySelector("video"))ttObs.observe(it);});}
- $("#tt-feed").scrollTop=0;}
+ $("#tt-feed").scrollTop=0;ttInboxBadge();}
 /* ===== v49: TikTok LIVE room (2023) — tapping the LIVE label joins the official account's live: viewer count, scrolling fan comments and floating hearts, view-only like the real guest experience ===== */
 const LV_CMTS=[["wish_stan","きたー！生配信ありがとう"],["nctzen_kr","오늘도 응원해요!!"],["teaser_loop","画質いい…ずっと見てたい"],["saku_bread","막내들 화이팅"],["lastart_jp","リアタイできてうれしい"],["rookie_watch","コメントの速度すごい"],["gum_stage","다음 무대도 기대 중"],["kr_fan07","심장 떨려요…"],["u_team_wait","全員デビューしてほしい"],["mission_og","ステージ裏側もっと見たい"],["afro_king","声援届いてるといいな"],["ryo_saku","今日も平和に応援中"]];
 function openTTLive(){if(!S.ended&&S.scene<1){toast("今は配信していないよ（放送が始まるとLIVEが開くよ）");return;}
@@ -2752,6 +2866,160 @@ $("#t-cont").addEventListener("click",()=>{if(hasProgress())show("home");});
 $("#t-ends").addEventListener("click",()=>openEndCol());
 $("#homebar").addEventListener("click",()=>{if(CUR==="home"&&homeEdit){exitEdit();return;}if(CUR!=="title"&&CUR!=="lock"&&CUR!=="call")show("home");});
 {const _hv2=$("#v-home");_hv2.addEventListener("pointerdown",homePtrDown);_hv2.addEventListener("contextmenu",e=>{if(e.target.closest&&e.target.closest(".app"))e.preventDefault();});$("#edit-done").addEventListener("click",()=>exitEdit());document.addEventListener("pointermove",homePtrMove,{passive:false});document.addEventListener("pointerup",homePtrUp);document.addEventListener("pointercancel",homePtrUp);}
+/* ===== v51: per-app realism round 5 (2023) ===== */
+/* --- TikTok inbox: the real 受信箱 — activity notifications tied to story progress (new posts from the followed official account, LIVE starts, followers, system), plus the fan DM list. Unread state is session-only, like the other v51 surfaces --- */
+let ttInboxSeen=false;
+function ttInboxRows(){const un=S.ended?"nctwish_official":"sm_nctuniverse";const rows=[];
+ TT_POSTS.filter(ttVisible).slice(1).forEach((p,i)=>{rows.push({img:p.img,t:`<b>${un}</b> が新しい動画を投稿しました`,s:p.cap,time:(i+1)+"時間前",gi:TT_POSTS.indexOf(p),un:1});});
+ if(S.scene>=1||S.ended)rows.push({img:"assets/stage.jpg",t:`<b>${un}</b> がLIVEを開始しました`,s:"タップでLIVEルームへ",live:1,time:"2時間前",un:1});
+ if(S.scene>=3||S.ended)rows.push({av:"wish_stan",t:"<b>wish_stan</b> さんがあなたをフォローしました",s:"",time:"1日前",un:0});
+ rows.push({sys:1,t:"<b>TikTok</b> からのお知らせ",s:"コミュニティガイドラインの更新について",time:"3日前",un:0});
+ return rows;}
+function ttInboxBadge(){const b=$("#tt-inbox-btn");if(!b)return;let bd=b.querySelector(".ttib-badge");const n=ttInboxRows().filter(r=>r.un).length;
+ if(n&&!ttInboxSeen){if(!bd){bd=document.createElement("span");bd.className="ttib-badge";b.appendChild(bd);}bd.textContent=n;}
+ else if(bd)bd.remove();}
+function openTTInbox(){ttInboxSeen=true;ttInboxBadge();
+ const rows=ttInboxRows();
+ const rowH=r=>`<button class="ttib-row"${r.gi!=null?` data-ttib="${r.gi}"`:""}${r.live?` data-ttiblive="1"`:""}${r.sys||r.av?` data-deco`:""}>${r.img?`<img class="ph" loading="lazy" decoding="async" src="${r.img}" alt="">`:r.sys?`<span style="width:46px;height:46px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex:none">${SVG_TTNOTE}</span>`:cmAv(r.av)}<span class="tt"><span class="tn"><span style="font-weight:400">${r.t}</span><time>${r.time}</time></span>${r.s?`<span class="tp">${esc(r.s)}</span>`:""}</span>${r.un?`<span class="ttib-dot"></span>`:""}</button>`;
+ ovl(`<div class="ovl-full ovl-white"><div class="dm-head"><button class="back" data-close>‹</button><span class="un" style="flex:1;text-align:center">受信箱</span><button data-deco style="display:flex">${IC_SEARCH}</button></div>
+ <div class="abody" style="flex:1;padding-top:2px"><div class="fr-sec"><span>通知</span></div>
+ ${rows.map(rowH).join("")}
+ <div class="fr-sec"><span>メッセージ</span></div>
+ ${DM_FANS.map(f=>`<button class="ttib-row" data-deco>${cmAv(f[0])}<span class="tt"><span class="tn"><span>${esc(f[0])}</span><time>${f[2]}</time></span><span class="tp">${esc(f[1])}</span></span></button>`).join("")}
+ <div class="locknote">受信箱は当時（2023年）のTikTokの構成。公式アカウントの通知は、物語の進行にあわせて届くよ。</div></div></div>`);
+ document.querySelectorAll("#ovl [data-ttib]").forEach(b=>b.addEventListener("click",()=>{const gi=+b.dataset.ttib;closeOvl();setTimeout(()=>{const idx=ttList.findIndex(p=>TT_POSTS.indexOf(p)===gi);const items=document.querySelectorAll("#tt-feed .tt-item");if(idx>=0&&items[idx])items[idx].scrollIntoView({block:"start"});},90);}));
+ const lv=$("#ovl [data-ttiblive]");if(lv)lv.addEventListener("click",()=>{closeOvl();setTimeout(openTTLive,90);});}
+$("#tt-inbox-btn").addEventListener("click",()=>{ttPauseAll();openTTInbox();});
+/* --- Phone app (iOS 16): recents follow the story (the Hiroto LINE-audio call after ch.6, family / agency calls around it), favorites / contacts / keypad / voicemail round out the real tab set. Nothing here writes to the save --- */
+let telTab="recents",telSeg="all",telNum="";
+const I_TCLOCK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 8.4A8.5 8.5 0 1 1 3.5 13"/><path d="M3.4 4.4v4.2h4.2"/><path d="M12 8v4.2l3 1.8"/></svg>';
+const I_TGRID='<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="6" r="1.8"/><circle cx="12" cy="6" r="1.8"/><circle cx="18" cy="6" r="1.8"/><circle cx="6" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="18" cy="12" r="1.8"/><circle cx="6" cy="18" r="1.8"/><circle cx="12" cy="18" r="1.8"/><circle cx="18" cy="18" r="1.8"/></svg>';
+const I_TVM='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="7.5" cy="11" r="3.4"/><circle cx="16.5" cy="11" r="3.4"/><path d="M7.5 14.4h9"/></svg>';
+const I_TINFO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.6"/><path d="M12 11v5" stroke-linecap="round"/><circle cx="12" cy="7.9" r="1.2" fill="currentColor" stroke="none"/></svg>';
+const I_TARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9.5 7H17v7.5"/></svg>';
+const I_TDEL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M9.6 5h8.9A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19H9.6L3 12z"/><path d="M11.2 9.7l4.8 4.8M16 9.7l-4.8 4.8" stroke-linecap="round"/></svg>';
+function telRecents(){const r=[];
+ if(S.ended)r.push({n:"井汲大翔",sub:"LINE オーディオ",time:"2月20日",dir:"out"});
+ if(S.scene>=8)r.push({n:"母",sub:"モバイル",time:"9月1日",dir:"out"});
+ if(S.callDone)r.push({n:"井汲大翔",sub:"LINE オーディオ",time:"8月31日",dir:"in"});
+ if(S.scene>=5)r.push({n:"母",sub:"モバイル",time:"8月15日",dir:"miss"});
+ r.push({n:"母",sub:"モバイル",time:"7月25日",dir:"in"});
+ r.push({n:"SMエンターテインメント",sub:"会社",time:"7月20日",dir:"out"});
+ return r;}
+function renderTel(){const body=$("#tel-body");
+ $("#tel-title").textContent=({fav:"よく使う項目",recents:"履歴",contacts:"連絡先",keypad:"キーパッド",voice:"留守番電話"})[telTab];
+ let h="";
+ if(telTab==="recents"){
+  h+=`<div class="tel-seg"><button data-tseg="all" class="${telSeg==="all"?"on":""}">すべて</button><button data-tseg="miss" class="${telSeg==="miss"?"on":""}">不在着信</button></div>`;
+  const rows=telRecents().filter(r=>telSeg==="all"||r.dir==="miss");
+  h+=rows.length?rows.map(r=>`<button class="tel-row" data-tcall>${r.dir==="out"?`<span class="tdir">${I_TARROW}</span>`:""}<span class="tt"><span class="tn${r.dir==="miss"?" miss":""}">${esc(r.n)}</span><span class="tp">${esc(r.sub)}</span></span><time>${r.time}</time><span class="tinfo">${I_TINFO}</span></button>`).join(""):`<div class="locknote">不在着信はないよ。</div>`;
+ }else if(telTab==="fav"){
+  h+=[["hiroto","井汲大翔","LINE オーディオ"],["mom","母","モバイル"],["staff","SM スタッフ","会社"]].map(x=>`<button class="tel-row" data-tcall style="padding-left:16px">${avHTML(x[0],40)}<span class="tt"><span class="tn">${esc(x[1])}</span><span class="tp">${esc(x[2])}</span></span><span class="tinfo">${I_TINFO}</span></button>`).join("");
+ }else if(telTab==="contacts"){
+  h+=`<button class="tel-row" data-tcall style="padding-left:16px"><img class="av" src="assets/av-nao.jpg" style="width:40px;height:40px" alt=""><span class="tt"><span class="tn">ナオ</span><span class="tp">マイカード</span></span></button>`;
+  const keys=["sion","yushi","riku","sakuya","daeyoung","ryo","jungmin","anderson","ryu","minjae","haruta","kassho","heitetsu","hiroto","mom","staff"].filter(k=>k!=="daeyoung"||daeyoungIn());
+  h+=keys.map(k=>`<button class="tel-row" data-tcall style="padding-left:16px">${avHTML(k,40)}<span class="tt"><span class="tn">${esc(CAST[k].n)}</span><span class="tp">${esc(roleOf(k))}</span></span></button>`).join("");
+ }else if(telTab==="keypad"){
+  h+=`<div class="tel-num">${telNum?esc(telNum):"&nbsp;"}</div><div class="tel-pad">${[["1",""],["2","ABC"],["3","DEF"],["4","GHI"],["5","JKL"],["6","MNO"],["7","PQRS"],["8","TUV"],["9","WXYZ"],["*",""],["0","＋"],["#",""]].map(k=>`<button class="tel-key" data-tkey="${k[0]}"><b>${k[0]}</b><span>${k[1]}</span></button>`).join("")}</div><div class="tel-callrow"><span style="width:44px"></span><button class="tel-call" data-tdial aria-label="発信">${SVG_TEL}</button>${telNum?`<button class="tel-del" data-tdel aria-label="削除">${I_TDEL}</button>`:`<span style="width:44px"></span>`}</div>`;
+ }else{
+  h+=`<div class="locknote" style="margin-top:34px;text-align:center">留守番電話はありません。</div>`;
+ }
+ body.innerHTML=h;body.scrollTop=0;
+ const TABS=[["fav","よく使う項目",I_STAR],["recents","履歴",I_TCLOCK],["contacts","連絡先",IC_PERSON],["keypad","キーパッド",I_TGRID],["voice","留守番電話",I_TVM]];
+ $("#tel-tabs").innerHTML=TABS.map(t=>`<button data-ttab="${t[0]}" class="${telTab===t[0]?"on":""}">${t[2]}${t[1]}</button>`).join("");
+ document.querySelectorAll("[data-ttab]").forEach(b=>b.addEventListener("click",()=>{telTab=b.dataset.ttab;renderTel();}));
+ body.querySelectorAll("[data-tseg]").forEach(b=>b.addEventListener("click",()=>{telSeg=b.dataset.tseg;renderTel();}));
+ body.querySelectorAll("[data-tcall]").forEach(b=>b.addEventListener("click",()=>toast("物語の通話は、向こうからかかってくるよ")));
+ body.querySelectorAll("[data-tkey]").forEach(b=>b.addEventListener("click",()=>{if(telNum.length<16){telNum+=b.dataset.tkey;buzz(8);renderTel();}}));
+ const del=body.querySelector("[data-tdel]");if(del)del.addEventListener("click",()=>{telNum=telNum.slice(0,-1);renderTel();});
+ const dial=body.querySelector("[data-tdial]");if(dial)dial.addEventListener("click",()=>toast("物語の通話は、向こうからかかってくるよ"));}
+/* --- KakaoTalk search (2023): the real full-screen search — 최근 검색어 chips (session-only), 인기 검색어, 추천 채널, and sectioned results 친구 / 채팅 / 채널 / 오픈채팅. The LINE sheet search is unchanged --- */
+let kkRecent=[];
+function openKakaoSearch(){
+ const chans=[["SMTOWN","assets/group2023.jpg","SM 공식 채널 · 친구 182만"],["NCT Universe : LASTART","assets/lastart1.jpg","공식 채널 · 친구 96만"]];
+ const pops=["LASTART","NCT Universe","마지막 NCT","데뷔조","미션"];
+ const chanRow=c=>`<button class="thread" data-kkchan="${esc(c[0])}"><img class="av" loading="lazy" decoding="async" src="${c[1]}" style="border-radius:14px" alt=""><span class="tt"><span class="tn">${esc(c[0])}</span><span class="tp">${esc(c[2])}</span></span><span class="ch-chip">채널 추가</span></button>`;
+ const home=()=>{let h=`<div class="kk-sec"><span>최근 검색어</span>${kkRecent.length?`<button data-kkdelall>전체삭제</button>`:""}</div>`;
+  h+=kkRecent.length?`<div class="kk-chips">${kkRecent.map((w,i)=>`<span class="kk-chip" data-kkword="${esc(w)}">${esc(w)}<i data-kkdel="${i}">✕</i></span>`).join("")}</div>`:`<div class="locknote" style="margin-top:0">최근 검색어가 없어요.</div>`;
+  h+=`<div class="kk-sec"><span>인기 검색어</span></div>`+pops.map((w,i)=>`<button class="kk-rank" data-kkword="${esc(w)}"><b>${i+1}</b>${esc(w)}</button>`).join("");
+  h+=`<div class="kk-sec"><span>추천 채널</span></div>`+chans.map(chanRow).join("");
+  return h;};
+ ovl(`<div class="ovl-full ovl-white"><div class="kk-head"><button class="back" data-close>‹</button><div class="kk-field">${IC_SEARCH}<input id="kk-q" type="text" placeholder="검색어를 입력하세요"></div></div>
+ <div class="abody" id="kk-res" style="flex:1">${home()}</div></div>`);
+ const res=$("#kk-res"),inp=$("#kk-q");inp.focus();
+ const push=w=>{w=String(w||"").trim();if(!w)return;kkRecent=[w,...kkRecent.filter(x=>x!==w)].slice(0,8);};
+ const bindHome=()=>{res.querySelectorAll("[data-kkword]").forEach(b=>b.addEventListener("click",e=>{if(e.target.closest("[data-kkdel]"))return;inp.value=b.dataset.kkword;inp.dispatchEvent(new Event("input"));inp.focus();}));
+  res.querySelectorAll("[data-kkdel]").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();kkRecent.splice(+b.dataset.kkdel,1);res.innerHTML=home();bindHome();}));
+  const da=res.querySelector("[data-kkdelall]");if(da)da.addEventListener("click",()=>{kkRecent=[];res.innerHTML=home();bindHome();});
+  res.querySelectorAll("[data-kkchan]").forEach(b=>b.addEventListener("click",()=>toast("채널 ― "+b.dataset.kkchan+"（追加は物語ではしないよ）")));};
+ bindHome();
+ inp.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing&&e.keyCode!==229)push(inp.value);});
+ inp.addEventListener("input",()=>{const raw=inp.value.trim();if(!raw){res.innerHTML=home();bindHome();return;}
+  const q=kanaN(raw).toLowerCase();let h="";
+  const fr=Object.keys(CAST).filter(k=>kanaN(CAST[k].n||"").toLowerCase().includes(q)||(KSTAT[k]&&kanaN(KSTAT[k].st).toLowerCase().includes(q)));
+  if(fr.length)h+=`<div class="kk-sec"><span>친구</span></div>`+fr.map(k=>`<button class="thread" data-kkprof="${k}">${avHTML(k,46)}<span class="tt"><span class="tn">${esc(CAST[k].n)}</span><span class="tp">${esc((KSTAT[k]&&KSTAT[k].st)||roleOf(k))}</span></span></button>`).join("");
+  const th=Object.keys(THREADS).filter(t=>THREADS[t].app==="kakao"&&kanaN(THREADS[t].title).toLowerCase().includes(q));
+  if(th.length)h+=`<div class="kk-sec"><span>채팅</span></div>`+th.map(t=>{const thd=THREADS[t];const tav=thd.av?`<img class="av" loading="lazy" decoding="async" src="${thd.av}" style="width:46px;height:46px" alt="">`:avHTML(t==="hirotoK"?"hiroto":t,46);return `<button class="thread" data-kkth="${t}">${tav}<span class="tt"><span class="tn">${esc(thd.title)}</span><span class="tp">채팅방</span></span></button>`;}).join("");
+  const chm=chans.filter(c=>c[0].toLowerCase().includes(q)||q==="sm"||q==="nct"||q==="라스트");
+  if(chm.length)h+=`<div class="kk-sec"><span>채널</span></div>`+chm.map(chanRow).join("");
+  const oc=OC_ROOMS.map((r,i)=>[r,i]).filter(x=>(S.ended||S.scene>=(x[0].min||0))&&kanaN(x[0].t+" "+x[0].tags).toLowerCase().includes(q));
+  if(oc.length)h+=`<div class="kk-sec"><span>오픈채팅</span></div>`+oc.map(x=>`<button class="thread" data-kkoc="${x[1]}"><img class="av" loading="lazy" decoding="async" src="${x[0].img}" style="border-radius:14px;width:46px;height:46px" alt=""><span class="tt"><span class="tn">${esc(x[0].t)}</span><span class="tp">${esc(x[0].tags)}</span></span></button>`).join("");
+  res.innerHTML=h||`<div class="locknote">「${esc(raw)}」에 대한 검색 결과가 없어요.</div>`;
+  res.querySelectorAll("[data-kkprof]").forEach(b=>b.addEventListener("click",()=>{push(raw);openKakaoProfile(b.dataset.kkprof);}));
+  res.querySelectorAll("[data-kkth]").forEach(b=>b.addEventListener("click",()=>{push(raw);openThread(b.dataset.kkth);}));
+  res.querySelectorAll("[data-kkoc]").forEach(b=>b.addEventListener("click",()=>{push(raw);openOpenRoom(+b.dataset.kkoc);}));
+  res.querySelectorAll("[data-kkchan]").forEach(b=>b.addEventListener("click",()=>toast("채널 ― "+b.dataset.kkchan+"（追加は物語ではしないよ）")));});}
+/* --- iOS 16 Notification Center / Control Center: pull down from the very top of the home screen — left / center opens notifications, the right edge opens Control Center, like a real Face ID iPhone. All CC state is session-only --- */
+let ccState={am:false,md:true,wifi:true,bt:true,focus:false,flash:false,bright:80,vol:60};
+function storyClock(){if(S.ended)return{d:"2月21日 水曜日",t:"21:00"};const sc=SCENES[Math.min(S.scene,SCENES.length-1)];const m=sc.date.match(/(\d+月\d+日)\((.)\)/);return{d:m?m[1]+" "+m[2]+"曜日":sc.date,t:String(Math.floor(sc.start/60)%24).padStart(2,"0")+":"+String(sc.start%60).padStart(2,"0")};}
+const NC_KAKAO_IC='<svg viewBox="0 0 24 24" width="21" height="21"><path d="M12 3.2C6.4 3.2 1.9 6.9 1.9 11.4c0 2.9 1.9 5.4 4.7 6.8l-.7 3.3 4.4-2.4c.5.1 1.1.2 1.7.2 5.6 0 10.1-3.7 10.1-8.2S17.6 3.2 12 3.2z" fill="#3a1d1d"/><circle cx="7.5" cy="11.3" r="1.3" fill="#fee500"/><circle cx="12" cy="11.3" r="1.3" fill="#fee500"/><circle cx="16.5" cy="11.3" r="1.3" fill="#fee500"/></svg>';
+const NC_IG_IC='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.25" fill="#fff" stroke="none"/></svg>';
+function ncHTML(){const c=storyClock();const st=storyToday();
+ const n1=S.ended?"LASTART 練習生ルーム：あの夏は終わった。でも、連絡は続いている":S.scene>=8?"LASTART 練習生ルーム：今日、デビューメンバーが発表される":S.scene>=1?"LASTART 練習生ルーム：新しいトークが届いている":"LASTART 練習生ルーム：明日、最初のミッションが始まる";
+ let h=`<div class="nc-date">${c.d}</div><div class="nc-time">${c.t}</div><div class="nc-title">通知センター</div>`;
+ h+=`<button class="lnotif" data-ncgo="kakao"><span class="ln-ic">${NC_KAKAO_IC}</span><span style="flex:1;min-width:0"><span class="ln-h">カカオトーク<span>今</span></span><span class="ln-t" style="display:block">${esc(n1)}</span></span></button>`;
+ if(S.scene>=5||S.ended)h+=`<button class="lnotif" data-ncgo="line"><span class="ln-ic" style="background:#06c755"><span class="ln-line">LINE</span></span><span style="flex:1;min-width:0"><span class="ln-h">LINE<span>5分前</span></span><span class="ln-t" style="display:block">大翔：着いたら連絡して。……俺も、まだ起きてるから</span></span></button>`;
+ else h+=`<button class="lnotif" data-ncgo="cal"><span class="ln-ic" style="background:#fff"><span class="ln-cal"><span>${st.w}曜日</span><b>${st.d}</b></span></span><span style="flex:1;min-width:0"><span class="ln-h">カレンダー<span>5分前</span></span><span class="ln-t" style="display:block">明日 9:00 ― 最初のミッション収録</span></span></button>`;
+ if(S.scene>=2||S.ended)h+=`<button class="lnotif" data-ncgo="ig"><span class="ln-ic" style="background:linear-gradient(45deg,#feda75,#d62976,#962fbf)">${NC_IG_IC}</span><span style="flex:1;min-width:0"><span class="ln-h">Instagram<span>12分前</span></span><span class="ln-t" style="display:block">sm_nctuniverse が新しい投稿をシェアしました</span></span></button>`;
+ h+=`<div class="nc-hint">タップで閉じる ／ 通知をタップするとアプリが開くよ</div>`;
+ return h;}
+const CC_PLANE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 15.5v-2l-8.5-5V3.2a1.2 1.2 0 0 0-2.4 0v5.3l-8.5 5v2l8.5-2.6v5.4l-2.3 1.7v1.5l3.5-1 3.5 1v-1.5l-2.3-1.7v-5.4z"/></svg>';
+const CC_CELL='<svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="14" width="3.2" height="6" rx="1.2"/><rect x="8.6" y="11" width="3.2" height="9" rx="1.2"/><rect x="13.2" y="8" width="3.2" height="12" rx="1.2"/><rect x="17.8" y="5" width="3.2" height="15" rx="1.2"/></svg>';
+const CC_WIFI='<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="17.6" r="2"/><path d="M12 13.4c1.9 0 3.7.8 5 2.1l-1.9 1.9a4.6 4.6 0 0 0-6.2 0L7 15.5a7.3 7.3 0 0 1 5-2.1z"/><path d="M12 9c3.2 0 6.2 1.3 8.4 3.5l-1.9 1.9A9.9 9.9 0 0 0 12 11.6c-2.5 0-4.8 1-6.5 2.8L3.6 12.5A11.9 11.9 0 0 1 12 9z"/><path d="M12 4.6c4.6 0 8.9 1.8 12 5l-1.9 1.9A14.2 14.2 0 0 0 12 7.2c-3.9 0-7.5 1.6-10.1 4.3L0 9.6a16.9 16.9 0 0 1 12-5z" transform="translate(0 .4) scale(.96) translate(.5 0)"/></svg>';
+const CC_BT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 8.5 17 16l-4.5 4.5v-17L17 8 7 15.5"/></svg>';
+const CC_MOON='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.6 14.2A8.8 8.8 0 0 1 9.8 3.4a.6.6 0 0 0-.8-.8 10.4 10.4 0 1 0 12.4 12.4.6.6 0 0 0-.8-.8z"/></svg>';
+const CC_TORCH='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 2.5h5.6l.9 3.4c1.3 1 2 2.5 2 4.1l-.3 8.2c0 .9-.7 1.6-1.6 1.6H8.2c-.9 0-1.6-.7-1.6-1.6L6.3 10c0-1.6.7-3.1 2-4.1l.9-3.4zm2.8 17.9a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2zM9.6 8.4l-.2 2h5.2l-.2-2H9.6z"/></svg>';
+const CC_CAM='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 7h3.2l1.8-2.6c.2-.3.6-.5 1-.5h4c.4 0 .8.2 1 .5L16.8 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm8 3.2a4.3 4.3 0 1 0 0 8.6 4.3 4.3 0 0 0 0-8.6zm0 2a2.3 2.3 0 1 1 0 4.6 2.3 2.3 0 0 0 0-4.6z"/></svg>';
+const CC_PREV='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5.5v13H4.5v-13zM19 5.8v12.4L9.5 12z"/></svg>';
+const CC_NEXT='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 5.5v13h2.5v-13zM5 5.8v12.4L14.5 12z"/></svg>';
+const CC_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.3v13.4L18.5 12z"/></svg>';
+const CC_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+function ccHTML(){const au=$("#au-handsup");const open=handsUpOpen();
+ const cir=(k,ic,lab,cls)=>`<span class="cc-cell"><button class="cc-cir${ccState[k]?" on":""}${cls?" "+cls:""}" data-cc="${k}">${ic}</button><span class="cc-lab">${lab}</span></span>`;
+ return `<div class="cc-grid"><div class="cc-conn">${cir("am",CC_PLANE,"機内モード","am")}${cir("md",CC_CELL,"モバイル")}${cir("wifi",CC_WIFI,"Wi-Fi")}${cir("bt",CC_BT,"Bluetooth")}</div>
+ <div class="cc-mus"><b>${open?"Hands Up":"再生中の曲なし"}</b><span>${open?"NCT NEW TEAM ― 公式プレビュー":""}</span><span class="cc-mbtns"><button data-deco>${CC_PREV}</button><button data-ccplay>${au&&!au.paused?CC_PAUSE:CC_PLAY}</button><button data-deco>${CC_NEXT}</button></span></div></div>
+ <button class="cc-wide${ccState.focus?" on":""}" data-cc="focus">${CC_MOON}集中モード${ccState.focus?" ― オン":""}</button>
+ <div class="cc-row2"><label class="cc-slider">画面の明るさ<input type="range" id="cc-bright" min="0" max="100" value="${ccState.bright}"></label><label class="cc-slider">音量<input type="range" id="cc-vol" min="0" max="100" value="${ccState.vol}"></label></div>
+ <div class="cc-row2"><button class="cc-sq${ccState.flash?" on":""}" data-cc="flash">${CC_TORCH}フラッシュライト</button><button class="cc-sq" data-cccam>${CC_CAM}カメラ</button></div>
+ <div class="nc-hint">タップで閉じる</div>`;}
+function bindCC(root){root.querySelectorAll("[data-cc]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.cc;ccState[k]=!ccState[k];
+  if(k==="focus"||k==="flash"){b.classList.toggle("on",ccState[k]);if(k==="focus")b.innerHTML=`${CC_MOON}集中モード${ccState.focus?" ― オン":""}`;}
+  else b.classList.toggle("on",ccState[k]);buzz(10);}));
+ const pl=root.querySelector("[data-ccplay]");if(pl)pl.addEventListener("click",()=>{const au=$("#au-handsup");if(!handsUpOpen()){toast("プレデビュー曲はまだ公開前だよ（2023年10月公開）");return;}
+  if(au.paused){au.volume=ccState.vol/100;au.play().catch(()=>{});}else au.pause();setTimeout(()=>{pl.innerHTML=au.paused?CC_PLAY:CC_PAUSE;},60);});
+ const cam=root.querySelector("[data-cccam]");if(cam)cam.addEventListener("click",()=>toast("カメラは物語では使わないよ"));
+ const br=root.querySelector("#cc-bright");if(br)br.addEventListener("input",()=>{ccState.bright=+br.value;const scr=document.querySelector(".screen");if(scr)scr.style.filter=`brightness(${(0.45+ccState.bright/100*0.65).toFixed(2)})`;});
+ const vo=root.querySelector("#cc-vol");if(vo)vo.addEventListener("input",()=>{ccState.vol=+vo.value;const au=$("#au-handsup");if(au)au.volume=ccState.vol/100;});}
+function openSys(which){closeSys();if(which==="nc"){const el=$("#ios-nc");el.innerHTML=ncHTML();el.classList.add("on");
+  el.querySelectorAll("[data-ncgo]").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();const a=b.dataset.ncgo;closeSys();if(a==="kakao"||a==="line")openApp(a);else show(a);}));
+  el.onclick=e=>{if(e.target===el)closeSys();};}
+ else{const el=$("#ios-cc");el.innerHTML=ccHTML();el.classList.add("on");bindCC(el);el.onclick=e=>{if(e.target===el)closeSys();};}}
+function closeSys(){const a=$("#ios-nc"),b=$("#ios-cc");if(a)a.classList.remove("on");if(b)b.classList.remove("on");}
+$("#homebar").addEventListener("click",()=>closeSys());
+{const hv=$("#v-home");let gx=null,gy=null,gw=0;
+ hv.addEventListener("pointerdown",e=>{if(CUR!=="home"||homeEdit||!hv.getBoundingClientRect)return;const scr=document.querySelector(".screen");if(!scr)return;const r=scr.getBoundingClientRect();if(e.clientY-r.top>52){gx=null;return;}gx=e.clientX;gy=e.clientY;gw=r.width;hv._gr=r;});
+ hv.addEventListener("pointermove",e=>{if(gx===null)return;if(e.clientY-gy>55){const right=(gx-hv._gr.left)>gw*0.62;gx=null;openSys(right?"cc":"nc");buzz(15);}});
+ hv.addEventListener("pointerup",()=>{gx=null;});hv.addEventListener("pointercancel",()=>{gx=null;});}
 /* ===== INIT ===== */
 load();applyA11y();renderHome();renderTitle();fit();
 /* v15: when the tab is hidden or the page is left, flush the save and pause feed/reel videos, so returning or reloading always restores a clean state (the TT IntersectionObserver resumes the in-view video on return). */
